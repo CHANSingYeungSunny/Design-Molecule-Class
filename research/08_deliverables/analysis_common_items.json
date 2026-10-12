@@ -1,0 +1,582 @@
+{
+  "analysis_version": "common-items-v1",
+  "source": {
+    "extension_run": "extension-01",
+    "reuse_run": "main-02",
+    "records_read": 8038,
+    "note": "read-only; no model was called"
+  },
+  "scope_rule": "an item is in scope only if it is in the CURRENT frozen list for that representation and task. Superseded items from an earlier conversion revision remain in the log as an audit trail and are excluded here.",
+  "denominators": {
+    "t1_identity": 200,
+    "t2_functional_groups": 199,
+    "t3_atom_counts": 199,
+    "t4_qed": 199,
+    "t5_hydrogen_bond_donors": 199
+  },
+  "per_task": {
+    "t1_identity": {
+      "n_common": 200,
+      "note": "items every one of the eight representations answered, from the current frozen lists; recomputed per item, never scaled from another table",
+      "values": {
+        "smiles": {
+          "value": 0.985,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "selfies": {
+          "value": 0.54,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "our_code": {
+          "value": 1.0,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "img": {
+          "value": 0.99,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "graph2d": {
+          "value": 0.85,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "graph3d": {
+          "value": 0.98,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "cml": {
+          "value": 0.97,
+          "n_valid": 200,
+          "denominator": 200
+        },
+        "moljson": {
+          "value": 0.62,
+          "n_valid": 200,
+          "denominator": 200
+        }
+      }
+    },
+    "t2_functional_groups": {
+      "n_common": 199,
+      "note": "items every one of the eight representations answered, from the current frozen lists; recomputed per item, never scaled from another table",
+      "values": {
+        "smiles": {
+          "value": 0.8388297640324938,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "selfies": {
+          "value": 0.5458502516802017,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "our_code": {
+          "value": 0.5149218986809742,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "img": {
+          "value": 0.8680157157711337,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph2d": {
+          "value": 0.4375879556012867,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph3d": {
+          "value": 0.5712672874280116,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "cml": {
+          "value": 0.5227021855689136,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "moljson": {
+          "value": 0.43406277318051395,
+          "n_valid": 199,
+          "denominator": 199
+        }
+      }
+    },
+    "t3_atom_counts": {
+      "n_common": 199,
+      "note": "items every one of the eight representations answered, from the current frozen lists; recomputed per item, never scaled from another table",
+      "values": {
+        "smiles": {
+          "value": 0.23115577889447236,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "selfies": {
+          "value": 0.01507537688442211,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "our_code": {
+          "value": 0.19095477386934673,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "img": {
+          "value": 0.3417085427135678,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph2d": {
+          "value": 0.05527638190954774,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph3d": {
+          "value": 0.07035175879396985,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "cml": {
+          "value": 0.19597989949748743,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "moljson": {
+          "value": 0.21608040201005024,
+          "n_valid": 199,
+          "denominator": 199
+        }
+      }
+    },
+    "t4_qed": {
+      "n_common": 199,
+      "note": "items every one of the eight representations answered, from the current frozen lists; recomputed per item, never scaled from another table",
+      "values": {
+        "smiles": {
+          "value": 0.11075506908225226,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "selfies": {
+          "value": 0.1802305087803818,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "our_code": {
+          "value": 0.1389361845925223,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "img": {
+          "value": 0.1191158343896104,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph2d": {
+          "value": 0.14450576934660167,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph3d": {
+          "value": 0.17047015559681222,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "cml": {
+          "value": 0.12829123624598415,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "moljson": {
+          "value": 0.148823745869723,
+          "n_valid": 199,
+          "denominator": 199
+        }
+      }
+    },
+    "t5_hydrogen_bond_donors": {
+      "n_common": 199,
+      "note": "items every one of the eight representations answered, from the current frozen lists; recomputed per item, never scaled from another table",
+      "values": {
+        "smiles": {
+          "value": 0.8140703517587939,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "selfies": {
+          "value": 0.4321608040201005,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "our_code": {
+          "value": 0.4271356783919598,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "img": {
+          "value": 0.9748743718592965,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph2d": {
+          "value": 0.38190954773869346,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "graph3d": {
+          "value": 0.3869346733668342,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "cml": {
+          "value": 0.46733668341708545,
+          "n_valid": 199,
+          "denominator": 199
+        },
+        "moljson": {
+          "value": 0.35678391959798994,
+          "n_valid": 199,
+          "denominator": 199
+        }
+      }
+    }
+  },
+  "per_representation_coverage_separate": {
+    "t1_identity": {
+      "smiles": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "selfies": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "our_code": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "img": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph2d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph3d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "cml": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "moljson": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      }
+    },
+    "t2_functional_groups": {
+      "smiles": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "selfies": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "our_code": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "img": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph2d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph3d": {
+        "in_frozen_list": 199,
+        "valid": 199,
+        "invalid": 0,
+        "pending": 0
+      },
+      "cml": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "moljson": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      }
+    },
+    "t3_atom_counts": {
+      "smiles": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "selfies": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "our_code": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "img": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph2d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph3d": {
+        "in_frozen_list": 199,
+        "valid": 199,
+        "invalid": 0,
+        "pending": 0
+      },
+      "cml": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "moljson": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      }
+    },
+    "t4_qed": {
+      "smiles": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "selfies": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "our_code": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "img": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph2d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph3d": {
+        "in_frozen_list": 199,
+        "valid": 199,
+        "invalid": 0,
+        "pending": 0
+      },
+      "cml": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "moljson": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      }
+    },
+    "t5_hydrogen_bond_donors": {
+      "smiles": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "selfies": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "our_code": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "img": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph2d": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "graph3d": {
+        "in_frozen_list": 199,
+        "valid": 199,
+        "invalid": 0,
+        "pending": 0
+      },
+      "cml": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      },
+      "moljson": {
+        "in_frozen_list": 200,
+        "valid": 200,
+        "invalid": 0,
+        "pending": 0
+      }
+    }
+  },
+  "findings": {
+    "t1_identity": {
+      "best_value": 1.0,
+      "best_representations": [
+        "our_code"
+      ],
+      "n_representations_at_best": 1,
+      "n_with_a_value": 8,
+      "our_code_value": 1.0,
+      "n_better_than_our_code": 0,
+      "our_code_rank": 1
+    },
+    "t2_functional_groups": {
+      "best_value": 0.8680157157711337,
+      "best_representations": [
+        "img"
+      ],
+      "n_representations_at_best": 1,
+      "n_with_a_value": 8,
+      "our_code_value": 0.5149218986809742,
+      "n_better_than_our_code": 5,
+      "our_code_rank": 6
+    },
+    "t3_atom_counts": {
+      "best_value": 0.3417085427135678,
+      "best_representations": [
+        "img"
+      ],
+      "n_representations_at_best": 1,
+      "n_with_a_value": 8,
+      "our_code_value": 0.19095477386934673,
+      "n_better_than_our_code": 4,
+      "our_code_rank": 5
+    },
+    "t4_qed": {
+      "best_value": 0.11075506908225226,
+      "best_representations": [
+        "smiles"
+      ],
+      "n_representations_at_best": 1,
+      "n_with_a_value": 8,
+      "our_code_value": 0.1389361845925223,
+      "n_better_than_our_code": 3,
+      "our_code_rank": 4
+    },
+    "t5_hydrogen_bond_donors": {
+      "best_value": 0.9748743718592965,
+      "best_representations": [
+        "img"
+      ],
+      "n_representations_at_best": 1,
+      "n_with_a_value": 8,
+      "our_code_value": 0.4271356783919598,
+      "n_better_than_our_code": 4,
+      "our_code_rank": 5
+    }
+  },
+  "integrity_checked": {
+    "identity_endpoints_and_labels_agree_across_all_eight": true,
+    "single_molecule_ids_agree_across_all_eight": true,
+    "problems": []
+  },
+  "metric_note": {
+    "t1_identity": "accuracy over the common pairs; DESCRIPTIVE only",
+    "t2_functional_groups": "macro-F1 over the FROZEN 10-label set",
+    "t3_atom_counts": "exact match on all of C/N/O/S",
+    "t4_qed": "MAE, lower is better",
+    "t5_hydrogen_bond_donors": "exact match"
+  },
+  "label_set_used": [
+    "alcohol",
+    "alkyl_halide",
+    "amide",
+    "aryl_halide",
+    "benzene_ring",
+    "carboxylic_acid",
+    "ester",
+    "ketone",
+    "phenol",
+    "primary_amine"
+  ]
+}

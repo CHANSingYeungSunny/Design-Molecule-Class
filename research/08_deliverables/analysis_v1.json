@@ -1,0 +1,900 @@
+{
+  "analysis_version": "v1",
+  "generated_at": "2026-10-06T19:11:17",
+  "run_id": "main-02",
+  "inputs": {
+    "raw_responses": {
+      "path": "07_benchmark\\runs\\main-02\\raw_responses.jsonl",
+      "sha256": "b7811e016f7e7e1e44f17182a54794aeb08efe5895d836c74e823de1ef3df282",
+      "records": 3000
+    },
+    "main_manifest_sha256": "7c1cf99510099930d2a26eb15c138319e2117eaf13249b7cda62ffa80f7f6e59",
+    "frozen_items_sha256": "953450171df7fa9bdfb6f3836b7675abddf355951804e8ab5153432b2f282784",
+    "model_config_sha256": "6a3aebd6577bc9aa1fd2e661bbe6460f71e976acb4e45d624b172e83e8271d3e"
+  },
+  "metric_definitions": {
+    "t1_identity": "Accuracy over paired items",
+    "t2_functional_groups": "Macro-F1 over a FIXED label set (unexercised labels excluded)",
+    "t3_atom_counts": "Exact-match accuracy over the whole answer object",
+    "t4_qed": "MAE (lower is better)",
+    "t5_hydrogen_bond_donors": "Exact-match accuracy"
+  },
+  "t2_label_set": {
+    "fixed_set": [
+      "alcohol",
+      "alkyl_halide",
+      "amide",
+      "aryl_halide",
+      "benzene_ring",
+      "carboxylic_acid",
+      "ester",
+      "ketone",
+      "phenol",
+      "primary_amine"
+    ],
+    "n_labels": 10,
+    "rule": {
+      "min_positives_in_sample": 10,
+      "min_negatives_in_sample": 10,
+      "_declared": "fixed before any main model call and applied only to the frozen item list; a label outside this band is excluded from the main macro-F1 and reported as under-supported, never counted as 1.0. It is NOT a model-driven choice.",
+      "_why_10": "below roughly ten positives a per-label F1 is dominated by one or two instances. This is a project-declared floor, not a published convention."
+    },
+    "per_label_counts_in_sample": {
+      "aldehyde": {
+        "positive": 0,
+        "negative": 200
+      },
+      "ketone": {
+        "positive": 23,
+        "negative": 177
+      },
+      "ester": {
+        "positive": 16,
+        "negative": 184
+      },
+      "carboxylic_acid": {
+        "positive": 23,
+        "negative": 177
+      },
+      "amide": {
+        "positive": 51,
+        "negative": 149
+      },
+      "primary_amine": {
+        "positive": 16,
+        "negative": 184
+      },
+      "nitrile": {
+        "positive": 7,
+        "negative": 193
+      },
+      "alcohol": {
+        "positive": 18,
+        "negative": 182
+      },
+      "phenol": {
+        "positive": 59,
+        "negative": 141
+      },
+      "benzene_ring": {
+        "positive": 184,
+        "negative": 16
+      },
+      "alkyl_halide": {
+        "positive": 20,
+        "negative": 180
+      },
+      "aryl_halide": {
+        "positive": 57,
+        "negative": 143
+      },
+      "nitro": {
+        "positive": 3,
+        "negative": 197
+      }
+    },
+    "excluded": [
+      "aldehyde",
+      "nitrile",
+      "nitro"
+    ],
+    "fixed_across_resamples": true
+  },
+  "pairing": {
+    "t1_identity": {
+      "per_representation": {
+        "our_code": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "smiles": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "selfies": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        }
+      },
+      "shared_across_all_three": 200,
+      "unique_note": "no key collisions; all three arms answer the same items"
+    },
+    "t2_functional_groups": {
+      "per_representation": {
+        "our_code": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "smiles": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "selfies": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        }
+      },
+      "shared_across_all_three": 200,
+      "unique_note": "no key collisions; all three arms answer the same items"
+    },
+    "t3_atom_counts": {
+      "per_representation": {
+        "our_code": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "smiles": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "selfies": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        }
+      },
+      "shared_across_all_three": 200,
+      "unique_note": "no key collisions; all three arms answer the same items"
+    },
+    "t4_qed": {
+      "per_representation": {
+        "our_code": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "smiles": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "selfies": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        }
+      },
+      "shared_across_all_three": 200,
+      "unique_note": "no key collisions; all three arms answer the same items"
+    },
+    "t5_hydrogen_bond_donors": {
+      "per_representation": {
+        "our_code": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "smiles": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        },
+        "selfies": {
+          "items": 200,
+          "unique_keys": 200,
+          "collisions": 0
+        }
+      },
+      "shared_across_all_three": 200,
+      "unique_note": "no key collisions; all three arms answer the same items"
+    }
+  },
+  "point_estimates": {
+    "t1_identity": {
+      "our_code": {
+        "value": 1.0,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "n_correct": 200
+      },
+      "smiles": {
+        "value": 0.985,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "n_correct": 197
+      },
+      "selfies": {
+        "value": 0.54,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "n_correct": 108
+      }
+    },
+    "t2_functional_groups": {
+      "our_code": {
+        "value": 0.5149399043458334,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "label_set_size": 10
+      },
+      "smiles": {
+        "value": 0.8388327017528228,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "label_set_size": 10
+      },
+      "selfies": {
+        "value": 0.5458618762079552,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "label_set_size": 10
+      }
+    },
+    "t3_atom_counts": {
+      "our_code": {
+        "value": 0.19,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      },
+      "smiles": {
+        "value": 0.23,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      },
+      "selfies": {
+        "value": 0.015,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      }
+    },
+    "t4_qed": {
+      "our_code": {
+        "value": 0.13868394768809966,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "success_rate_at_0.05": 0.25
+      },
+      "smiles": {
+        "value": 0.11114373775538099,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "success_rate_at_0.05": 0.355
+      },
+      "selfies": {
+        "value": 0.17977180025501988,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true,
+        "success_rate_at_0.05": 0.14
+      }
+    },
+    "t5_hydrogen_bond_donors": {
+      "our_code": {
+        "value": 0.43,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      },
+      "smiles": {
+        "value": 0.815,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      },
+      "selfies": {
+        "value": 0.435,
+        "n_total": 200,
+        "n_valid": 200,
+        "valid_rate": 1.0,
+        "complete": true
+      }
+    }
+  },
+  "comparisons": {
+    "t1_identity": {
+      "our_code_vs_smiles": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 1.0,
+        "value_b": 0.985,
+        "observed_difference": 0.015000000000000013,
+        "ci": {
+          "low": 0.0,
+          "high": 0.025210084033613467,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": false,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.22938530734632684,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.22938530734632684
+        }
+      },
+      "our_code_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 1.0,
+        "value_b": 0.54,
+        "observed_difference": 0.45999999999999996,
+        "ci": {
+          "low": 0.4107142857142857,
+          "high": 0.5086206896551724,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "smiles_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.985,
+        "value_b": 0.54,
+        "observed_difference": 0.44499999999999995,
+        "ci": {
+          "low": 0.39473684210526316,
+          "high": 0.4926470588235294,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "_family": {
+        "declared": [
+          "our_code_vs_smiles",
+          "our_code_vs_selfies",
+          "smiles_vs_selfies"
+        ],
+        "family_size": 3,
+        "correction": "Holm-Bonferroni, within task",
+        "ci_holm_adjusted": false,
+        "monte_carlo_floor": 0.0004997501249375312
+      }
+    },
+    "t2_functional_groups": {
+      "our_code_vs_smiles": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "macro_f1_over_fixed_set",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.5149399043458334,
+        "value_b": 0.8388327017528228,
+        "observed_difference": -0.3238927974069894,
+        "ci": {
+          "low": -0.36742208785259073,
+          "high": -0.2850104284653794,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item prediction vectors; macro-F1 recomputed over the FIXED label set after the swap",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "our_code_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "macro_f1_over_fixed_set",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.5149399043458334,
+        "value_b": 0.5458618762079552,
+        "observed_difference": -0.030921971862121866,
+        "ci": {
+          "low": -0.07987302904102928,
+          "high": 0.017522863144759926,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": false,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item prediction vectors; macro-F1 recomputed over the FIXED label set after the swap",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.4387806096951524,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.4387806096951524
+        }
+      },
+      "smiles_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "macro_f1_over_fixed_set",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.8388327017528228,
+        "value_b": 0.5458618762079552,
+        "observed_difference": 0.29297082554486753,
+        "ci": {
+          "low": 0.2558780812371504,
+          "high": 0.33347748147655376,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item prediction vectors; macro-F1 recomputed over the FIXED label set after the swap",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "_family": {
+        "declared": [
+          "our_code_vs_smiles",
+          "our_code_vs_selfies",
+          "smiles_vs_selfies"
+        ],
+        "family_size": 3,
+        "correction": "Holm-Bonferroni, within task",
+        "ci_holm_adjusted": false,
+        "monte_carlo_floor": 0.0004997501249375312
+      }
+    },
+    "t3_atom_counts": {
+      "our_code_vs_smiles": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.19,
+        "value_b": 0.23,
+        "observed_difference": -0.04000000000000001,
+        "ci": {
+          "low": -0.09848484848484848,
+          "high": 0.023255813953488386,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": false,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.44127936031984005,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.44127936031984005
+        }
+      },
+      "our_code_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.19,
+        "value_b": 0.015,
+        "observed_difference": 0.175,
+        "ci": {
+          "low": 0.13076923076923078,
+          "high": 0.22033898305084745,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "smiles_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.23,
+        "value_b": 0.015,
+        "observed_difference": 0.21500000000000002,
+        "ci": {
+          "low": 0.16793893129770993,
+          "high": 0.2583333333333333,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "_family": {
+        "declared": [
+          "our_code_vs_smiles",
+          "our_code_vs_selfies",
+          "smiles_vs_selfies"
+        ],
+        "family_size": 3,
+        "correction": "Holm-Bonferroni, within task",
+        "ci_holm_adjusted": false,
+        "monte_carlo_floor": 0.0004997501249375312
+      }
+    },
+    "t4_qed": {
+      "our_code_vs_smiles": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "mae",
+        "n_pairs": 200,
+        "lower_is_better": true,
+        "value_a": 0.13868394768809966,
+        "value_b": 0.11114373775538099,
+        "observed_difference": 0.027540209932718676,
+        "ci": {
+          "low": 0.012278059929489521,
+          "high": 0.042449938505693036,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.03398300849575212,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.03398300849575212
+        }
+      },
+      "our_code_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "mae",
+        "n_pairs": 200,
+        "lower_is_better": true,
+        "value_a": 0.13868394768809966,
+        "value_b": 0.17977180025501988,
+        "observed_difference": -0.04108785256692021,
+        "ci": {
+          "low": -0.05445919952562295,
+          "high": -0.027545777360650475,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0014992503748125937,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0029985007496251873
+        }
+      },
+      "smiles_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "mae",
+        "n_pairs": 200,
+        "lower_is_better": true,
+        "value_a": 0.11114373775538099,
+        "value_b": 0.17977180025501988,
+        "observed_difference": -0.06862806249963889,
+        "ci": {
+          "low": -0.08311503417170255,
+          "high": -0.053370236446788746,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "_family": {
+        "declared": [
+          "our_code_vs_smiles",
+          "our_code_vs_selfies",
+          "smiles_vs_selfies"
+        ],
+        "family_size": 3,
+        "correction": "Holm-Bonferroni, within task",
+        "ci_holm_adjusted": false,
+        "monte_carlo_floor": 0.0004997501249375312
+      }
+    },
+    "t5_hydrogen_bond_donors": {
+      "our_code_vs_smiles": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "hbd_exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.43,
+        "value_b": 0.815,
+        "observed_difference": -0.38499999999999995,
+        "ci": {
+          "low": -0.4453125,
+          "high": -0.32258064516129026,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "our_code_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "hbd_exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.43,
+        "value_b": 0.435,
+        "observed_difference": -0.0050000000000000044,
+        "ci": {
+          "low": -0.06896551724137934,
+          "high": 0.05645161290322581,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": false,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.9365317341329336,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.9365317341329336
+        }
+      },
+      "smiles_vs_selfies": {
+        "method": "paired cluster bootstrap of the metric difference",
+        "parameter": "hbd_exact_match_accuracy",
+        "n_pairs": 200,
+        "lower_is_better": false,
+        "value_a": 0.815,
+        "value_b": 0.435,
+        "observed_difference": 0.37999999999999995,
+        "ci": {
+          "low": 0.3145161290322581,
+          "high": 0.4453125,
+          "resamples": 2000,
+          "confidence": 0.95,
+          "excludes_zero": true,
+          "holm_adjusted": false,
+          "_note": "uncorrected interval; it is NOT a Holm-adjusted test"
+        },
+        "permutation": {
+          "method": "cluster sign-flip permutation on the main-table metric",
+          "statistic": "difference in the main-table metric",
+          "exchanges": "per-item records",
+          "resamples": 2000,
+          "seed": 20261005,
+          "p_value": 0.0004997501249375312,
+          "monte_carlo_floor": 0.0004997501249375312,
+          "exchangeability_assumption": "pairs are exchangeable within molecule clusters under the null; NOT verified for shared endpoints",
+          "p_holm": 0.0014992503748125937
+        }
+      },
+      "_family": {
+        "declared": [
+          "our_code_vs_smiles",
+          "our_code_vs_selfies",
+          "smiles_vs_selfies"
+        ],
+        "family_size": 3,
+        "correction": "Holm-Bonferroni, within task",
+        "ci_holm_adjusted": false,
+        "monte_carlo_floor": 0.0004997501249375312
+      }
+    }
+  },
+  "inference_status": {
+    "t1_identity": {
+      "status": "exploratory",
+      "reason": "Identity items share molecules across pairs (Identity pairs share endpoints with other items). Random attribution equalises the marginal draw probability but does not remove that correlation, and no method here is validated for it.",
+      "report": "accuracy and correct/total counts are reported; the interval is labelled exploratory and not used for confirmatory claims."
+    },
+    "t2_functional_groups": {
+      "status": "reportable_with_caveats",
+      "reason": "the comparison recomputes the fixed-10-label Macro-F1 itself; the resampling unit is the parent molecule",
+      "report": "difference with 95% interval, plus a Holm-corrected permutation p"
+    },
+    "t3_atom_counts": {
+      "status": "reportable_with_caveats",
+      "reason": "independent single-molecule items; clusters are singletons",
+      "report": "difference with 95% interval and Holm-corrected p"
+    },
+    "t4_qed": {
+      "status": "reportable_with_caveats",
+      "reason": "independent single-molecule items; MAE difference, lower is better",
+      "report": "difference with 95% interval and Holm-corrected p"
+    },
+    "t5_hydrogen_bond_donors": {
+      "status": "reportable_with_caveats",
+      "reason": "independent single-molecule items",
+      "report": "difference with 95% interval and Holm-corrected p"
+    }
+  },
+  "method_changes": [
+    {
+      "change": "T2 comparison metric",
+      "was": "per-item label accuracy over all 13 labels, used to argue about Macro-F1",
+      "now": "the difference in the FIXED-10-label Macro-F1 itself",
+      "why": "per-item label accuracy is dominated by true negatives, which F1 does not reward, and it averaged over a different label set",
+      "when": "offline, AFTER the model run"
+    },
+    {
+      "change": "cluster resampling of multi-endpoint items",
+      "was": "an item entered if ANY owned molecule was drawn (2-endpoint items drawn ~37% more often)",
+      "now": "each item is attributed to one molecule at random per replicate, equalising the marginal inclusion probability",
+      "why": "the old rule over-weighted Identity negatives and pushed intervals off the point estimate",
+      "when": "offline, AFTER the model run",
+      "_limit": "random attribution fixes the MARGINAL probability only; it does not remove the correlation between pairs that share a molecule, so Identity inference remains exploratory"
+    }
+  ],
+  "analysis_note": "The model experiment was NOT re-run. All raw responses are the original ones; only the offline statistical implementation was corrected after the problem was found.",
+  "multiplicity": {
+    "per_task_family": "the three pairwise comparisons within one task form one family",
+    "correction": "Holm-Bonferroni",
+    "significance_level": 0.05,
+    "intervals_are_uncorrected": true,
+    "direction": {
+      "higher_is_better": [
+        "t1_identity",
+        "t2_functional_groups",
+        "t3_atom_counts",
+        "t5_hydrogen_bond_donors"
+      ],
+      "lower_is_better": [
+        "t4_qed"
+      ]
+    }
+  }
+}

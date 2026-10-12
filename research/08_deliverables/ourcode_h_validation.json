@@ -1,0 +1,97 @@
+{
+  "candidate": "our_code_h",
+  "field_definition": "explicit_hs = total hydrogens bonded to the atom (graph H vertices plus implicit H implied by element and bond order); source: molecular structure",
+  "default_field_semantics": "explicit_hs=None means the element normal implicit-H rule applies",
+  "model_calls": 0,
+  "molecules_tested": 431,
+  "checks_passed": {
+    "chemistry_unchanged": 431,
+    "h_counts_preserved_through_roundtrip": 431,
+    "every_atom_states_a_count": 431,
+    "ids_unchanged_vs_original": 431,
+    "order_unchanged_vs_original": 431,
+    "identity_views_differ": 431,
+    "no_answer_leakage": 431,
+    "formula_matches_reference": 431,
+    "total_h_matches_reference": 431,
+    "connectivity_matches_reference": 431
+  },
+  "molecules_with_explicit_h_vertices_in_the_graph": 3,
+  "molecules_whose_h_vertex_is_bonded_to_a_heavy_atom": 0,
+  "explicit_h_vertex_detail": [
+    {
+      "cid": "91826560",
+      "smiles": "C1=CC(=C(c2ccc(Nc3ccccc3)cc2)c2ccc(Nc3ccccc3)cc2)C=CC1=Nc1ccccc1.[H+]",
+      "has_bonded_h_vertex": false,
+      "evidence": {
+        "reference_formula": "C37H30N3+",
+        "reference_total_h": 30,
+        "reference_heavy_atoms": 40,
+        "original_formula": "C37H30N3+",
+        "original_total_h": 30,
+        "original_heavy_atoms": 40,
+        "original_canonical": "C1=CC(=C(c2ccc(Nc3ccccc3)cc2)c2ccc(Nc3ccccc3)cc2)C=CC1=Nc1ccccc1.[H+]",
+        "candidate_formula": "C37H30N3+",
+        "candidate_total_h": 30,
+        "candidate_heavy_atoms": 40,
+        "candidate_canonical": "C1=CC(=C(c2ccc(Nc3ccccc3)cc2)c2ccc(Nc3ccccc3)cc2)C=CC1=Nc1ccccc1.[H+]",
+        "reference_canonical": "C1=CC(=C(c2ccc(Nc3ccccc3)cc2)c2ccc(Nc3ccccc3)cc2)C=CC1=Nc1ccccc1.[H+]",
+        "formula_matches_reference": true,
+        "total_h_matches_reference": true,
+        "connectivity_matches_reference": true
+      }
+    },
+    {
+      "cid": "135563654",
+      "smiles": "Fc1ccc2[nH]c3c(c2c1)CN(CCCc1cccnc1)CC3.[H+]",
+      "has_bonded_h_vertex": false,
+      "evidence": {
+        "reference_formula": "C19H21FN3+",
+        "reference_total_h": 21,
+        "reference_heavy_atoms": 23,
+        "original_formula": "C19H21FN3+",
+        "original_total_h": 21,
+        "original_heavy_atoms": 23,
+        "original_canonical": "Fc1ccc2[nH]c3c(c2c1)CN(CCCc1cccnc1)CC3.[H+]",
+        "candidate_formula": "C19H21FN3+",
+        "candidate_total_h": 21,
+        "candidate_heavy_atoms": 23,
+        "candidate_canonical": "Fc1ccc2[nH]c3c(c2c1)CN(CCCc1cccnc1)CC3.[H+]",
+        "reference_canonical": "Fc1ccc2[nH]c3c(c2c1)CN(CCCc1cccnc1)CC3.[H+]",
+        "formula_matches_reference": true,
+        "total_h_matches_reference": true,
+        "connectivity_matches_reference": true
+      }
+    },
+    {
+      "cid": "91828205",
+      "smiles": "Nc1nccc(-c2c(-c3ccc(F)cc3)ncn2C2CCCCC2)n1.[H+].[H+]",
+      "has_bonded_h_vertex": false,
+      "evidence": {
+        "reference_formula": "C19H22FN5+2",
+        "reference_total_h": 22,
+        "reference_heavy_atoms": 25,
+        "original_formula": "C19H22FN5+2",
+        "original_total_h": 22,
+        "original_heavy_atoms": 25,
+        "original_canonical": "Nc1nccc(-c2c(-c3ccc(F)cc3)ncn2C2CCCCC2)n1.[H+].[H+]",
+        "candidate_formula": "C19H22FN5+2",
+        "candidate_total_h": 22,
+        "candidate_heavy_atoms": 25,
+        "candidate_canonical": "Nc1nccc(-c2c(-c3ccc(F)cc3)ncn2C2CCCCC2)n1.[H+].[H+]",
+        "reference_canonical": "Nc1nccc(-c2c(-c3ccc(F)cc3)ncn2C2CCCCC2)n1.[H+].[H+]",
+        "formula_matches_reference": true,
+        "total_h_matches_reference": true,
+        "connectivity_matches_reference": true
+      }
+    }
+  ],
+  "evidence_type": "molecular formula, total hydrogen count and canonical connectivity recomputed by RDKit from the decoded structure -- NOT agreement between the candidate generator and the core parser",
+  "fields_added_relative_to_the_original": {
+    "explicit_hs": 12462
+  },
+  "only_field_added_is_explicit_hs": true,
+  "failures": [],
+  "verdict": "candidate is valid and differs from the original in exactly one factor",
+  "not_claimed": "this is an unvalidated candidate. No model has been called, no score has been produced, and it is not part of the eight-row result table."
+}

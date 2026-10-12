@@ -1,0 +1,64 @@
+{
+  "source": "research/07_benchmark/bmb/tasks.py",
+  "status": "historical prompts preserved verbatim; T2/T3 example double braces retained",
+  "system": "You are answering chemistry questions. You cannot run code, call tools, or look anything up. Answer only from the structure you are given. Reply with a single compact JSON object and nothing else.",
+  "representation_notes": {
+    "smiles": "The molecules are given as SMILES strings. A SMILES string is a text walk over the molecular graph; branches are in parentheses, ring closures are digits, and lowercase letters mark aromatic atoms.",
+    "selfies": "The molecules are given as SELFIES strings. SELFIES is a text notation in which every bracket group is an atom or branch symbol; any well-formed SELFIES string decodes to a valid molecule.",
+    "our_code": "Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.",
+    "moljson": "The molecule is given as a MolJSON document: a JSON object with an \"atoms\" list (each entry has an id and an element), a \"bonds\" list (source, target, order), and an \"aromatic_n_h\" list naming aromatic nitrogens carrying a hydrogen.",
+    "cml": "The molecule is given as a CML document, which is an XML format for chemical information. The <atomArray> holds one <atom> element per atom, with an id, an elementType, and optional formalCharge, hydrogenCount and aromatic attributes. The <bondArray> holds one <bond> element per bond, giving its atomRefs2 pair and its order (S=single, D=double, T=triple, A=aromatic). Atom ids are local labels inside this one document and carry no chemical meaning.",
+    "img": "The molecule is given as a 2D structure image. Read the atoms and bonds from the picture; no text encoding of the molecule is provided.",
+    "graph2d": "The molecule is given as a MOL V2000 connection table. The header line is blank; the counts line gives the number of atoms and bonds; the atom block lists one atom per line with its x, y, z coordinates and element symbol; the bond block lists one bond per line as atom1, atom2 and bond order (1=single, 2=double, 3=triple, 4=aromatic). This is a 2D table: the z coordinate is 0. Atom indices are 1-based and only identify positions inside this table.",
+    "graph3d": "The molecule is given as a MOL V2000 connection table with the same layout as a 2D one, except the atom block now carries real x, y, z coordinates in angstrom from a computed 3D conformer, and the header marks the table as 3D. The atoms are the same heavy atoms as in the 2D table; only the coordinates differ."
+  },
+  "asked_functional_groups": [
+    "aldehyde",
+    "ketone",
+    "ester",
+    "carboxylic_acid",
+    "amide",
+    "primary_amine",
+    "nitrile",
+    "alcohol",
+    "phenol",
+    "benzene_ring",
+    "alkyl_halide",
+    "aryl_halide",
+    "nitro"
+  ],
+  "scored_functional_groups": [
+    "alcohol",
+    "alkyl_halide",
+    "amide",
+    "aryl_halide",
+    "benzene_ring",
+    "carboxylic_acid",
+    "ester",
+    "ketone",
+    "phenol",
+    "primary_amine"
+  ],
+  "templates": {
+    "t1_identity": {
+      "user_with_our_code_note": "Representation: Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.\n\nA:\n{molecule_A}\n\nB:\n{molecule_B}\n\nStructure A and structure B are two encodings of possibly the same molecule.\nDecide whether they describe the SAME molecule.\nTwo encodings describe the same molecule when they have the same atoms, the same bonds between those atoms, the same bond orders and the same formal charges, regardless of which atom the text happens to start from or how the records are ordered.\nReply with JSON only: {\"same_molecule\": true} or {\"same_molecule\": false}.",
+      "task_instruction": "Structure A and structure B are two encodings of possibly the same molecule.\nDecide whether they describe the SAME molecule.\nTwo encodings describe the same molecule when they have the same atoms, the same bonds between those atoms, the same bond orders and the same formal charges, regardless of which atom the text happens to start from or how the records are ordered.\nReply with JSON only: {\"same_molecule\": true} or {\"same_molecule\": false}."
+    },
+    "t2_functional_groups": {
+      "user_with_our_code_note": "Representation: Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.\n\nMolecule:\n{molecule_payload}\n\nFor the molecule below, decide for EACH functional group in the list whether it is present. Judge only from the structure given.\nGroups: \"aldehyde\", \"ketone\", \"ester\", \"carboxylic_acid\", \"amide\", \"primary_amine\", \"nitrile\", \"alcohol\", \"phenol\", \"benzene_ring\", \"alkyl_halide\", \"aryl_halide\", \"nitro\"\nReply with JSON only, one boolean per group, for example {{\"aldehyde\": true}}.",
+      "task_instruction": "For the molecule below, decide for EACH functional group in the list whether it is present. Judge only from the structure given.\nGroups: \"aldehyde\", \"ketone\", \"ester\", \"carboxylic_acid\", \"amide\", \"primary_amine\", \"nitrile\", \"alcohol\", \"phenol\", \"benzene_ring\", \"alkyl_halide\", \"aryl_halide\", \"nitro\"\nReply with JSON only, one boolean per group, for example {{\"aldehyde\": true}}."
+    },
+    "t3_atom_counts": {
+      "user_with_our_code_note": "Representation: Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.\n\nMolecule:\n{molecule_payload}\n\nCount how many atoms of each listed element are in the molecule below. Count heavy atoms only; do not count hydrogen atoms.\nElements: C, N, O, S\nReply with JSON only, one non-negative integer per element, for example {{\"C\": 0}}.",
+      "task_instruction": "Count how many atoms of each listed element are in the molecule below. Count heavy atoms only; do not count hydrogen atoms.\nElements: C, N, O, S\nReply with JSON only, one non-negative integer per element, for example {{\"C\": 0}}."
+    },
+    "t4_qed": {
+      "user_with_our_code_note": "Representation: Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.\n\nMolecule:\n{molecule_payload}\n\nEstimate the drug-likeness score QED (Quantitative Estimate of Drug-likeness) for the molecule below, on its usual scale from 0 (least drug-like) to 1 (most drug-like). Answer from the structure alone; do not run any code and do not attempt to compute descriptors externally.\nReply with JSON only: {\"qed\": <a number between 0 and 1>}.",
+      "task_instruction": "Estimate the drug-likeness score QED (Quantitative Estimate of Drug-likeness) for the molecule below, on its usual scale from 0 (least drug-like) to 1 (most drug-like). Answer from the structure alone; do not run any code and do not attempt to compute descriptors externally.\nReply with JSON only: {\"qed\": <a number between 0 and 1>}."
+    },
+    "t5_hydrogen_bond_donors": {
+      "user_with_our_code_note": "Representation: Each molecule is given as Python source that builds explicit records. Atom(id=..., element=..., formal_charge=..., isotope=..., aromatic=..., explicit_hs=..., atom_map=...) describes one atom; Bond(begin=..., end=..., bond_type=...) describes one bond between two atom ids; Molecule(atoms=(...), bonds=(...)) collects them. Atom.id is only a local label inside that one expression and carries no chemical meaning. explicit_hs=None means the element's normal implicit-hydrogen rule applies; an integer is an exact hydrogen count.\n\nMolecule:\n{molecule_payload}\n\nCount the hydrogen-bond donors (HBD) in the molecule below, using the standard definition: the number of nitrogen or oxygen atoms that carry at least one hydrogen atom.\nReply with JSON only: {\"hbd\": <a non-negative integer>}.",
+      "task_instruction": "Count the hydrogen-bond donors (HBD) in the molecule below, using the standard definition: the number of nitrogen or oxygen atoms that carry at least one hydrogen atom.\nReply with JSON only: {\"hbd\": <a non-negative integer>}."
+    }
+  }
+}

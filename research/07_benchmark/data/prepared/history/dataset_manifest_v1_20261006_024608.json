@@ -1,0 +1,360 @@
+{
+  "dataset_version": "chebi20-molt5-v1",
+  "built_at": "2026-10-06T01:53:37",
+  "source": {
+    "name": "ChEBI-20 (MolT5 release)",
+    "url": "https://github.com/blender-nlp/MolT5/tree/main/ChEBI-20_data",
+    "license": "BSD-3-Clause (MolT5 repository)",
+    "files": {
+      "ChEBI-20_test.txt": {
+        "sha256": "91776254b54ef13ad701ede0ecdbd7bcd30c19a66e52aa34a6dac8d0e7306d72"
+      },
+      "ChEBI-20_validation.txt": {
+        "sha256": "f410b58e6825986577d01b4f0c14b59ed61c1343a15118ba584de4bbcea1508c"
+      }
+    },
+    "note": "Chemical structures originate from ChEBI; this is the MolT5 redistribution of the ChEBI-20 pairing."
+  },
+  "filter_rule": {
+    "F1": "RDKit parses the source SMILES",
+    "F2": "no stereochemistry descriptor in the source SMILES (excluded, never stripped)",
+    "F3": "Our Code parses it",
+    "F4": "Our Code write -> re-parse keeps atom and bond counts",
+    "F5": "RDKit reads Our Code's output as the same molecule",
+    "F6": "RDKit canonical SMILES is also readable by Our Code, so all arms share one molecule list",
+    "F7": "the canonical SMILES is a fixed point under re-parse (reference is unambiguous)",
+    "F8": "SELFIES encodes it, so all three round-1 arms share exactly one molecule list"
+  },
+  "funnel": {
+    "rows_read": 6601,
+    "F1_rdkit_parsed": 6601,
+    "F2_no_stereo": 2103,
+    "F3_our_code_parsed": 2103,
+    "F4_our_code_roundtrip": 2103,
+    "F5_rdkit_agrees": 2103,
+    "F6_canonical_readable": 2103,
+    "F7_canonical_idempotent": 2100,
+    "F8_selfies_encodable": 2099
+  },
+  "exclusions": {
+    "F2_has_stereochemistry": 4498,
+    "F7_canonical_not_idempotent": 3,
+    "F8_selfies_cannot_encode": 1,
+    "duplicate_molecule": 2
+  },
+  "counts": {
+    "pool": 2097,
+    "dev": 524,
+    "test": 1573
+  },
+  "splits": {
+    "rule": "molecule-level; a canonical SMILES lies wholly inside dev or test",
+    "dev_fraction": 0.25,
+    "seed": 20261005,
+    "pool_smiles_sha256": "597e150dd147a375d7dc19109083147d5825a2fef464e01dd7ee60d526d2cf71",
+    "dev_smiles_sha256": "8517ef2ee76cbd8a19b9738cf9972118b206e9f14eb2b59e436a4dec1fa26b3b",
+    "test_smiles_sha256": "dda165a6d32a71c6df375eca1f3e9a981f91296eb83dfefe52095716ca199d02"
+  },
+  "task_support": {
+    "functional_groups": {
+      "aldehyde": {
+        "positive": 43,
+        "negative": 2054
+      },
+      "ketone": {
+        "positive": 231,
+        "negative": 1866
+      },
+      "ester": {
+        "positive": 177,
+        "negative": 1920
+      },
+      "carboxylic_acid": {
+        "positive": 388,
+        "negative": 1709
+      },
+      "amide": {
+        "positive": 329,
+        "negative": 1768
+      },
+      "primary_amine": {
+        "positive": 254,
+        "negative": 1843
+      },
+      "nitrile": {
+        "positive": 28,
+        "negative": 2069
+      },
+      "alcohol": {
+        "positive": 282,
+        "negative": 1815
+      },
+      "phenol": {
+        "positive": 400,
+        "negative": 1697
+      },
+      "ether": {
+        "positive": 553,
+        "negative": 1544
+      },
+      "benzene_ring": {
+        "positive": 1148,
+        "negative": 949
+      },
+      "alkyl_halide": {
+        "positive": 96,
+        "negative": 2001
+      },
+      "aryl_halide": {
+        "positive": 252,
+        "negative": 1845
+      },
+      "thiol": {
+        "positive": 14,
+        "negative": 2083
+      },
+      "sulfonamide": {
+        "positive": 63,
+        "negative": 2034
+      },
+      "nitro": {
+        "positive": 61,
+        "negative": 2036
+      }
+    },
+    "atom_counts": {
+      "C": {
+        "0": 96,
+        "1": 29,
+        "2": 47,
+        "3": 65,
+        "4": 79,
+        "5": 92,
+        "6": 140,
+        "7": 98,
+        "8": 95,
+        "9": 106,
+        "10": 126,
+        "11": 74,
+        "12": 99,
+        "13": 62,
+        "14": 90,
+        "15": 78,
+        "16": 82,
+        "17": 69,
+        "18": 70,
+        "19": 73,
+        "20": 84,
+        "21": 49,
+        "22": 51,
+        "23": 33,
+        "24": 24,
+        "25": 27,
+        "26": 22,
+        "27": 17,
+        "28": 22,
+        "29": 15,
+        "30": 12,
+        "31": 4,
+        "32": 8,
+        "33": 8,
+        "34": 17,
+        "35": 2,
+        "36": 7,
+        "37": 3,
+        "38": 1,
+        "39": 1,
+        "40": 3,
+        "42": 2,
+        "43": 1,
+        "45": 3,
+        "46": 3,
+        "51": 2,
+        "55": 1,
+        "60": 1,
+        "72": 1,
+        "74": 1,
+        "83": 2
+      },
+      "N": {
+        "0": 932,
+        "1": 456,
+        "2": 297,
+        "3": 178,
+        "4": 117,
+        "5": 64,
+        "6": 30,
+        "7": 11,
+        "8": 5,
+        "10": 4,
+        "12": 1,
+        "14": 2
+      },
+      "O": {
+        "0": 250,
+        "1": 259,
+        "2": 451,
+        "3": 346,
+        "4": 338,
+        "5": 146,
+        "6": 128,
+        "7": 67,
+        "8": 47,
+        "9": 14,
+        "10": 14,
+        "11": 10,
+        "12": 7,
+        "13": 1,
+        "14": 10,
+        "15": 3,
+        "16": 2,
+        "19": 1,
+        "24": 2,
+        "28": 1
+      },
+      "S": {
+        "0": 1744,
+        "1": 256,
+        "2": 71,
+        "3": 11,
+        "4": 14,
+        "9": 1
+      }
+    },
+    "qed": {
+      "min": 0.0138,
+      "max": 0.9465
+    },
+    "hbd": {
+      "distribution": {
+        "0": 570,
+        "1": 597,
+        "2": 532,
+        "3": 237,
+        "4": 96,
+        "5": 30,
+        "6": 20,
+        "7": 3,
+        "8": 6,
+        "9": 1,
+        "10": 2,
+        "12": 2,
+        "14": 1
+      }
+    }
+  },
+  "toolchain": {
+    "rdkit": "2025.09.4",
+    "python": "3.13.5",
+    "qed_weights": {
+      "_note": "RDKit QED.qed defaults; no custom weights are passed by this project.",
+      "weight_name": "WEIGHT_MEAN",
+      "weights": {
+        "MW": 0.66,
+        "ALOGP": 0.46,
+        "HBA": 0.05,
+        "HBD": 0.61,
+        "PSA": 0.06,
+        "ROTB": 0.65,
+        "AROM": 0.48,
+        "ALERTS": 0.95
+      },
+      "descriptor_order": [
+        "MW",
+        "ALOGP",
+        "HBA",
+        "HBD",
+        "PSA",
+        "ROTB",
+        "AROM",
+        "ALERTS"
+      ],
+      "ads_parameters": {
+        "MW": {
+          "A": 2.817065973,
+          "B": 392.5754953,
+          "C": 290.7489764,
+          "D": 2.419764353,
+          "E": 49.22325677,
+          "F": 65.37051707,
+          "DMAX": 104.9805561
+        },
+        "ALOGP": {
+          "A": 3.172690585,
+          "B": 137.8624751,
+          "C": 2.534937431,
+          "D": 4.581497897,
+          "E": 0.822739154,
+          "F": 0.576295591,
+          "DMAX": 131.3186604
+        },
+        "HBA": {
+          "A": 2.948620388,
+          "B": 160.4605972,
+          "C": 3.615294657,
+          "D": 4.435986202,
+          "E": 0.290141953,
+          "F": 1.300669958,
+          "DMAX": 148.7763046
+        },
+        "HBD": {
+          "A": 1.618662227,
+          "B": 1010.051101,
+          "C": 0.985094388,
+          "D": 1e-09,
+          "E": 0.713820843,
+          "F": 0.920922555,
+          "DMAX": 258.1632616
+        },
+        "PSA": {
+          "A": 1.876861559,
+          "B": 125.2232657,
+          "C": 62.90773554,
+          "D": 87.83366614,
+          "E": 12.01999824,
+          "F": 28.51324732,
+          "DMAX": 104.5686167
+        },
+        "ROTB": {
+          "A": 0.01,
+          "B": 272.4121427,
+          "C": 2.55837997,
+          "D": 1.565547684,
+          "E": 1.271567166,
+          "F": 2.758063707,
+          "DMAX": 105.4420403
+        },
+        "AROM": {
+          "A": 3.21778897,
+          "B": 957.7374108,
+          "C": 2.274627939,
+          "D": 1e-09,
+          "E": 1.317690384,
+          "F": 0.375760881,
+          "DMAX": 312.337261
+        },
+        "ALERTS": {
+          "A": 0.01,
+          "B": 1199.094025,
+          "C": -0.09002883,
+          "D": 1e-09,
+          "E": 0.185904477,
+          "F": 0.875193782,
+          "DMAX": 417.725314
+        }
+      },
+      "descriptor_version": "1.1.0",
+      "source": "rdkit.Chem.QED (Novartis BSD-3-Clause), read from the installed package"
+    }
+  },
+  "scoring_rules": {
+    "qed_success_threshold": 0.05,
+    "macro_f1_penalty": "invalid answer scored as all-false (fixed, declared)",
+    "missing_answer": "failure in all-sample rates; excluded from conditional errors with n stated",
+    "bootstrap": {
+      "resamples": 2000,
+      "confidence": 0.95,
+      "_comment": "Cluster-resampled by parent molecule, because several items derive from one molecule and are not independent."
+    }
+  }
+}

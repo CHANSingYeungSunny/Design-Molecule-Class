@@ -1,0 +1,34 @@
+# Local credentials. Never commit this file.
+config/local.env
+
+# Downloaded source data and derived sets are reproducible from the manifest;
+# they are not source.
+data/raw/*.txt
+data/prepared/
+
+# Run outputs
+runs/
+
+__pycache__/
+*.pyc
+
+# --- Publication override --------------------------------------------------
+# Added 2026-10-13. The reproducibility release has to carry the frozen item
+# lists, the stimulus images and the raw model responses; without them a fresh
+# clone cannot replay the published table, and "just clone and run" would be
+# false. Only the paths below are un-ignored. Local credentials stay ignored.
+!data/raw/
+!data/raw/*.txt
+!data/prepared/
+data/prepared/extension_items_v1/
+!runs/
+runs/conn-check-01/
+runs/dry-run/
+runs/extension-dev/
+runs/main-01-ABORTED-wrong-pool/
+runs/probe-01/
+runs/probe-02/
+runs/smoke-02/
+runs/_img_preview/
+runs/*/scored.jsonl
+runs/*/companion.csv

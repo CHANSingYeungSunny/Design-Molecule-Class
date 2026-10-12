@@ -1,0 +1,38 @@
+﻿{
+  "status": "teaching example; excluded from the published scores",
+  "molecule": "ethanol",
+  "canonical_smiles": "CCO",
+  "our_code": "Molecule(\n    atoms=(\n        Atom(id='a0', element='C'),\n        Atom(id='a1', element='C'),\n        Atom(id='a2', element='O'),\n    ),\n    bonds=(\n        Bond(begin='a0', end='a1'),\n        Bond(begin='a1', end='a2'),\n    ),\n)",
+  "smiles": "CCO",
+  "selfies": "[C][C][O]",
+  "rdkit_reference": {
+    "atom_counts": {
+      "C": 2,
+      "N": 0,
+      "O": 1,
+      "S": 0
+    },
+    "qed": 0.406808,
+    "hbd": 1,
+    "formula": "C2H6O",
+    "functional_groups": {
+      "aldehyde": false,
+      "ketone": false,
+      "ester": false,
+      "carboxylic_acid": false,
+      "amide": false,
+      "primary_amine": false,
+      "nitrile": false,
+      "alcohol": true,
+      "phenol": false,
+      "benzene_ring": false,
+      "alkyl_halide": false,
+      "aryl_halide": false,
+      "nitro": false
+    }
+  },
+  "rdkit_version": "2025.09.4"
+}
+
+This molecule is too small for the formal gate (MW >= 300 Da, >= 2 rings).
+Written to C:\Users\Asus\Desktop\Design Molecule Class\reproduced\teaching_example.json

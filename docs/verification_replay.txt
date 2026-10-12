@@ -1,0 +1,11 @@
+﻿Historical replay passed: 40 frozen lists, all 40 table values match.
+Denominators: {'t1_identity': 200, 't2_functional_groups': 199, 't3_atom_counts': 199, 't4_qed': 199, 't5_hydrogen_bond_donors': 199}
+smiles 0.985 0.839 0.231 0.111 0.814
+selfies 0.540 0.546 0.015 0.180 0.432
+our_code 1.000 0.515 0.191 0.139 0.427
+img 0.990 0.868 0.342 0.119 0.975
+graph2d 0.850 0.438 0.055 0.145 0.382
+graph3d 0.980 0.571 0.070 0.170 0.387
+cml 0.970 0.523 0.196 0.128 0.467
+moljson 0.620 0.434 0.216 0.149 0.357
+Outputs: C:\Users\Asus\Desktop\Design Molecule Class\reproduced

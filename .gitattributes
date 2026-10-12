@@ -1,0 +1,19 @@
+# General rule: text files are stored and checked out with LF, so a Windows
+# checkout matches CI and a Linux clone matches what was verified on Windows.
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+
+# Byte-hashed historical data must never be converted. Later lines win, so
+# these overrides come after the general rules above.
+research/00_baseline/molecule_standalone.py -text
+research/01_implementation/molecule_core.py -text
+molecule_standalone.py -text
+*.jsonl -text
+*.png -text
+*.docx -text
+prompts/system.txt -text
+prompts/benchmark_templates.json -text
+prompts/historical_our_code_examples.json -text

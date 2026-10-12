@@ -1,0 +1,395 @@
+{
+  "run_id": "extension-01",
+  "generated_from": {
+    "frozen_manifest": "extension_manifest.json",
+    "conversion_coverage": "ext_coverage.json",
+    "raw_responses": "07_benchmark\\runs\\extension-01\\raw_responses.jsonl",
+    "records_read": 5038,
+    "records_in_scope": 4996,
+    "records_out_of_scope_superseded_items": 42,
+    "note": "read-only; this script never writes to a run record. Records whose example_id is not in the current frozen lists are excluded: they answer questions an earlier conversion revision substituted and the fix removed."
+  },
+  "nominal_plan": {
+    "rule": "5 added representations x 5 tasks x 200 items",
+    "total": 5000
+  },
+  "actually_frozen": {
+    "total": 4996,
+    "difference_vs_nominal": 4
+  },
+  "execution": {
+    "terminal_responses": 4996,
+    "valid": 4996,
+    "invalid": 0,
+    "pending": 0,
+    "still_to_send": 0
+  },
+  "per_cell": {
+    "img|t1_identity": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "img|t2_functional_groups": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "img|t3_atom_counts": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "img|t4_qed": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "img|t5_hydrogen_bond_donors": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph2d|t1_identity": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph2d|t2_functional_groups": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph2d|t3_atom_counts": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph2d|t4_qed": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph2d|t5_hydrogen_bond_donors": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph3d|t1_identity": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph3d|t2_functional_groups": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 199,
+      "short_vs_nominal": 1,
+      "terminal_responses": 199,
+      "valid": 199,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph3d|t3_atom_counts": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 199,
+      "short_vs_nominal": 1,
+      "terminal_responses": 199,
+      "valid": 199,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph3d|t4_qed": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 199,
+      "short_vs_nominal": 1,
+      "terminal_responses": 199,
+      "valid": 199,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "graph3d|t5_hydrogen_bond_donors": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 199,
+      "short_vs_nominal": 1,
+      "terminal_responses": 199,
+      "valid": 199,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "cml|t1_identity": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "cml|t2_functional_groups": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "cml|t3_atom_counts": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "cml|t4_qed": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "cml|t5_hydrogen_bond_donors": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "moljson|t1_identity": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "moljson|t2_functional_groups": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "moljson|t3_atom_counts": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "moljson|t4_qed": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    },
+    "moljson|t5_hydrogen_bond_donors": {
+      "nominal": 200,
+      "planned_in_frozen_manifest": 200,
+      "short_vs_nominal": 0,
+      "terminal_responses": 200,
+      "valid": 200,
+      "invalid": 0,
+      "pending": 0,
+      "remaining_to_send": 0,
+      "complete": true
+    }
+  },
+  "shortfall": {
+    "total_items": 4,
+    "is_it_a_conversion_failure_or_a_program_error": "conversion failure, recorded before any request. Each missing item is a molecule the format cannot express; the item builder skips it rather than substituting an easier molecule, which is the pre-declared rule.",
+    "which_representation": [
+      "graph3d"
+    ],
+    "which_tasks": [
+      "t2_functional_groups",
+      "t3_atom_counts",
+      "t4_qed",
+      "t5_hydrogen_bond_donors"
+    ],
+    "same_molecules_missing_in_every_affected_task": true,
+    "distinct_molecules_missing": [
+      "475701"
+    ],
+    "n_distinct_molecules_missing": 1,
+    "detail": [
+      {
+        "representation": "graph3d",
+        "task": "t2_functional_groups",
+        "n_missing": 1,
+        "missing_cids": [
+          "475701"
+        ],
+        "missing_smiles": [
+          "[Cu].c1ccc2c(c1)C1=NC2=NC2=NC(=NC3=NC(=NC4=NC(=N1)c1ccccc14)c1ccccc13)c1ccccc12"
+        ],
+        "present_in_conversion_coverage_report_as_failures": [
+          false
+        ],
+        "stage": "input conversion, before any request: the molecule could not be written as this representation"
+      },
+      {
+        "representation": "graph3d",
+        "task": "t3_atom_counts",
+        "n_missing": 1,
+        "missing_cids": [
+          "475701"
+        ],
+        "missing_smiles": [
+          "[Cu].c1ccc2c(c1)C1=NC2=NC2=NC(=NC3=NC(=NC4=NC(=N1)c1ccccc14)c1ccccc13)c1ccccc12"
+        ],
+        "present_in_conversion_coverage_report_as_failures": [
+          false
+        ],
+        "stage": "input conversion, before any request: the molecule could not be written as this representation"
+      },
+      {
+        "representation": "graph3d",
+        "task": "t4_qed",
+        "n_missing": 1,
+        "missing_cids": [
+          "475701"
+        ],
+        "missing_smiles": [
+          "[Cu].c1ccc2c(c1)C1=NC2=NC2=NC(=NC3=NC(=NC4=NC(=N1)c1ccccc14)c1ccccc13)c1ccccc12"
+        ],
+        "present_in_conversion_coverage_report_as_failures": [
+          false
+        ],
+        "stage": "input conversion, before any request: the molecule could not be written as this representation"
+      },
+      {
+        "representation": "graph3d",
+        "task": "t5_hydrogen_bond_donors",
+        "n_missing": 1,
+        "missing_cids": [
+          "475701"
+        ],
+        "missing_smiles": [
+          "[Cu].c1ccc2c(c1)C1=NC2=NC2=NC(=NC3=NC(=NC4=NC(=N1)c1ccccc14)c1ccccc13)c1ccccc12"
+        ],
+        "present_in_conversion_coverage_report_as_failures": [
+          false
+        ],
+        "stage": "input conversion, before any request: the molecule could not be written as this representation"
+      }
+    ],
+    "whole_conversion_coverage_for_that_representation": {
+      "converted": 429,
+      "of": 431,
+      "rate": 0.9953596287703016,
+      "failure_reasons": [
+        "ConversionError: no MMFF or UFF parameters for '[Cu].c1ccc2c(c1)C1=NC2=NC2=NC(=NC3=NC(=NC4=NC(=N1)c1ccccc14",
+        "ConversionError: no MMFF or UFF parameters for '[Ru+2].c1ccc(-c2ccnc3c2ccc2c(-c4ccccc4)ccnc23)cc1.c1ccc(-c2"
+      ]
+    },
+    "why_identity_is_not_short": "the 200 Identity pairs for this representation involve molecules that all convert, so no pair was dropped. The missing molecules fall inside the shared 200-molecule comprehension draw, which is the same draw for all four comprehension tasks -- hence 4 molecules x 4 tasks = 16 items."
+  },
+  "no_molecule_was_swapped": true
+}

@@ -1,0 +1,101 @@
+  t1 accuracy on 2/4                                       ok
+  t1 balanced accuracy on 2/4                              ok
+  t1 confusion                                             ok
+  t1 invalid answer leaves n_scored at 0                   ok
+  t1 invalid answer counted, valid rate 0                  ok
+  t2 perfect macro-F1 (valid subset)                       ok
+  t2 valid but all-wrong macro-F1                          ok
+  t2 no valid answers -> valid-subset metric undefined     ok
+  t2 no valid answers -> penalised metric 0                ok
+  t3 one wrong element -> not exact                        ok
+  t3 per-element still counted                             ok
+  t4 mae over valid only                                   ok
+  t4 n_valid/n_total stated                                ok
+  t4 success rate uses all samples                         ok
+  spearman increasing                                      ok
+  spearman decreasing                                      ok
+  spearman with a tie is not 1.0                           ok
+  8/8 does not claim certainty (bootstrap flagged degenerate) ok
+  8/8 Wilson lower bound is well below 1                   ok
+  0/8 Wilson upper bound is well below 1                   ok
+  mixed result gives a non-degenerate bootstrap            ok
+  mixed result intervals bracket the point estimate        ok
+  a pair is attached to both endpoints                     ok
+  shared endpoints mean the items are not independent singletons ok
+  shared endpoints are counted as items that own more than one cluster ok
+  a positive pair repeating one molecule counts as one cluster ok
+  pair included when only its first endpoint is drawn      ok
+  single-molecule item excluded when its cluster is not drawn ok
+  one-endpoint and two-endpoint items are drawn at the same rate ok
+  that rate is the single-cluster inclusion probability, not the double one ok
+  spearman on a constant array is undefined, not 0         ok
+  spearman on too few points is undefined                  ok
+  MAE with no valid answer is undefined, not 0             ok
+  success rate with no valid answer is a real 0            ok
+  identical arms give a zero paired difference             ok
+  identical arms give a p-value near 1                     ok
+  a clearly worse arm is detected                          ok
+  paired test reports how many items were dropped as invalid ok
+  two arms answering the same question share a pair key    ok
+  the raw example ids really do differ                     ok
+  the paired test finds the pair rather than reporting none ok
+  a positive pair keeps its -pos suffix in the key         ok
+  budget allows requests below the cap                     ok
+  basic requests are counted separately from attempts      ok
+  a retry costs an extra transport attempt                 ok
+  prompt and completion tokens are tracked apart           ok
+  total tokens is the sum of the parts                     ok
+  budget refuses once the basic-request cap is reached     ok
+  budget names which cap stopped it                        ok
+  with only a basic cap set, that is the reason given      ok
+  transport-attempt cap stops a retry-heavy run            ok
+  a response with no usage is charged a reserve, not zero  ok
+  the unknown-usage count is recorded                      ok
+  in-flight reserve keeps room for a request already sent  ok
+  RMB cap stops the run                                    ok
+  RMB estimate uses the pessimistic (busy) rate            ok
+  a subscription provider yields no RMB figure             ok
+  and its RMB cap cannot stop the run on a None value      ok
+  no price is assumed for it                               ok
+  blocked endpoint https://token-plan.cn-beijin is refused ok
+  blocked endpoint https://ws1.cn-beijing.maas. is refused ok
+  the standard DashScope host is allowed                   ok
+  the client itself refuses a Token Plan endpoint          ok
+  experiment credentials are read before any harness variable ok
+  bailian provider still refuses a plan host               ok
+  bailian provider still allows the standard host          ok
+  token_plan provider allows its own host                  ok
+  token_plan provider refuses a mismatched standard host   ok
+  an unknown provider is rejected                          ok
+  a plain-HTTP endpoint is refused                         ok
+  token_plan reads only its own credential variable        ok
+  the plan credential variable is not in the standard provider list ok
+  no harness credential variable appears in any provider   ok
+  a token_plan client resolves the plan credential variable ok
+  the plan provider carries a terms warning to record      ok
+  the standard provider carries no terms warning           ok
+  the warning does not claim the use is permitted          ok
+  ethanol is dropped by the complexity gate                ok
+  benzene is dropped, and for the weight rule first (78 Da) ok
+  a 312 Da acyclic acid is dropped specifically for the ring rule ok
+  aspirin (180 Da, 1 ring) is also dropped                 ok
+  the gate reports both drop reasons separately            ok
+  the frozen main pool is smaller than the raw test split  ok
+  frozen main items reproduce from the frozen main pool    ok
+  and NOT from the raw test split (the bug that was fixed) ok
+  every rebuilt main item uses only gated molecules        ok
+  the genuine frozen list verifies                         ok
+  a tampered item-list hash is refused                     ok
+  a wrong prompt hash set is refused                       ok
+  a manifest with no recorded list is refused              ok
+  a cell missing from the manifest is refused              ok
+  every frozen list yields exactly the planned item count  ok
+  the frozen T2 label set is recorded in the manifest      ok
+  and it is the 10-label set, not the 13-label candidate list ok
+  labels below the declared support floor are excluded     ok
+  the frozen set is a subset of the operative labels       ok
+  every frozen main molecule passes the gate               ok
+  the ring threshold is inclusive: 1 ring passes a gate of 1 ok
+  and the same molecule fails a gate of 2                  ok
+
+99 checks, 0 failed

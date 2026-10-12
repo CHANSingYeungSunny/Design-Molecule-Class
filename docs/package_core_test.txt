@@ -1,0 +1,61 @@
+test_baseline_copy_matches_project_root_original (__main__.BaselineIntegrityTests.test_baseline_copy_matches_project_root_original) ... ok
+test_baseline_file_hash_is_unchanged (__main__.BaselineIntegrityTests.test_baseline_file_hash_is_unchanged) ... ok
+test_baseline_source_mentions_no_chemistry_package (__main__.BaselineIntegrityTests.test_baseline_source_mentions_no_chemistry_package) ... ok
+test_no_chemistry_module_in_sys_modules (__main__.BaselineIntegrityTests.test_no_chemistry_module_in_sys_modules) ... ok
+test_rolled_back_extensions_are_absent_from_the_core (__main__.BaselineIntegrityTests.test_rolled_back_extensions_are_absent_from_the_core) ... ok
+test_working_core_matches_the_baseline_byte_for_byte (__main__.BaselineIntegrityTests.test_working_core_matches_the_baseline_byte_for_byte)
+The deliverable core must be the professor original, not a variant. ... ok
+test_atom_map_round_trips (__main__.ChargeIsotopeMapTests.test_atom_map_round_trips) ... ok
+test_charge_round_trips (__main__.ChargeIsotopeMapTests.test_charge_round_trips) ... ok
+test_isotope_round_trips (__main__.ChargeIsotopeMapTests.test_isotope_round_trips) ... ok
+test_total_charge (__main__.ChargeIsotopeMapTests.test_total_charge) ... ok
+test_from_code_does_not_execute_arbitrary_python (__main__.ConstructorCodeTests.test_from_code_does_not_execute_arbitrary_python) ... ok
+test_from_code_enforces_ast_node_limit (__main__.ConstructorCodeTests.test_from_code_enforces_ast_node_limit) ... ok
+test_from_code_enforces_text_length_limit (__main__.ConstructorCodeTests.test_from_code_enforces_text_length_limit) ... ok
+test_from_code_rejects_duplicate_keywords (__main__.ConstructorCodeTests.test_from_code_rejects_duplicate_keywords) ... ok
+test_from_code_rejects_non_constructor_expressions (__main__.ConstructorCodeTests.test_from_code_rejects_non_constructor_expressions) ... ok
+test_round_trip (__main__.ConstructorCodeTests.test_round_trip) ... ok
+test_round_trip_for_annotated_atoms (__main__.ConstructorCodeTests.test_round_trip_for_annotated_atoms) ... ok
+test_to_code_shape (__main__.ConstructorCodeTests.test_to_code_shape) ... ok
+test_atom_id_cannot_be_changed (__main__.EditSemanticsTests.test_atom_id_cannot_be_changed) ... ok
+test_bond_edit (__main__.EditSemanticsTests.test_bond_edit) ... ok
+test_charge_edit (__main__.EditSemanticsTests.test_charge_edit) ... ok
+test_edit_can_produce_a_bracket_form_that_changes_hydrogen_semantics (__main__.EditSemanticsTests.test_edit_can_produce_a_bracket_form_that_changes_hydrogen_semantics) ... ok
+test_edit_can_produce_a_chemically_invalid_graph (__main__.EditSemanticsTests.test_edit_can_produce_a_chemically_invalid_graph) ... ok
+test_frozen_records_and_molecule_are_hashable_immutable_values (__main__.EditSemanticsTests.test_frozen_records_and_molecule_are_hashable_immutable_values) ... ok
+test_invalid_replacement_is_rejected (__main__.EditSemanticsTests.test_invalid_replacement_is_rejected) ... ok
+test_oxygen_to_sulfur_yields_ccs_and_leaves_original (__main__.EditSemanticsTests.test_oxygen_to_sulfur_yields_ccs_and_leaves_original) ... ok
+test_records_after_edit (__main__.EditSemanticsTests.test_records_after_edit) ... ok
+test_replace_bond_requires_an_existing_bond (__main__.EditSemanticsTests.test_replace_bond_requires_an_existing_bond) ... ok
+test_ammonium_from_markdown (__main__.HydrogenPolicyTests.test_ammonium_from_markdown) ... ok
+test_aromatic_nh_inside_a_ring (__main__.HydrogenPolicyTests.test_aromatic_nh_inside_a_ring) ... ok
+test_bracket_hydrogen_cannot_carry_its_own_h_token (__main__.HydrogenPolicyTests.test_bracket_hydrogen_cannot_carry_its_own_h_token) ... ok
+test_bracket_required_atom_must_declare_hydrogen_count (__main__.HydrogenPolicyTests.test_bracket_required_atom_must_declare_hydrogen_count) ... ok
+test_four_documented_policies (__main__.HydrogenPolicyTests.test_four_documented_policies) ... ok
+test_separate_hydrogen_vertex (__main__.HydrogenPolicyTests.test_separate_hydrogen_vertex) ... ok
+test_bond_types (__main__.ParseAndWriteTests.test_bond_types) ... ok
+test_branch (__main__.ParseAndWriteTests.test_branch) ... ok
+test_cc_o_records (__main__.ParseAndWriteTests.test_cc_o_records) ... ok
+test_cc_o_round_trips_exactly (__main__.ParseAndWriteTests.test_cc_o_round_trips_exactly) ... ok
+test_disconnected_components (__main__.ParseAndWriteTests.test_disconnected_components) ... ok
+test_long_chain_without_recursion (__main__.ParseAndWriteTests.test_long_chain_without_recursion) ... ok
+test_output_reparses_with_same_records (__main__.ParseAndWriteTests.test_output_reparses_with_same_records) ... ok
+test_ring_closure (__main__.ParseAndWriteTests.test_ring_closure) ... ok
+test_two_digit_ring_label_is_accepted_then_renumbered_by_the_writer (__main__.ParseAndWriteTests.test_two_digit_ring_label_is_accepted_then_renumbered_by_the_writer) ... ok
+test_writer_is_deterministic_for_a_fixed_ordered_graph (__main__.ParseAndWriteTests.test_writer_is_deterministic_for_a_fixed_ordered_graph) ... ok
+test_bond_between (__main__.QueryTests.test_bond_between) ... ok
+test_neighbors (__main__.QueryTests.test_neighbors) ... ok
+test_shortest_path (__main__.QueryTests.test_shortest_path) ... ok
+test_aromatic_atom_of_unsupported_element_is_rejected (__main__.RejectionTests.test_aromatic_atom_of_unsupported_element_is_rejected) ... ok
+test_aromatic_bond_between_non_aromatic_atoms_is_rejected (__main__.RejectionTests.test_aromatic_bond_between_non_aromatic_atoms_is_rejected) ... ok
+test_bad_graph_records_are_rejected (__main__.RejectionTests.test_bad_graph_records_are_rejected) ... ok
+test_cxsmiles_reaction_and_query_syntax_is_rejected (__main__.RejectionTests.test_cxsmiles_reaction_and_query_syntax_is_rejected) ... ok
+test_malformed_smiles_is_rejected (__main__.RejectionTests.test_malformed_smiles_is_rejected) ... ok
+test_names_and_whitespace_are_rejected (__main__.RejectionTests.test_names_and_whitespace_are_rejected) ... ok
+test_non_iterable_bonds_argument_raises_type_error_not_molecule_error (__main__.RejectionTests.test_non_iterable_bonds_argument_raises_type_error_not_molecule_error) ... ok
+test_stereochemistry_is_rejected (__main__.RejectionTests.test_stereochemistry_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 0.057s
+
+OK

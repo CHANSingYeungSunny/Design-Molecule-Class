@@ -1,0 +1,16 @@
+# Historical environment recorded from the project's .venv distribution metadata.
+# Historical interpreter: CPython 3.13.5 (Windows x64).
+#
+# Version notes measured on this machine (2026-10-13):
+#   rdkit   pip metadata 2025.9.4  -> rdkit.__version__ reports 2025.09.4
+#   selfies pip metadata 2.2.0     -> selfies.__version__ reports 2.1.1
+#           (the distribution was upgraded without bumping the module attribute;
+#            both numbers are recorded so nobody has to guess which one is "the" version)
+#
+# Offline replay (path A) needs no packages at all: scripts/replay_table.py is
+# standard library only. This file is for path B (rebuild inputs and labels).
+rdkit==2025.9.4
+selfies==2.2.0
+numpy==2.5.3
+Pillow==12.3.0
+python-docx==1.2.0

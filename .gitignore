@@ -1,0 +1,47 @@
+# --- local environment and secrets -----------------------------------------
+.venv/
+.env
+local.env
+research/07_benchmark/config/local.env
+*.env
+!*.env.example
+
+# --- editor / OS ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.vscode/
+.codebuddy/
+*.log
+# main-02.log is kept: it records the provider, endpoint, model and generation
+# settings of the historical run, and it contains no credential value.
+!research/07_benchmark/main-02.log
+
+# --- generated output -------------------------------------------------------
+reproduced/
+review/
+
+# --- third-party source trees that are installed via pip instead ------------
+reference/rdkit/
+reference/MolJSON/.git/
+reference/MolJSON/.git.upstream-backup/
+
+# --- experiment snapshots that are not part of the published evidence -------
+research/07_benchmark/runs/conn-check-01/
+research/07_benchmark/runs/dry-run/
+research/07_benchmark/runs/extension-dev/
+research/07_benchmark/runs/main-01-ABORTED-wrong-pool/
+research/07_benchmark/runs/probe-01/
+research/07_benchmark/runs/probe-02/
+research/07_benchmark/runs/smoke-02/
+research/07_benchmark/runs/_img_preview/
+research/07_benchmark/data/prepared/extension_items_v1/
+# scored.jsonl / companion.csv are derivable from raw_responses.jsonl
+research/07_benchmark/runs/*/scored.jsonl
+research/07_benchmark/runs/*/companion.csv
+*.bak
+
+# --- local scratch ----------------------------------------------------------
+research/99_archive_rollback_20261005/
+research/99_archive_v1_196/

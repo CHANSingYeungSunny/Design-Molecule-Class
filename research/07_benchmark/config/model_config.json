@@ -1,0 +1,222 @@
+{
+  "_about": "Model endpoint configuration for Alibaba Cloud Model Studio (阿里云百炼 / DashScope). This file contains NO credentials and must never contain any. The key is read at runtime from the local environment variable named below, and is never written to source, logs, run records or reports.",
+  "provider": "alibaba-cloud-model-studio",
+  "api_style": "openai-compatible chat completions",
+  "api_key_env": "BMB_API_KEY",
+  "_api_key_envs_preference": [
+    "BMB_API_KEY",
+    "DASHSCOPE_API_KEY"
+  ],
+  "_credential_separation": "The experiment reads BMB_API_KEY first. This is deliberately separate from any credential the Claude Code harness uses, so revoking one cannot break the other and an experiment can never silently spend a coding-agent subscription.",
+  "_required_local_config": {
+    "_comment": "NONE of these are set in this project yet. Verified facts + how to set them are in README.md and 08_deliverables/benchmark_protocol.md. Nothing below is assumed to exist.",
+    "DASHSCOPE_API_KEY": "Your Model Studio API key. Already held by the user; not present in this machine's environment as of this run.",
+    "BMB_REGION": "One of the region keys below. The key is region-bound, so this must be the region the key was created in.",
+    "BMB_BASE_URL": "The base_url for that region. Workspace-scoped form needs your WorkspaceId; the legacy form does not.",
+    "BMB_MODEL_ID": "The exact model id to evaluate, e.g. qwen3.7-plus."
+  },
+  "env_overrides": {
+    "region": "BMB_REGION",
+    "base_url": "BMB_BASE_URL",
+    "model_id": "BMB_MODEL_ID",
+    "api_key": "DASHSCOPE_API_KEY"
+  },
+  "regions": {
+    "_verified_on": [
+      "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
+      "https://www.alibabacloud.com/help/en/model-studio/compatibility-of-openai-with-dashscope",
+      "https://help.aliyun.com/zh/model-studio/qwen-api-via-openai-chat-completions"
+    ],
+    "_key_binding_doc_quote": "A Model Studio API key is bound to the region in which it was created. When you call the base URL of a region, you must use an API key that was created in that same region. A cross-region key is rejected with an authentication error (HTTP 401, code invalid_api_key).",
+    "_free_quota_doc_quote": "Only the China (Beijing) region carries free quota; other regions have none. Each model has its own quota (typically 1,000,000 tokens), valid 90 days. Snapshot and 'latest' versions are separate models with separate quotas.",
+    "beijing": {
+      "label_cn": "华北2（北京）",
+      "base_url_workspace_scoped": "https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "base_url_legacy": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "legacy_status": "documented as still available; docs prefer the workspace-scoped host",
+      "free_quota": true
+    },
+    "singapore": {
+      "label_cn": "新加坡（国际站）",
+      "base_url_workspace_scoped": "https://{WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "base_url_legacy": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+      "legacy_status": "documented as still available",
+      "free_quota": false
+    },
+    "hongkong": {
+      "label_cn": "中国香港",
+      "base_url_workspace_scoped": "https://{WorkspaceId}.cn-hongkong.maas.aliyuncs.com/compatible-mode/v1",
+      "base_url_legacy": "https://cn-hongkong.dashscope.aliyuncs.com/compatible-mode/v1",
+      "legacy_status": "documented as still available",
+      "free_quota": false
+    },
+    "us_virginia": {
+      "label_cn": "美国（弗吉尼亚）",
+      "base_url_workspace_scoped": "https://{WorkspaceId}.us-east-1.maas.aliyuncs.com/compatible-mode/v1",
+      "base_url_legacy": "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+      "legacy_status": "two forms appear on official pages; the workspace-scoped form is the newer one",
+      "free_quota": false
+    },
+    "japan_tokyo": {
+      "label_cn": "日本（东京）",
+      "base_url_workspace_scoped": "https://{WorkspaceId}.ap-northeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "base_url_legacy": null,
+      "legacy_status": "no legacy host documented",
+      "free_quota": false
+    }
+  },
+  "_verified_on_models": [
+    "https://help.aliyun.com/zh/model-studio/text-generation-model",
+    "https://help.aliyun.com/zh/model-studio/vision-model"
+  ],
+  "model_candidates_text": [
+    {
+      "id": "qwen3.7-plus",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": true
+    },
+    {
+      "id": "qwen3.8-flash",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": true
+    },
+    {
+      "id": "qwen3.7-flash",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": true
+    },
+    {
+      "id": "qwen3.8-max",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": true
+    },
+    {
+      "id": "qwen-plus",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": false
+    },
+    {
+      "id": "qwen-flash",
+      "context": "1M",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": false
+    },
+    {
+      "id": "qwen-turbo",
+      "context": "128k",
+      "function_calling": true,
+      "structured_output": true,
+      "accepts_image": false
+    }
+  ],
+  "model_candidates_vision": [
+    {
+      "id": "qwen3-vl-plus",
+      "note": "documented sample id on the VL compatibility page"
+    },
+    {
+      "id": "qwen3-vl-flash",
+      "note": "listed on the vision model page"
+    }
+  ],
+  "_model_id_caveat": "The catalogue changes often and the two official pages do not list identical third-party ids. Take the exact id from the console's model list for your own region before a run; do not assume any id here still exists.",
+  "structured_output": {
+    "supported": true,
+    "json_object": {
+      "supported": true,
+      "constraint": "The word 'json' (case-insensitive) MUST appear in a system or user message, otherwise the endpoint errors. Ours does, in the output-format sentence.",
+      "guarantee": "valid JSON, but key names and types are NOT guaranteed stable -> we still parse defensively."
+    },
+    "json_schema": {
+      "supported": false,
+      "_reason": "Only on Qwen3.7+/3.8 series and auto-degrades to json_object for multimodal input. Not used: it would tie the prompt to one model family."
+    }
+  },
+  "_verified_hosts": {
+    "_comment": "Hosts confirmed to work from this machine, as opposed to read in documentation. Listed so a later run does not have to rediscover them.",
+    "maas_token_plan_beijing": {
+      "base_url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "region": "beijing",
+      "verified_on": "2026-10-06",
+      "how_verified": "GET /compatible-mode/v1/models returned 401 without a credential and 200 with one, listing 26 model ids; a chat completion then returned a correct parsed answer with usage accounting.",
+      "models_offered_at_verification": [
+        "deepseek-v4.1-flash",
+        "deepseek-v4-pro",
+        "deepseek-v4-flash",
+        "deepseek-v4-flash-0731",
+        "deepseek-v3.2",
+        "qwen3.8-max",
+        "qwen3.8-flash",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "qwen3.6-plus",
+        "qwen3.6-flash",
+        "glm-5",
+        "glm-5.1",
+        "glm-5.2",
+        "glm-5.3",
+        "kimi-k2.5",
+        "kimi-k2.6",
+        "kimi-k2.7-code",
+        "MiniMax-M2.5",
+        "qwen-image-2.0",
+        "qwen-image-2.0-pro",
+        "wan2.7-image",
+        "wan2.7-image-pro",
+        "qwen-audio-3.0-tts-plus",
+        "qwen-audio-3.0-realtime-plus",
+        "auto"
+      ],
+      "_no_vision_note": "No image-INPUT model (e.g. qwen3-vl-*) appeared in that list at verification time. The IMG condition would have to be recorded as 'model unsupported' for this endpoint. IMG is not part of round 1 anyway."
+    },
+    "_protocol_warning": "This host exposes TWO different protocols. /apps/anthropic is the Anthropic Messages API (that is what the environment's ANTHROPIC_BASE_URL points at, and this client cannot use it). /compatible-mode/v1 is the OpenAI-compatible API, which is the one this client uses."
+  },
+  "blocked_endpoints": {
+    "_why": "the client refuses these before any request is sent; see client.BLOCKED_ENDPOINTS",
+    "token-plan.": {
+      "reason_documented_verbatim": "Token Plan 个人版 overview, 订阅前须知 / 使用范围: '仅限在编程工具和智能体工具（如 Claude Code、Cursor、Qwen Code、 Qoder、Qoder CN、OpenClaw 等）中交互式使用，不可用于自动化脚本、 自定义应用程序后端或任何非交互式批量调用场景。……将套餐 API Key 用于允许范围之外的调用将被视为违规或滥用，可能会导致订阅被暂停或 API Key 被封禁。'",
+      "status": "This benchmark is a non-interactive batch script, i.e. the disallowed case. MUST NOT be used.",
+      "source": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview (fetched 2026-10-06)"
+    },
+    ".maas.aliyuncs.com": {
+      "reason": "workspace-scoped MaaS host tied to a specific workspace subscription; not the channel for a normal batch experiment",
+      "source": "https://help.aliyun.com/zh/model-studio/base-url (fetched 2026-10-06)"
+    }
+  },
+  "active": {
+    "_comment": "Provider is an explicit choice. The standard (bailian) entry below is preserved and remains the default for any config that does not set a provider. This project does NOT claim the token_plan use is permitted; the platform's own scope statement is quoted verbatim in client.TOKEN_PLAN_TERMS_CN and is carried into every run manifest.",
+    "provider": "token_plan",
+    "provider_selected_by": "the user, explicitly, on 2026-10-06",
+    "region": "beijing",
+    "base_url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "model_id": "deepseek-v4.1-flash",
+    "accepts_image": true,
+    "_endpoint_source": "https://help.aliyun.com/zh/model-studio/base-url -- 华北2（北京）OpenAI 兼容",
+    "_model_verified_on_standard_endpoint": {
+      "source": "https://help.aliyun.com/zh/model-studio/deepseek-v4-1-flash (fetched 2026-10-06)",
+      "beijing_available": true,
+      "input_modalities": "Text, Image",
+      "output_modalities": "Text",
+      "structured_output": "supported",
+      "context_cache": "supported",
+      "batch_inference": "NOT supported -- this does NOT block the regular API; the regular OpenAI-compatible endpoint is a different product from the Batch service",
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 393216,
+      "rate_limit_beijing": {
+        "rpm": 15000,
+        "tpm": 1200000
+      }
+    }
+  }
+}

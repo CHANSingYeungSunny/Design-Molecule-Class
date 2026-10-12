@@ -1,0 +1,1942 @@
+{
+  "cml|t1_identity|test": {
+    "accuracy": 0.97,
+    "balanced_accuracy": 0.97,
+    "confusion": {
+      "tp": 97,
+      "fp": 3,
+      "tn": 97,
+      "fn": 3
+    },
+    "n_scored": 200,
+    "task": "t1_identity",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 235,
+      "n_items_sharing_a_cluster": 100,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 194,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.9361057075454807,
+      "high": 0.9861796856598887,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.9358493732949731,
+      "high": 0.9889125443277453,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.952755905511811,
+      "high": 0.9911504424778761,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.952755905511811,
+      "high": 0.9911504424778761,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "cml|t2_functional_groups|test": {
+    "macro_f1_valid_subset": 0.5227201912337727,
+    "macro_f1_all_samples_penalised": 0.5227201912337727,
+    "per_label": {
+      "alcohol": {
+        "f1": 0.2857142857142857,
+        "precision": 1.0,
+        "recall": 0.16666666666666666,
+        "tp": 3,
+        "fp": 0,
+        "fn": 15,
+        "tn": 182,
+        "positive": 18,
+        "negative": 182,
+        "predicted_positive": 3,
+        "exercised": true
+      },
+      "alkyl_halide": {
+        "f1": 0.7894736842105262,
+        "precision": 0.8333333333333334,
+        "recall": 0.75,
+        "tp": 15,
+        "fp": 3,
+        "fn": 5,
+        "tn": 177,
+        "positive": 20,
+        "negative": 180,
+        "predicted_positive": 18,
+        "exercised": true
+      },
+      "amide": {
+        "f1": 0.7391304347826086,
+        "precision": 0.8292682926829268,
+        "recall": 0.6666666666666666,
+        "tp": 34,
+        "fp": 7,
+        "fn": 17,
+        "tn": 142,
+        "positive": 51,
+        "negative": 149,
+        "predicted_positive": 41,
+        "exercised": true
+      },
+      "aryl_halide": {
+        "f1": 0.9655172413793103,
+        "precision": 0.9491525423728814,
+        "recall": 0.9824561403508771,
+        "tp": 56,
+        "fp": 3,
+        "fn": 1,
+        "tn": 140,
+        "positive": 57,
+        "negative": 143,
+        "predicted_positive": 59,
+        "exercised": true
+      },
+      "benzene_ring": {
+        "f1": 0.9658792650918635,
+        "precision": 0.934010152284264,
+        "recall": 1.0,
+        "tp": 184,
+        "fp": 13,
+        "fn": 0,
+        "tn": 3,
+        "positive": 184,
+        "negative": 16,
+        "predicted_positive": 197,
+        "exercised": true
+      },
+      "carboxylic_acid": {
+        "f1": 0.4666666666666667,
+        "precision": 1.0,
+        "recall": 0.30434782608695654,
+        "tp": 7,
+        "fp": 0,
+        "fn": 16,
+        "tn": 177,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 7,
+        "exercised": true
+      },
+      "ester": {
+        "f1": 0.26229508196721313,
+        "precision": 0.17777777777777778,
+        "recall": 0.5,
+        "tp": 8,
+        "fp": 37,
+        "fn": 8,
+        "tn": 147,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 45,
+        "exercised": true
+      },
+      "ketone": {
+        "f1": 0.3888888888888889,
+        "precision": 0.2857142857142857,
+        "recall": 0.6086956521739131,
+        "tp": 14,
+        "fp": 35,
+        "fn": 9,
+        "tn": 142,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 49,
+        "exercised": true
+      },
+      "phenol": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 59,
+        "tn": 141,
+        "positive": 59,
+        "negative": 141,
+        "predicted_positive": 0,
+        "exercised": true
+      },
+      "primary_amine": {
+        "f1": 0.36363636363636365,
+        "precision": 0.6666666666666666,
+        "recall": 0.25,
+        "tp": 4,
+        "fp": 2,
+        "fn": 12,
+        "tn": 182,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 6,
+        "exercised": true
+      }
+    },
+    "macro_f1_rule": {
+      "macro_f1_valid_subset": "unweighted mean of per-label F1 over EXERCISED labels only (those with at least one positive in the scored sample); unexercised labels are excluded and listed, never counted as 1.0",
+      "macro_f1_all_samples_penalised": "same labels; an invalid or missing answer is scored as predicting False for every label",
+      "zero_division": "declared explicitly in this function, not inherited from a library"
+    },
+    "n_labels_exercised": 10,
+    "labels_not_exercised": [],
+    "task": "t2_functional_groups",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.47893199020634925,
+      "high": 0.5585168331781177,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.47893199020634925,
+      "high": 0.5585168331781177,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "cml|t3_atom_counts|test": {
+    "exact_match_accuracy": 0.195,
+    "per_element_accuracy": {
+      "C": {
+        "correct": 60,
+        "n": 200,
+        "accuracy": 0.3
+      },
+      "N": {
+        "correct": 179,
+        "n": 200,
+        "accuracy": 0.895
+      },
+      "O": {
+        "correct": 144,
+        "n": 200,
+        "accuracy": 0.72
+      },
+      "S": {
+        "correct": 200,
+        "n": 200,
+        "accuracy": 1.0
+      }
+    },
+    "n_scored": 200,
+    "task": "t3_atom_counts",
+    "n_total": 238,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 38,
+    "valid_answer_rate": 0.8403361344537815,
+    "complete": false,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 39,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.1460552053440051,
+      "high": 0.25544044374612745,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.1424918747790589,
+      "high": 0.25678568752655895,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.15151515151515152,
+      "high": 0.23622047244094488,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.15151515151515152,
+      "high": 0.23622047244094488,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "cml|t4_qed|test": {
+    "mae": 0.12809222408329424,
+    "spearman": 0.7670803736264171,
+    "n_valid": 200,
+    "n_total": 200,
+    "success_rate_all_samples": 0.23,
+    "success_threshold": 0.05,
+    "task": "t4_qed",
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.11715573187776926,
+      "high": 0.13858694200968405,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.11715573187776926,
+      "high": 0.13858694200968405,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "cml|t5_hydrogen_bond_donors|test": {
+    "hbd_exact_match_accuracy": 0.47,
+    "n_scored": 200,
+    "task": "t5_hydrogen_bond_donors",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 94,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.40204754873265425,
+      "high": 0.5390831708499817,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.3992329411971157,
+      "high": 0.541669499588523,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.41732283464566927,
+      "high": 0.5254237288135594,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.41732283464566927,
+      "high": 0.5254237288135594,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph2d|t1_identity|test": {
+    "accuracy": 0.85,
+    "balanced_accuracy": 0.85,
+    "confusion": {
+      "tp": 76,
+      "fp": 6,
+      "tn": 94,
+      "fn": 24
+    },
+    "n_scored": 200,
+    "task": "t1_identity",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 235,
+      "n_items_sharing_a_cluster": 100,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 170,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.7939442071583334,
+      "high": 0.89286406437758,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.7928412963314495,
+      "high": 0.8964504764781369,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.8130081300813008,
+      "high": 0.8870967741935484,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.8130081300813008,
+      "high": 0.8870967741935484,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "graph2d|t2_functional_groups|test": {
+    "macro_f1_valid_subset": 0.43762224159545815,
+    "macro_f1_all_samples_penalised": 0.43762224159545815,
+    "per_label": {
+      "alcohol": {
+        "f1": 0.058823529411764705,
+        "precision": 0.0625,
+        "recall": 0.05555555555555555,
+        "tp": 1,
+        "fp": 15,
+        "fn": 17,
+        "tn": 167,
+        "positive": 18,
+        "negative": 182,
+        "predicted_positive": 16,
+        "exercised": true
+      },
+      "alkyl_halide": {
+        "f1": 0.3768115942028986,
+        "precision": 0.2653061224489796,
+        "recall": 0.65,
+        "tp": 13,
+        "fp": 36,
+        "fn": 7,
+        "tn": 144,
+        "positive": 20,
+        "negative": 180,
+        "predicted_positive": 49,
+        "exercised": true
+      },
+      "amide": {
+        "f1": 0.712871287128713,
+        "precision": 0.72,
+        "recall": 0.7058823529411765,
+        "tp": 36,
+        "fp": 14,
+        "fn": 15,
+        "tn": 135,
+        "positive": 51,
+        "negative": 149,
+        "predicted_positive": 50,
+        "exercised": true
+      },
+      "aryl_halide": {
+        "f1": 0.6265060240963854,
+        "precision": 1.0,
+        "recall": 0.45614035087719296,
+        "tp": 26,
+        "fp": 0,
+        "fn": 31,
+        "tn": 143,
+        "positive": 57,
+        "negative": 143,
+        "predicted_positive": 26,
+        "exercised": true
+      },
+      "benzene_ring": {
+        "f1": 0.9401709401709402,
+        "precision": 0.9880239520958084,
+        "recall": 0.8967391304347826,
+        "tp": 165,
+        "fp": 2,
+        "fn": 19,
+        "tn": 14,
+        "positive": 184,
+        "negative": 16,
+        "predicted_positive": 167,
+        "exercised": true
+      },
+      "carboxylic_acid": {
+        "f1": 0.6341463414634146,
+        "precision": 0.7222222222222222,
+        "recall": 0.5652173913043478,
+        "tp": 13,
+        "fp": 5,
+        "fn": 10,
+        "tn": 172,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 18,
+        "exercised": true
+      },
+      "ester": {
+        "f1": 0.38805970149253727,
+        "precision": 0.2549019607843137,
+        "recall": 0.8125,
+        "tp": 13,
+        "fp": 38,
+        "fn": 3,
+        "tn": 146,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 51,
+        "exercised": true
+      },
+      "ketone": {
+        "f1": 0.28169014084507044,
+        "precision": 0.20833333333333334,
+        "recall": 0.43478260869565216,
+        "tp": 10,
+        "fp": 38,
+        "fn": 13,
+        "tn": 139,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 48,
+        "exercised": true
+      },
+      "phenol": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 59,
+        "tn": 141,
+        "positive": 59,
+        "negative": 141,
+        "predicted_positive": 0,
+        "exercised": true
+      },
+      "primary_amine": {
+        "f1": 0.35714285714285715,
+        "precision": 0.4166666666666667,
+        "recall": 0.3125,
+        "tp": 5,
+        "fp": 7,
+        "fn": 11,
+        "tn": 177,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 12,
+        "exercised": true
+      }
+    },
+    "macro_f1_rule": {
+      "macro_f1_valid_subset": "unweighted mean of per-label F1 over EXERCISED labels only (those with at least one positive in the scored sample); unexercised labels are excluded and listed, never counted as 1.0",
+      "macro_f1_all_samples_penalised": "same labels; an invalid or missing answer is scored as predicting False for every label",
+      "zero_division": "declared explicitly in this function, not inherited from a library"
+    },
+    "n_labels_exercised": 10,
+    "labels_not_exercised": [],
+    "task": "t2_functional_groups",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.4004920328623158,
+      "high": 0.47023527322838604,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.4004920328623158,
+      "high": 0.47023527322838604,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph2d|t3_atom_counts|test": {
+    "exact_match_accuracy": 0.055,
+    "per_element_accuracy": {
+      "C": {
+        "correct": 15,
+        "n": 200,
+        "accuracy": 0.075
+      },
+      "N": {
+        "correct": 177,
+        "n": 200,
+        "accuracy": 0.885
+      },
+      "O": {
+        "correct": 140,
+        "n": 200,
+        "accuracy": 0.7
+      },
+      "S": {
+        "correct": 199,
+        "n": 200,
+        "accuracy": 0.995
+      }
+    },
+    "n_scored": 200,
+    "task": "t3_atom_counts",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 11,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.03098534170345884,
+      "high": 0.0957869987723084,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.027772254552006936,
+      "high": 0.09627764443391257,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.03125,
+      "high": 0.07874015748031496,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.03125,
+      "high": 0.07874015748031496,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph2d|t4_qed|test": {
+    "mae": 0.14422568451840864,
+    "spearman": 0.6766841392908473,
+    "n_valid": 200,
+    "n_total": 200,
+    "success_rate_all_samples": 0.21,
+    "success_threshold": 0.05,
+    "task": "t4_qed",
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.1327362526569749,
+      "high": 0.1555412124273536,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.1327362526569749,
+      "high": 0.1555412124273536,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph2d|t5_hydrogen_bond_donors|test": {
+    "hbd_exact_match_accuracy": 0.385,
+    "n_scored": 200,
+    "task": "t5_hydrogen_bond_donors",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 77,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.32033309726923215,
+      "high": 0.45400132779753916,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.31722452536286805,
+      "high": 0.45623869278314555,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.3333333333333333,
+      "high": 0.4380165289256198,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.3333333333333333,
+      "high": 0.4380165289256198,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph3d|t1_identity|test": {
+    "accuracy": 0.9803921568627451,
+    "balanced_accuracy": 0.9803921568627452,
+    "confusion": {
+      "tp": 102,
+      "fp": 4,
+      "tn": 98,
+      "fn": 0
+    },
+    "n_scored": 204,
+    "task": "t1_identity",
+    "n_total": 204,
+    "n_valid": 204,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 237,
+      "n_items_sharing_a_cluster": 102,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 200,
+      "scored": 204
+    },
+    "ci95_wilson": {
+      "low": 0.9506773624434846,
+      "high": 0.9923491208775845,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.9505597115198687,
+      "high": 0.9946323066828633,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.968,
+      "high": 0.9927007299270073,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.968,
+      "high": 0.9927007299270073,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "graph3d|t2_functional_groups|test": {
+    "macro_f1_valid_subset": 0.5712672874280116,
+    "macro_f1_all_samples_penalised": 0.5712672874280116,
+    "per_label": {
+      "alcohol": {
+        "f1": 0.19999999999999998,
+        "precision": 0.18181818181818182,
+        "recall": 0.2222222222222222,
+        "tp": 4,
+        "fp": 18,
+        "fn": 14,
+        "tn": 163,
+        "positive": 18,
+        "negative": 181,
+        "predicted_positive": 22,
+        "exercised": true
+      },
+      "alkyl_halide": {
+        "f1": 0.4489795918367347,
+        "precision": 0.3793103448275862,
+        "recall": 0.55,
+        "tp": 11,
+        "fp": 18,
+        "fn": 9,
+        "tn": 161,
+        "positive": 20,
+        "negative": 179,
+        "predicted_positive": 29,
+        "exercised": true
+      },
+      "amide": {
+        "f1": 0.8076923076923077,
+        "precision": 0.7924528301886793,
+        "recall": 0.8235294117647058,
+        "tp": 42,
+        "fp": 11,
+        "fn": 9,
+        "tn": 137,
+        "positive": 51,
+        "negative": 148,
+        "predicted_positive": 53,
+        "exercised": true
+      },
+      "aryl_halide": {
+        "f1": 0.8761904761904762,
+        "precision": 0.9583333333333334,
+        "recall": 0.8070175438596491,
+        "tp": 46,
+        "fp": 2,
+        "fn": 11,
+        "tn": 140,
+        "positive": 57,
+        "negative": 142,
+        "predicted_positive": 48,
+        "exercised": true
+      },
+      "benzene_ring": {
+        "f1": 0.991869918699187,
+        "precision": 0.9838709677419355,
+        "recall": 1.0,
+        "tp": 183,
+        "fp": 3,
+        "fn": 0,
+        "tn": 13,
+        "positive": 183,
+        "negative": 16,
+        "predicted_positive": 186,
+        "exercised": true
+      },
+      "carboxylic_acid": {
+        "f1": 0.6818181818181819,
+        "precision": 0.7142857142857143,
+        "recall": 0.6521739130434783,
+        "tp": 15,
+        "fp": 6,
+        "fn": 8,
+        "tn": 170,
+        "positive": 23,
+        "negative": 176,
+        "predicted_positive": 21,
+        "exercised": true
+      },
+      "ester": {
+        "f1": 0.4057971014492754,
+        "precision": 0.2641509433962264,
+        "recall": 0.875,
+        "tp": 14,
+        "fp": 39,
+        "fn": 2,
+        "tn": 144,
+        "positive": 16,
+        "negative": 183,
+        "predicted_positive": 53,
+        "exercised": true
+      },
+      "ketone": {
+        "f1": 0.44776119402985076,
+        "precision": 0.3409090909090909,
+        "recall": 0.6521739130434783,
+        "tp": 15,
+        "fp": 29,
+        "fn": 8,
+        "tn": 147,
+        "positive": 23,
+        "negative": 176,
+        "predicted_positive": 44,
+        "exercised": true
+      },
+      "phenol": {
+        "f1": 0.43589743589743596,
+        "precision": 0.8947368421052632,
+        "recall": 0.288135593220339,
+        "tp": 17,
+        "fp": 2,
+        "fn": 42,
+        "tn": 138,
+        "positive": 59,
+        "negative": 140,
+        "predicted_positive": 19,
+        "exercised": true
+      },
+      "primary_amine": {
+        "f1": 0.4166666666666667,
+        "precision": 0.625,
+        "recall": 0.3125,
+        "tp": 5,
+        "fp": 3,
+        "fn": 11,
+        "tn": 180,
+        "positive": 16,
+        "negative": 183,
+        "predicted_positive": 8,
+        "exercised": true
+      }
+    },
+    "macro_f1_rule": {
+      "macro_f1_valid_subset": "unweighted mean of per-label F1 over EXERCISED labels only (those with at least one positive in the scored sample); unexercised labels are excluded and listed, never counted as 1.0",
+      "macro_f1_all_samples_penalised": "same labels; an invalid or missing answer is scored as predicting False for every label",
+      "zero_division": "declared explicitly in this function, not inherited from a library"
+    },
+    "n_labels_exercised": 10,
+    "labels_not_exercised": [],
+    "task": "t2_functional_groups",
+    "n_total": 199,
+    "n_valid": 199,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 199,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.5315338116898747,
+      "high": 0.6050882441048885,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.5315338116898747,
+      "high": 0.6050882441048885,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph3d|t3_atom_counts|test": {
+    "exact_match_accuracy": 0.07035175879396985,
+    "per_element_accuracy": {
+      "C": {
+        "correct": 20,
+        "n": 199,
+        "accuracy": 0.10050251256281408
+      },
+      "N": {
+        "correct": 169,
+        "n": 199,
+        "accuracy": 0.8492462311557789
+      },
+      "O": {
+        "correct": 120,
+        "n": 199,
+        "accuracy": 0.6030150753768844
+      },
+      "S": {
+        "correct": 196,
+        "n": 199,
+        "accuracy": 0.9849246231155779
+      }
+    },
+    "n_scored": 199,
+    "task": "t3_atom_counts",
+    "n_total": 199,
+    "n_valid": 199,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 199,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 14,
+      "scored": 199
+    },
+    "ci95_wilson": {
+      "low": 0.042366344045329206,
+      "high": 0.11461073059127666,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.03899325526422667,
+      "high": 0.11522181643627066,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.04411764705882353,
+      "high": 0.0967741935483871,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.04411764705882353,
+      "high": 0.0967741935483871,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph3d|t4_qed|test": {
+    "mae": 0.17047015559681222,
+    "spearman": 0.6072039799184522,
+    "n_valid": 199,
+    "n_total": 199,
+    "success_rate_all_samples": 0.22110552763819097,
+    "success_threshold": 0.05,
+    "task": "t4_qed",
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 199,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.15519844101874833,
+      "high": 0.184324037816429,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.15519844101874833,
+      "high": 0.184324037816429,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "graph3d|t5_hydrogen_bond_donors|test": {
+    "hbd_exact_match_accuracy": 0.3869346733668342,
+    "n_scored": 199,
+    "task": "t5_hydrogen_bond_donors",
+    "n_total": 199,
+    "n_valid": 199,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 199,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 77,
+      "scored": 199
+    },
+    "ci95_wilson": {
+      "low": 0.3220159482569243,
+      "high": 0.4561359134895509,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.3188980539111079,
+      "high": 0.45839347444391676,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.33587786259541985,
+      "high": 0.4409448818897638,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.33587786259541985,
+      "high": 0.4409448818897638,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "img|t1_identity|test": {
+    "accuracy": 0.99,
+    "balanced_accuracy": 0.99,
+    "confusion": {
+      "tp": 98,
+      "fp": 0,
+      "tn": 100,
+      "fn": 2
+    },
+    "n_scored": 200,
+    "task": "t1_identity",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 235,
+      "n_items_sharing_a_cluster": 100,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 198,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.9642782382838231,
+      "high": 0.9972533418664555,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.9643453316027606,
+      "high": 0.998786650986264,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.9829059829059829,
+      "high": 1.0,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.9829059829059829,
+      "high": 1.0,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "img|t2_functional_groups|test": {
+    "macro_f1_valid_subset": 0.8680157157711337,
+    "macro_f1_all_samples_penalised": 0.8680157157711337,
+    "per_label": {
+      "alcohol": {
+        "f1": 0.631578947368421,
+        "precision": 0.46153846153846156,
+        "recall": 1.0,
+        "tp": 18,
+        "fp": 21,
+        "fn": 0,
+        "tn": 161,
+        "positive": 18,
+        "negative": 182,
+        "predicted_positive": 39,
+        "exercised": true
+      },
+      "alkyl_halide": {
+        "f1": 0.6666666666666666,
+        "precision": 1.0,
+        "recall": 0.5,
+        "tp": 10,
+        "fp": 0,
+        "fn": 10,
+        "tn": 180,
+        "positive": 20,
+        "negative": 180,
+        "predicted_positive": 10,
+        "exercised": true
+      },
+      "amide": {
+        "f1": 0.9423076923076923,
+        "precision": 0.9245283018867925,
+        "recall": 0.9607843137254902,
+        "tp": 49,
+        "fp": 4,
+        "fn": 2,
+        "tn": 145,
+        "positive": 51,
+        "negative": 149,
+        "predicted_positive": 53,
+        "exercised": true
+      },
+      "aryl_halide": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 57,
+        "fp": 0,
+        "fn": 0,
+        "tn": 143,
+        "positive": 57,
+        "negative": 143,
+        "predicted_positive": 57,
+        "exercised": true
+      },
+      "benzene_ring": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 184,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16,
+        "positive": 184,
+        "negative": 16,
+        "predicted_positive": 184,
+        "exercised": true
+      },
+      "carboxylic_acid": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 23,
+        "fp": 0,
+        "fn": 0,
+        "tn": 177,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 23,
+        "exercised": true
+      },
+      "ester": {
+        "f1": 0.8648648648648648,
+        "precision": 0.7619047619047619,
+        "recall": 1.0,
+        "tp": 16,
+        "fp": 5,
+        "fn": 0,
+        "tn": 179,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 21,
+        "exercised": true
+      },
+      "ketone": {
+        "f1": 0.6470588235294117,
+        "precision": 0.4888888888888889,
+        "recall": 0.9565217391304348,
+        "tp": 22,
+        "fp": 23,
+        "fn": 1,
+        "tn": 154,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 45,
+        "exercised": true
+      },
+      "phenol": {
+        "f1": 0.957983193277311,
+        "precision": 0.95,
+        "recall": 0.9661016949152542,
+        "tp": 57,
+        "fp": 3,
+        "fn": 2,
+        "tn": 138,
+        "positive": 59,
+        "negative": 141,
+        "predicted_positive": 60,
+        "exercised": true
+      },
+      "primary_amine": {
+        "f1": 0.9696969696969697,
+        "precision": 0.9411764705882353,
+        "recall": 1.0,
+        "tp": 16,
+        "fp": 1,
+        "fn": 0,
+        "tn": 183,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 17,
+        "exercised": true
+      }
+    },
+    "macro_f1_rule": {
+      "macro_f1_valid_subset": "unweighted mean of per-label F1 over EXERCISED labels only (those with at least one positive in the scored sample); unexercised labels are excluded and listed, never counted as 1.0",
+      "macro_f1_all_samples_penalised": "same labels; an invalid or missing answer is scored as predicting False for every label",
+      "zero_division": "declared explicitly in this function, not inherited from a library"
+    },
+    "n_labels_exercised": 10,
+    "labels_not_exercised": [],
+    "task": "t2_functional_groups",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.8401073174202903,
+      "high": 0.8932983490589981,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.8401073174202903,
+      "high": 0.8932983490589981,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "img|t3_atom_counts|test": {
+    "exact_match_accuracy": 0.345,
+    "per_element_accuracy": {
+      "C": {
+        "correct": 83,
+        "n": 200,
+        "accuracy": 0.415
+      },
+      "N": {
+        "correct": 186,
+        "n": 200,
+        "accuracy": 0.93
+      },
+      "O": {
+        "correct": 173,
+        "n": 200,
+        "accuracy": 0.865
+      },
+      "S": {
+        "correct": 200,
+        "n": 200,
+        "accuracy": 1.0
+      }
+    },
+    "n_scored": 200,
+    "task": "t3_atom_counts",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 69,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.2825979437674894,
+      "high": 0.4132441074094632,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.279365475971568,
+      "high": 0.415307239010387,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.29508196721311475,
+      "high": 0.39669421487603307,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.29508196721311475,
+      "high": 0.39669421487603307,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "img|t4_qed|test": {
+    "mae": 0.11896269923620234,
+    "spearman": 0.7636211367541188,
+    "n_valid": 200,
+    "n_total": 200,
+    "success_rate_all_samples": 0.245,
+    "success_threshold": 0.05,
+    "task": "t4_qed",
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.10883652638487885,
+      "high": 0.12854191934353953,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.10883652638487885,
+      "high": 0.12854191934353953,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "img|t5_hydrogen_bond_donors|test": {
+    "hbd_exact_match_accuracy": 0.975,
+    "n_scored": 200,
+    "task": "t5_hydrogen_bond_donors",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 195,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.942821659593358,
+      "high": 0.9892752803482386,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.9426256488731539,
+      "high": 0.9918338338091572,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.9596774193548387,
+      "high": 0.9921875,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.9596774193548387,
+      "high": 0.9921875,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "moljson|t1_identity|test": {
+    "accuracy": 0.62,
+    "balanced_accuracy": 0.62,
+    "confusion": {
+      "tp": 24,
+      "fp": 0,
+      "tn": 100,
+      "fn": 76
+    },
+    "n_scored": 200,
+    "task": "t1_identity",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 235,
+      "n_items_sharing_a_cluster": 100,
+      "items_are_independent_singletons": false
+    },
+    "proportion": {
+      "correct": 124,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.5510671801561923,
+      "high": 0.6844099415132637,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.5488512420834488,
+      "high": 0.6875345648223286,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.5677966101694916,
+      "high": 0.672,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.5677966101694916,
+      "high": 0.672,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items share parent molecules, so the Wilson and Clopper-Pearson intervals below are shown only as an independence reference; the cluster bootstrap is the interval that respects the design."
+  },
+  "moljson|t2_functional_groups|test": {
+    "macro_f1_valid_subset": 0.4340788434220789,
+    "macro_f1_all_samples_penalised": 0.4340788434220789,
+    "per_label": {
+      "alcohol": {
+        "f1": 0.10526315789473684,
+        "precision": 1.0,
+        "recall": 0.05555555555555555,
+        "tp": 1,
+        "fp": 0,
+        "fn": 17,
+        "tn": 182,
+        "positive": 18,
+        "negative": 182,
+        "predicted_positive": 1,
+        "exercised": true
+      },
+      "alkyl_halide": {
+        "f1": 0.08695652173913045,
+        "precision": 0.3333333333333333,
+        "recall": 0.05,
+        "tp": 1,
+        "fp": 2,
+        "fn": 19,
+        "tn": 178,
+        "positive": 20,
+        "negative": 180,
+        "predicted_positive": 3,
+        "exercised": true
+      },
+      "amide": {
+        "f1": 0.7872340425531916,
+        "precision": 0.8604651162790697,
+        "recall": 0.7254901960784313,
+        "tp": 37,
+        "fp": 6,
+        "fn": 14,
+        "tn": 143,
+        "positive": 51,
+        "negative": 149,
+        "predicted_positive": 43,
+        "exercised": true
+      },
+      "aryl_halide": {
+        "f1": 0.905982905982906,
+        "precision": 0.8833333333333333,
+        "recall": 0.9298245614035088,
+        "tp": 53,
+        "fp": 7,
+        "fn": 4,
+        "tn": 136,
+        "positive": 57,
+        "negative": 143,
+        "predicted_positive": 60,
+        "exercised": true
+      },
+      "benzene_ring": {
+        "f1": 0.9703504043126684,
+        "precision": 0.9625668449197861,
+        "recall": 0.9782608695652174,
+        "tp": 180,
+        "fp": 7,
+        "fn": 4,
+        "tn": 9,
+        "positive": 184,
+        "negative": 16,
+        "predicted_positive": 187,
+        "exercised": true
+      },
+      "carboxylic_acid": {
+        "f1": 0.6666666666666667,
+        "precision": 0.9230769230769231,
+        "recall": 0.5217391304347826,
+        "tp": 12,
+        "fp": 1,
+        "fn": 11,
+        "tn": 176,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 13,
+        "exercised": true
+      },
+      "ester": {
+        "f1": 0.37931034482758624,
+        "precision": 0.2619047619047619,
+        "recall": 0.6875,
+        "tp": 11,
+        "fp": 31,
+        "fn": 5,
+        "tn": 153,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 42,
+        "exercised": true
+      },
+      "ketone": {
+        "f1": 0.4390243902439025,
+        "precision": 0.5,
+        "recall": 0.391304347826087,
+        "tp": 9,
+        "fp": 9,
+        "fn": 14,
+        "tn": 168,
+        "positive": 23,
+        "negative": 177,
+        "predicted_positive": 18,
+        "exercised": true
+      },
+      "phenol": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 59,
+        "tn": 141,
+        "positive": 59,
+        "negative": 141,
+        "predicted_positive": 0,
+        "exercised": true
+      },
+      "primary_amine": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 16,
+        "tn": 184,
+        "positive": 16,
+        "negative": 184,
+        "predicted_positive": 0,
+        "exercised": true
+      }
+    },
+    "macro_f1_rule": {
+      "macro_f1_valid_subset": "unweighted mean of per-label F1 over EXERCISED labels only (those with at least one positive in the scored sample); unexercised labels are excluded and listed, never counted as 1.0",
+      "macro_f1_all_samples_penalised": "same labels; an invalid or missing answer is scored as predicting False for every label",
+      "zero_division": "declared explicitly in this function, not inherited from a library"
+    },
+    "n_labels_exercised": 10,
+    "labels_not_exercised": [],
+    "task": "t2_functional_groups",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.39841337533557214,
+      "high": 0.46375096921346143,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.39841337533557214,
+      "high": 0.46375096921346143,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "moljson|t3_atom_counts|test": {
+    "exact_match_accuracy": 0.22,
+    "per_element_accuracy": {
+      "C": {
+        "correct": 49,
+        "n": 200,
+        "accuracy": 0.245
+      },
+      "N": {
+        "correct": 183,
+        "n": 200,
+        "accuracy": 0.915
+      },
+      "O": {
+        "correct": 138,
+        "n": 200,
+        "accuracy": 0.69
+      },
+      "S": {
+        "correct": 200,
+        "n": 200,
+        "accuracy": 1.0
+      }
+    },
+    "n_scored": 200,
+    "task": "t3_atom_counts",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 44,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.16816538358833258,
+      "high": 0.28238799918293667,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.16463606131178532,
+      "high": 0.2838612473135068,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.1746031746031746,
+      "high": 0.264,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.1746031746031746,
+      "high": 0.264,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "moljson|t4_qed|test": {
+    "mae": 0.14867207115891434,
+    "spearman": 0.6875970988394333,
+    "n_valid": 200,
+    "n_total": 200,
+    "success_rate_all_samples": 0.24,
+    "success_threshold": 0.05,
+    "task": "t4_qed",
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.13640785275109926,
+      "high": 0.16094554172239556,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.13640785275109926,
+      "high": 0.16094554172239556,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  },
+  "moljson|t5_hydrogen_bond_donors|test": {
+    "hbd_exact_match_accuracy": 0.36,
+    "n_scored": 200,
+    "task": "t5_hydrogen_bond_donors",
+    "n_total": 200,
+    "n_valid": 200,
+    "n_invalid": 0,
+    "n_pending": 0,
+    "valid_answer_rate": 1.0,
+    "complete": true,
+    "cluster_summary": {
+      "definition": "each distinct endpoint molecule; a pair item belongs to both of its endpoints and enters a resample when at least one endpoint is drawn",
+      "n_clusters": 200,
+      "n_items_sharing_a_cluster": 0,
+      "items_are_independent_singletons": true
+    },
+    "proportion": {
+      "correct": 72,
+      "scored": 200
+    },
+    "ci95_wilson": {
+      "low": 0.2966919730456654,
+      "high": 0.42858471833996925,
+      "method": "wilson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_clopper_pearson": {
+      "low": 0.2935047208911665,
+      "high": 0.4307139460187167,
+      "method": "clopper-pearson",
+      "assumes": "independent Bernoulli items"
+    },
+    "ci95_cluster_bootstrap": {
+      "low": 0.304,
+      "high": 0.4117647058823529,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "ci95_primary": {
+      "low": 0.304,
+      "high": 0.4117647058823529,
+      "resamples": 2000,
+      "unit": "cluster",
+      "method": "percentile cluster bootstrap",
+      "degenerate": false
+    },
+    "interval_interpretation": "Items are independent singletons in this cell; all three intervals are comparable."
+  }
+}

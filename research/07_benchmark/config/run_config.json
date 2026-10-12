@@ -1,0 +1,100 @@
+{
+  "_about": "Run sizes, splits and seeds. These are THIS PROJECT'S defaults, not the reference paper's scale. Reported as such.",
+  "dataset_version": "chebi20-molt5-v1",
+  "seed": 20261005,
+  "identity_seed": 20261005,
+  "split": {
+    "dev_fraction": 0.25,
+    "_comment": "Molecule-level split. Every variant of one parent molecule (SMILES order, Our Code record order, image layout, both ends of a pair) stays inside one split. dev is used to fix prompts/thresholds; test is never used to tune."
+  },
+  "smoke": {
+    "per_task": 8,
+    "identity_positives": 4,
+    "identity_negatives": 4,
+    "_comment": "Pipeline check only. Never used to claim a representation is better."
+  },
+  "main": {
+    "per_task": 200,
+    "identity_positives": 100,
+    "identity_negatives": 100,
+    "_comment": "Paper scale for comprehension tasks is 200 molecules, which this matches. Identity counts 200 PAIRS, not 200 single molecules.",
+    "complexity_gate": {
+      "min_molecular_weight": 300.0,
+      "min_rings": 2,
+      "_source": "the reference paper's stated thresholds; the MW measure and ring count are THIS PROJECT'S definitions (RDKit Descriptors.MolWt and CalcNumRings) and are recorded in dataset.COMPLEXITY"
+    },
+    "label_support_rule": {
+      "min_positives_in_sample": 10,
+      "min_negatives_in_sample": 10,
+      "_declared": "fixed before any main model call and applied only to the frozen item list; a label outside this band is excluded from the main macro-F1 and reported as under-supported, never counted as 1.0. It is NOT a model-driven choice.",
+      "_why_10": "below roughly ten positives a per-label F1 is dominated by one or two instances. This is a project-declared floor, not a published convention."
+    }
+  },
+  "generation": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 4096,
+    "n_few_shot": 0,
+    "_comment": "zero-shot, greedy. Identical for every representation; only the representation text and a minimal format note change.",
+    "_max_tokens_history": "512 in probe-01. That run produced one truncated answer: finish_reason=length, completion_tokens=511 of which reasoning_tokens=496, leaving ~15 tokens for the JSON, which is why it parsed as invalid. Reasoning tokens count against max_tokens, and the provider's own documentation warns that setting max_tokens can truncate JSON output. Raised to 4096 and probe-01 was re-run from scratch as probe-02 rather than patched. Observed reasoning use across that cell was 79-496 tokens for 7-30 heavy atoms, so larger molecules need the headroom.",
+    "extra_body": {
+      "enable_thinking": false
+    },
+    "_extra_body_reason": "Provider-specific, NOT part of the OpenAI schema. Declared here rather than hard-coded in the client, and recorded in every run manifest. With thinking ON, deepseek-v4.1-flash consumed the entire 4096-token budget on reasoning for the QED items and returned EMPTY content with finish_reason=length, which is unscoreable. A controlled probe on one QED item gave: thinking on -> completion=4096, reasoning=4096, content=''; enable_thinking=false -> completion=9, reasoning=0, content='{\"qed\": 0.419}'. Same effect observed for reasoning_effort='none' and thinking.type='disabled'. Thinking is therefore OFF for this benchmark. Switching thinking mode is a change of inference condition and must never be mixed into one table."
+  },
+  "retry": {
+    "max_attempts": 3,
+    "backoff_seconds": 2.0,
+    "_comment": "Transport failures only (timeout, connection, HTTP 429/5xx). A wrong answer is never retried."
+  },
+  "request_budget": {
+    "smoke_hard_cap": 240,
+    "_comment": "Matches the prompt's ceiling: 6 representations x 5 tasks x 8 items. Round 1 compares 3 representations and 5 tasks, so the real smoke count is lower. The cap is enforced, not advisory."
+  },
+  "pricing": {
+    "_source": "https://help.aliyun.com/zh/model-studio/deepseek-v4-1-flash",
+    "_fetched": "2026-10-06",
+    "_currency": "CNY",
+    "_unit": "per 1,000,000 tokens",
+    "_note": "Published list price for the standard model API in 华北2（北京）. The page states it shows 原价 only and excludes promotional discounts. Cache-hit prices exist (0.1 idle / 0.2 busy) but are NOT assumed anywhere in this project.",
+    "beijing": {
+      "input_idle": 1.0,
+      "input_busy": 2.0,
+      "output_idle": 4.0,
+      "output_busy": 8.0,
+      "input_cache_hit_idle": 0.1,
+      "input_cache_hit_busy": 0.2,
+      "busy_hours_beijing": "08:00-22:00",
+      "idle_hours_beijing": "22:00-08:00"
+    }
+  },
+  "budget": {
+    "max_basic_requests": 3258,
+    "max_transport_attempts": 3305,
+    "_authorised_by_user": "2026-10-06: basic requests raised from 3000 to 3258 to cover the 253 requests consumed by the discarded run plus the 5 connection-check requests. Transport attempts 3305, total tokens 3,000,000 and completion tokens 300,000 unchanged. The cycle ledger is not reset by a rename, restart or new run id.",
+    "max_completion_tokens": 300000,
+    "max_total_tokens": 3000000,
+    "max_rmb": 30.0,
+    "in_flight_reserve": 0,
+    "_in_flight_reserve_why": "0 because the runner issues requests SERIALLY: can_continue() is evaluated before a request is sent, so nothing is ever in flight at check time. A reserve of 1 would stop the run one request early and leave exactly one frozen item unrun. The residual risk of a request billed but not recorded when the process is killed is handled at reporting time by budget_ledger's explicit in-flight reserve, not by stealing headroom from the run.",
+    "_comment": "Hard stop, enforced in code by runner.Budget. Three counts are kept apart: BASIC REQUESTS (planned items attempted), TRANSPORT ATTEMPTS (every HTTP attempt, so a retry costs one), and COMPLETED ITEMS. 3300 attempts = 3000 basic + ~10% retry headroom.",
+    "_token_split": "max_total_tokens covers prompt + completion + any other billed token the provider reports; max_completion_tokens bounds the completion side separately so an output runaway cannot hide inside the total.",
+    "_rmb_cap": "30 CNY is ~2x the worst-case busy-hour estimate computed in main_cost_estimate.json; it is a ceiling to stop at, not a forecast.",
+    "_on_stop": "when a cap is hit the runner stops, marks every remaining item 'pending' with the stop reason, and the run is reported as incomplete. Nothing is silently dropped and no partial run may be described as complete.",
+    "_boundary_honesty": "a local guard cannot promise zero overspend: usage is reported by the provider after the fact and the client has no pre-flight token count. The guard is conservative (assume the worst when usage is missing) and the residual risk is stated in main_cost_estimate.json."
+  },
+  "resume_and_cache": {
+    "resume": "raw_responses.jsonl is appended per request; re-running the same --run-id skips every example_id already in a terminal state (ok/invalid) and continues",
+    "rescore_without_spending": "`score` and `tables` rebuild metrics from stored responses and never call the model",
+    "cache_key_fields": ["dataset_version", "example_id", "representation", "task", "prompt_hash", "model_id", "generation"],
+    "repeats_need_a_new_run": "a second pass over the same items must use a new run id; reading the cache and presenting it as a fresh experiment is not allowed",
+    "_retry_policy": "retries are transport-only (timeout, connection, 429/5xx). A response that arrived but is wrong is NEVER retried; there is no best-of-N selection anywhere in this runner."
+  },
+  "qed_success_threshold": 0.05,
+  "_comment_qed": "|predicted - reference| <= 0.05 counts as a success. A pre-declared starting point for THIS project, not a recognised standard. Frozen before test is touched.",
+  "bootstrap": {
+    "resamples": 2000,
+    "confidence": 0.95,
+    "_comment": "Cluster-resampled by parent molecule, because several items derive from one molecule and are not independent."
+  }
+}

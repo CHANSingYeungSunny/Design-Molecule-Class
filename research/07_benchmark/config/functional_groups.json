@@ -1,0 +1,106 @@
+{
+  "_about": "Fixed functional-group label set for task T2. Each label has a SMARTS that RDKit matches against the reference molecule to produce the gold answer. SMARTS are matched with the default (non-uniquified) RDKit semantics on a sanitized molecule. 'enabled' is decided by measured support: the prepare step counts positives/negatives over the frozen molecule pool and records them in dataset_manifest.json. A label with too few positives or too few negatives is set to enabled=false and reported as N/A rather than scored.",
+  "smarts_version": "rdkit-2025.09.4",
+  "min_positives": 20,
+  "min_negatives": 20,
+  "labels": [
+    {
+      "name": "aldehyde",
+      "smarts": "[CX3H1](=O)[#6]",
+      "definition": "Carbonyl carbon bearing exactly one H and one carbon substituent.",
+      "enabled": true
+    },
+    {
+      "name": "ketone",
+      "smarts": "[#6][CX3](=O)[#6]",
+      "definition": "Carbonyl carbon with two carbon substituents and no H.",
+      "enabled": true
+    },
+    {
+      "name": "ester",
+      "smarts": "[#6][CX3](=O)[OX2H0][#6]",
+      "definition": "Carbonyl carbon bonded to an O that bears no H and is bonded to a carbon.",
+      "enabled": true
+    },
+    {
+      "name": "carboxylic_acid",
+      "smarts": "[CX3](=O)[OX2H1]",
+      "definition": "Carbonyl carbon bonded to an OH.",
+      "enabled": true
+    },
+    {
+      "name": "amide",
+      "smarts": "[NX3][CX3](=[OX1])",
+      "definition": "Carbonyl carbon bonded to a trivalent nitrogen.",
+      "enabled": true
+    },
+    {
+      "name": "primary_amine",
+      "smarts": "[NX3;H2;!$(NC=O);!$(N=*);!$(N#*)]",
+      "definition": "Trivalent aliphatic nitrogen with exactly two H, not an amide, not imine/nitrile.",
+      "enabled": true
+    },
+    {
+      "name": "nitrile",
+      "smarts": "[NX1]#[CX2]",
+      "definition": "Carbon triple-bonded to a monovalent nitrogen.",
+      "enabled": true
+    },
+    {
+      "name": "alcohol",
+      "smarts": "[OX2H][CX4]",
+      "definition": "Hydroxyl O bonded to an sp3 carbon.",
+      "enabled": true
+    },
+    {
+      "name": "phenol",
+      "smarts": "[OX2H]c",
+      "definition": "Hydroxyl O bonded directly to an aromatic carbon.",
+      "enabled": true
+    },
+    {
+      "name": "ether",
+      "smarts": "[OD2]([#6])[#6]",
+      "definition": "Divalent O bonded to two carbons. Subsumes esters and phenols structurally; kept because it is a named group the paper-style prompt would ask about.",
+      "enabled": false,
+      "why_disabled": "Disabled at config level, not for lack of support (553 pool positives). Its SMARTS matches every ester and phenol, so a model scored on it would be credited twice for one structural feature and the label would carry no independent information. Kept in the candidate list so the decision is visible."
+    },
+    {
+      "name": "benzene_ring",
+      "smarts": "c1ccccc1",
+      "definition": "Six-membered all-carbon aromatic ring.",
+      "enabled": true
+    },
+    {
+      "name": "alkyl_halide",
+      "smarts": "[F,Cl,Br,I][CX4]",
+      "definition": "Halogen bonded to an sp3 carbon.",
+      "enabled": true
+    },
+    {
+      "name": "aryl_halide",
+      "smarts": "[F,Cl,Br,I]c",
+      "definition": "Halogen bonded directly to an aromatic carbon.",
+      "enabled": true
+    },
+    {
+      "name": "thiol",
+      "smarts": "[SX2H]",
+      "definition": "Divalent sulfur bearing one H.",
+      "enabled": true
+    },
+    {
+      "name": "sulfonamide",
+      "smarts": "[SX4](=[OX1])(=[OX1])[NX3]",
+      "definition": "Sulfonyl sulfur bonded to a trivalent nitrogen.",
+      "enabled": false,
+      "why_disabled": "Disabled at config level, not for lack of support (63 pool positives). Sulfonamide is the group the reference paper's own prompt set leans on; this project deliberately does not copy that group list wholesale, so it is held back as a candidate rather than adopted by default."
+    },
+    {
+      "name": "nitro",
+      "smarts": "[$([NX3](=O)=O),$([NX3+](=O)[O-])]",
+      "definition": "Nitro group in either the pentavalent or charge-separated depiction.",
+      "enabled": true
+    }
+  ]
+}

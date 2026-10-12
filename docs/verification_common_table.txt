@@ -1,0 +1,17 @@
+﻿denominators: {"t1_identity": 200, "t2_functional_groups": 199, "t3_atom_counts": 199, "t4_qed": 199, "t5_hydrogen_bond_donors": 199}
+integrity problems: 0
+
+task                           smiles    selfies   our_code        img    graph2d    graph3d        cml    moljson
+t1_identity                     0.985      0.540      1.000      0.990      0.850      0.980      0.970      0.620
+t2_functional_groups            0.839      0.546      0.515      0.868      0.438      0.571      0.523      0.434
+t3_atom_counts                  0.231      0.015      0.191      0.342      0.055      0.070      0.196      0.216
+t4_qed                          0.111      0.180      0.139      0.119      0.145      0.170      0.128      0.149
+t5_hydrogen_bond_donors         0.814      0.432      0.427      0.975      0.382      0.387      0.467      0.357
+
+t1_identity                best=1.000 by our_code | Our Code rank 1, 0 better than it
+t2_functional_groups       best=0.868 by img | Our Code rank 6, 5 better than it
+t3_atom_counts             best=0.342 by img | Our Code rank 5, 4 better than it
+t4_qed                     best=0.111 by smiles | Our Code rank 4, 3 better than it
+t5_hydrogen_bond_donors    best=0.975 by img | Our Code rank 5, 4 better than it
+
+wrote C:\Users\Asus\Desktop\Design Molecule Class\research\08_deliverables\analysis_common_items.json

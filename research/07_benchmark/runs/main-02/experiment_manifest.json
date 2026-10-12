@@ -1,0 +1,83 @@
+{
+  "run_id": "main-02",
+  "mode": "main",
+  "created_at": "2026-10-06T07:10:38",
+  "code": {
+    "core_sha256": "55d314aa312707b498536d339ff59dc89bbbe4956cab54a74a4746cd385af57b",
+    "core_matches_baseline": true,
+    "benchmark_version": "1.0.0-round1"
+  },
+  "model": {
+    "provider": "token_plan",
+    "model_id": "deepseek-v4.1-flash",
+    "region": "beijing",
+    "base_url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "generation": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 4096,
+      "n_few_shot": 0,
+      "_comment": "zero-shot, greedy. Identical for every representation; only the representation text and a minimal format note change.",
+      "_max_tokens_history": "512 in probe-01. That run produced one truncated answer: finish_reason=length, completion_tokens=511 of which reasoning_tokens=496, leaving ~15 tokens for the JSON, which is why it parsed as invalid. Reasoning tokens count against max_tokens, and the provider's own documentation warns that setting max_tokens can truncate JSON output. Raised to 4096 and probe-01 was re-run from scratch as probe-02 rather than patched. Observed reasoning use across that cell was 79-496 tokens for 7-30 heavy atoms, so larger molecules need the headroom.",
+      "extra_body": {
+        "enable_thinking": false
+      },
+      "_extra_body_reason": "Provider-specific, NOT part of the OpenAI schema. Declared here rather than hard-coded in the client, and recorded in every run manifest. With thinking ON, deepseek-v4.1-flash consumed the entire 4096-token budget on reasoning for the QED items and returned EMPTY content with finish_reason=length, which is unscoreable. A controlled probe on one QED item gave: thinking on -> completion=4096, reasoning=4096, content=''; enable_thinking=false -> completion=9, reasoning=0, content='{\"qed\": 0.419}'. Same effect observed for reasoning_effort='none' and thinking.type='disabled'. Thinking is therefore OFF for this benchmark. Switching thinking mode is a change of inference condition and must never be mixed into one table."
+    },
+    "credential_variable": "BMB_TOKEN_PLAN_API_KEY",
+    "provider_terms_warning": "The platform states this plan is for interactive use inside coding and agent tools and forbids \"automation scripts, custom application backends, or any non-interactive batch calling scenario\", warning that out-of-scope use may suspend the subscription or ban the key. THIS PROJECT DOES NOT CLAIM THIS USE IS PERMITTED. The user selected this provider explicitly and knowingly; the choice and this warning are recorded in every run manifest.",
+    "provider_terms_verbatim_cn": "仅限在编程工具和智能体工具（如 Claude Code、Cursor、Qwen Code、Qoder、Qoder CN、OpenClaw 等）中交互式使用，不可用于自动化脚本、自定义应用程序后端或任何非交互式批量调用场景。……将套餐 API Key 用于允许范围之外的调用将被视为违规或滥用，可能会导致订阅被暂停或 API Key 被封禁。",
+    "provider_terms_source": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview（订阅前须知 / 使用范围，本机 2026-10-06 抓取，HTTP 200）"
+  },
+  "dataset": {
+    "version": "chebi20-molt5-v1-q1",
+    "counts": {
+      "pool": 2097,
+      "dev": 524,
+      "test": 1557
+    }
+  },
+  "representations": [
+    "our_code",
+    "smiles",
+    "selfies"
+  ],
+  "tasks": [
+    "t1_identity",
+    "t2_functional_groups",
+    "t3_atom_counts",
+    "t4_qed",
+    "t5_hydrogen_bond_donors"
+  ],
+  "planned_requests": 3000,
+  "seed": 20261005,
+  "budget": {
+    "basic_requests": 2812,
+    "max_basic_requests": 3258,
+    "transport_attempts": 2812,
+    "max_transport_attempts": 3305,
+    "completed_items": 2812,
+    "prompt_tokens": 1524745,
+    "completion_tokens": 77201,
+    "other_tokens": 0,
+    "total_tokens": 1601946,
+    "max_total_tokens": 3000000,
+    "max_completion_tokens": 300000,
+    "attempts_without_usage": 0,
+    "estimated_rmb_busy_hour": null,
+    "max_rmb": 30.0,
+    "stopped_reason": null
+  },
+  "scoring": {
+    "qed_success_threshold": 0.05,
+    "bootstrap": {
+      "resamples": 2000,
+      "confidence": 0.95,
+      "_comment": "Cluster-resampled by parent molecule, because several items derive from one molecule and are not independent."
+    }
+  },
+  "environment": {
+    "python": "3.13.5",
+    "rdkit": "2025.09.4"
+  }
+}

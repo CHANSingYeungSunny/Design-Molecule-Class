@@ -1,0 +1,7 @@
+﻿t1_identity              checked  200  mismatched 0
+t2_functional_groups     checked  199  mismatched 0
+t3_atom_counts           checked  199  mismatched 0
+t4_qed                   checked  199  mismatched 0
+t5_hydrogen_bond_donors  checked  199  mismatched 0
+RDKit 2025.09.4 | total 996 mismatched 0
+Outputs: C:\Users\Asus\Desktop\Design Molecule Class\reproduced

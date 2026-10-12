@@ -1,0 +1,16 @@
+﻿  client refuses an unconfigured endpoint                    ok
+  payload has the model id                                   ok
+  payload is non-streaming                                   ok
+  payload requests json_object                               ok
+  payload does not send tools                                ok
+  endpoint joins correctly                                   ok
+  redact masks a bearer token                                ok
+  redact keeps the diagnostic tail                           ok
+  api key variable name is declared, not its value           ok
+  the experiment does not read the harness credential first  ok
+  the active provider is one this client defines             ok
+  the active endpoint matches the active provider            ok
+  the other provider cannot use this endpoint by accident    ok
+  the active provider reads only its own credential variable ok
+
+14 offline checks, 0 failed

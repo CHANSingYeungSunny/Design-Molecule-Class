@@ -1,0 +1,377 @@
+{
+  "run_ids": [
+    "extension-01",
+    "main-02"
+  ],
+  "paired_on": "representation-stripped item key; identical items and payload bytes",
+  "t1_t3_t5_concordance": {
+    "t1_identity": {
+      "n_pairs": 200,
+      "our_code_wrong_img_right": 0,
+      "our_code_right_img_wrong": 2,
+      "both_wrong": 0,
+      "both_right": 198
+    },
+    "t3_atom_counts": {
+      "n_pairs": 199,
+      "our_code_wrong_img_right": 55,
+      "our_code_right_img_wrong": 25,
+      "both_wrong": 106,
+      "both_right": 13
+    },
+    "t5_hydrogen_bond_donors": {
+      "n_pairs": 199,
+      "our_code_wrong_img_right": 109,
+      "our_code_right_img_wrong": 0,
+      "both_wrong": 5,
+      "both_right": 85
+    },
+    "_scope": "restricted to the eight-way common items, i.e. the same items as the main table"
+  },
+  "t2_label_errors": {
+    "n_pairs": 199,
+    "per_label": {
+      "alcohol": {
+        "our_code_false_positive": 1,
+        "our_code_false_negative": 16,
+        "img_false_positive": 21,
+        "img_false_negative": 0
+      },
+      "alkyl_halide": {
+        "our_code_false_positive": 3,
+        "our_code_false_negative": 9,
+        "img_false_positive": 0,
+        "img_false_negative": 10
+      },
+      "amide": {
+        "our_code_false_positive": 7,
+        "our_code_false_negative": 11,
+        "img_false_positive": 4,
+        "img_false_negative": 2
+      },
+      "aryl_halide": {
+        "our_code_false_positive": 1,
+        "our_code_false_negative": 1,
+        "img_false_positive": 0,
+        "img_false_negative": 0
+      },
+      "benzene_ring": {
+        "our_code_false_positive": 13,
+        "our_code_false_negative": 0,
+        "img_false_positive": 0,
+        "img_false_negative": 0
+      },
+      "carboxylic_acid": {
+        "our_code_false_positive": 2,
+        "our_code_false_negative": 16,
+        "img_false_positive": 0,
+        "img_false_negative": 0
+      },
+      "ester": {
+        "our_code_false_positive": 25,
+        "our_code_false_negative": 9,
+        "img_false_positive": 5,
+        "img_false_negative": 0
+      },
+      "ketone": {
+        "our_code_false_positive": 28,
+        "our_code_false_negative": 5,
+        "img_false_positive": 23,
+        "img_false_negative": 1
+      },
+      "phenol": {
+        "our_code_false_positive": 0,
+        "our_code_false_negative": 59,
+        "img_false_positive": 3,
+        "img_false_negative": 2
+      },
+      "primary_amine": {
+        "our_code_false_positive": 7,
+        "our_code_false_negative": 12,
+        "img_false_positive": 1,
+        "img_false_negative": 0
+      }
+    },
+    "note": "counts are over the same paired items for both arms"
+  },
+  "t3_element_errors": {
+    "C": {
+      "our_code_wrong": 146,
+      "img_wrong": 117,
+      "our_code_over": 39,
+      "our_code_under": 107,
+      "img_over": 43,
+      "img_under": 74
+    },
+    "N": {
+      "our_code_wrong": 25,
+      "img_wrong": 14,
+      "our_code_over": 1,
+      "our_code_under": 24,
+      "img_over": 4,
+      "img_under": 10
+    },
+    "O": {
+      "our_code_wrong": 63,
+      "img_wrong": 27,
+      "our_code_over": 11,
+      "our_code_under": 52,
+      "img_over": 2,
+      "img_under": 25
+    },
+    "S": {
+      "our_code_wrong": 1,
+      "img_wrong": 0,
+      "our_code_over": 0,
+      "our_code_under": 1,
+      "img_over": 0,
+      "img_under": 0
+    }
+  },
+  "t5_direction": {
+    "our_code_over_img_correct": 38,
+    "oc_over": 38,
+    "our_code_under_img_correct": 76,
+    "oc_under": 76
+  },
+  "t4_error_distribution": {
+    "our_code": {
+      "n": 199,
+      "mae": 0.1389361845925223,
+      "mean_signed_bias": -0.07641634761627521,
+      "median_signed_bias": -0.055197520503064146,
+      "share_over_estimate": 0.33668341708542715,
+      "share_under_estimate": 0.6633165829145728,
+      "p90_abs_error": 0.3055294795592485
+    },
+    "img": {
+      "n": 199,
+      "mae": 0.1191158343896104,
+      "mean_signed_bias": -0.010637453143913404,
+      "median_signed_bias": -0.010911263308501062,
+      "share_over_estimate": 0.48743718592964824,
+      "share_under_estimate": 0.5125628140703518,
+      "p90_abs_error": 0.24074358975653787
+    }
+  },
+  "payload_facts": {
+    "_what_this_is": "a FIELD INVENTORY of the two payloads, measured over the whole frozen pool. It establishes what each payload does and does not state. It does NOT establish that any of these differences causes the score gap -- that needs the ablation listed under hypotheses.",
+    "our_code": {
+      "kind": "text",
+      "chars": 1255,
+      "atom_fields_available": [
+        "id",
+        "element",
+        "formal_charge",
+        "isotope",
+        "aromatic",
+        "explicit_hs",
+        "atom_map"
+      ],
+      "bond_fields_available": [
+        "begin",
+        "end",
+        "bond_type"
+      ],
+      "states_atom_identity_and_element": true,
+      "states_bond_connectivity_and_order": true,
+      "states_formal_charge_where_nonzero": true,
+      "states_aromatic_flag_where_aromatic": true,
+      "hydrogen_statement": {
+        "atoms_listed_across_the_pool": 12765,
+        "atoms_stating_explicit_hs": 303,
+        "atoms_leaving_h_to_be_inferred": 12462,
+        "share_inferred": 0.9763,
+        "payloads_with_no_explicit_hs_at_all": 298,
+        "payloads_total": 431,
+        "per_element": {
+          "Br": {
+            "atoms": 54,
+            "stated": 4
+          },
+          "N": {
+            "atoms": 984,
+            "stated": 137
+          },
+          "C": {
+            "atoms": 9296,
+            "stated": 0
+          },
+          "Cl": {
+            "atoms": 187,
+            "stated": 18
+          },
+          "S": {
+            "atoms": 188,
+            "stated": 0
+          },
+          "O": {
+            "atoms": 1833,
+            "stated": 94
+          },
+          "F": {
+            "atoms": 157,
+            "stated": 0
+          },
+          "H": {
+            "atoms": 4,
+            "stated": 4
+          },
+          "Fe": {
+            "atoms": 4,
+            "stated": 4
+          },
+          "Na": {
+            "atoms": 23,
+            "stated": 23
+          },
+          "P": {
+            "atoms": 7,
+            "stated": 0
+          },
+          "B": {
+            "atoms": 1,
+            "stated": 1
+          },
+          "Si": {
+            "atoms": 13,
+            "stated": 13
+          },
+          "I": {
+            "atoms": 9,
+            "stated": 0
+          },
+          "K": {
+            "atoms": 2,
+            "stated": 2
+          },
+          "Ca": {
+            "atoms": 1,
+            "stated": 1
+          },
+          "Cu": {
+            "atoms": 1,
+            "stated": 1
+          },
+          "Ru": {
+            "atoms": 1,
+            "stated": 1
+          }
+        },
+        "_finding": "the field exists, but it is written for only a small minority of atoms: the hydrogen count of the great majority must be inferred from element and bond order. All carbon and all sulfur atoms are in this inferred group."
+      }
+    },
+    "img": {
+      "kind": "image",
+      "bytes": 43949,
+      "pixels": "1024x1024",
+      "carries_text_metadata": false,
+      "what_the_rendering_shows": "observed on an actual render, not assumed: heteroatoms carry their element symbol (O, N, Cl ...), and a hydrogen bonded to a heteroatom is drawn as part of that label (NH, OH). Carbon atoms are drawn as unlabelled skeletal vertices, and hydrogens bonded to carbon are not drawn at all.",
+      "_implication_for_each_task": {
+        "hbd": "the donor hydrogens are directly readable from the labels",
+        "atom_counts": "carbon must be counted as vertices, not read as symbols"
+      }
+    },
+    "graph2d_for_reference": {
+      "chars": 1151
+    }
+  },
+  "confirmed": [
+    "On the eight-way common items, img answers element counts correctly more often than Our Code: 55 items where Our Code is wrong and img right, against 25 the other way.",
+    "The same direction holds for HBD: 109 versus 0.",
+    "Both payloads carry the same molecule, the same bond connectivity, the same bond orders, the same formal charges and the same aromatic flags.",
+    "The two payloads differ in what they STATE about hydrogen: the Our Code text writes an explicit_hs value for 303 of 12765 atoms (2.4%), leaving the rest to be inferred from element and bond order; the image draws the hydrogen on each heteroatom as part of its label (NH, OH) but draws none on carbon."
+  ],
+  "patterns": [],
+  "hypotheses": [
+    {
+      "claim": "The implicit-hydrogen rule (explicit_hs=None) makes the Our Code payload harder to count from than a picture in which every heavy atom is drawn.",
+      "status": "NOT TESTED",
+      "how_to_test": "Our Code v2 that states the hydrogen count explicitly for every atom, scored on dev only; one factor changed at a time."
+    },
+    {
+      "claim": "Atom-id labels inside the Our Code text are read as significant, so the model reasons about the ids rather than the chemistry.",
+      "status": "NOT TESTED",
+      "how_to_test": "v2 with opaque sequential ids and an explicit note that ids carry no chemical meaning. NOTE: ids must not encode element counts, and Identity positives must still differ as text."
+    },
+    {
+      "claim": "The img arm benefits from the depiction itself: element symbols and the bond skeleton are perceived at once, whereas a long record list must be parsed sequentially.",
+      "status": "NOT TESTED",
+      "how_to_test": "Compare against SMILES (short, sequential) — SMILES outscores Our Code on T3 as well, which is consistent with a parsing-cost effect but does not establish it."
+    }
+  ],
+  "scopes": {
+    "all_paired_items": {
+      "t1_identity": {
+        "n_pairs": 200,
+        "our_code_wrong_img_right": 0,
+        "our_code_right_img_wrong": 2,
+        "both_wrong": 0,
+        "both_right": 198
+      },
+      "t3_atom_counts": {
+        "n_pairs": 200,
+        "our_code_wrong_img_right": 56,
+        "our_code_right_img_wrong": 25,
+        "both_wrong": 106,
+        "both_right": 13
+      },
+      "t5_hydrogen_bond_donors": {
+        "n_pairs": 200,
+        "our_code_wrong_img_right": 109,
+        "our_code_right_img_wrong": 0,
+        "both_wrong": 5,
+        "both_right": 86
+      }
+    },
+    "eight_way_common_items": {
+      "t1_identity": {
+        "n_pairs": 200,
+        "our_code_wrong_img_right": 0,
+        "our_code_right_img_wrong": 2,
+        "both_wrong": 0,
+        "both_right": 198
+      },
+      "t3_atom_counts": {
+        "n_pairs": 199,
+        "our_code_wrong_img_right": 55,
+        "our_code_right_img_wrong": 25,
+        "both_wrong": 106,
+        "both_right": 13
+      },
+      "t5_hydrogen_bond_donors": {
+        "n_pairs": 199,
+        "our_code_wrong_img_right": 109,
+        "our_code_right_img_wrong": 0,
+        "both_wrong": 5,
+        "both_right": 85
+      },
+      "_scope": "restricted to the eight-way common items, i.e. the same items as the main table"
+    }
+  },
+  "direction_of_error": {
+    "t3_element_counts": {
+      "C": {
+        "our_code_under": 107,
+        "our_code_over": 39
+      },
+      "N": {
+        "our_code_under": 24,
+        "our_code_over": 1
+      },
+      "O": {
+        "our_code_under": 52,
+        "our_code_over": 11
+      },
+      "S": {
+        "our_code_under": 1,
+        "our_code_over": 0
+      }
+    },
+    "t4_qed_signed_bias": {
+      "our_code": -0.07641634761627521,
+      "img": -0.010637453143913404
+    },
+    "_description": "describes WHICH WAY the errors go. It is not an explanation of why, and it must not be reported as one."
+  }
+}

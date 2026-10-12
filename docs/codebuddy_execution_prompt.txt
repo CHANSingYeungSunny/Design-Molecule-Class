@@ -1,0 +1,92 @@
+请在我的真实项目中执行以下工作，完成实际代码、可复现指南、GitHub发布与Word报告更新，不要只给方案。用中文解释，让没有编程基础的我能理解并向教授汇报。
+
+【目标与资料】
+教授要求先读论文并写报告，再把核心代码（including测试用的prompt）上传GitHub，让其他人依指南运行复现。我的目标仓库是：
+https://github.com/CHANSingYeungSunny/Design-Molecule-Class
+
+原资料：Design Molecule Class.zip；分子表示比较研究简明汇报_最终版(6).docx；Rethinking Molecular Text Representations for LLMs(4).pdf；教授批注image(4).png。论文可能也在 reference/Rethinking Molecular Text Representations for LLMs.pdf。本地项目历史路径为 C:/Users/Asus/Desktop/Design Molecule Class，但必须自己发现真实工作目录，不硬编码机器路径。
+
+如果我同时提供 Design-Molecule-Class_reproducibility.zip，请把其中代码、README、prompts、docs与离线replay视为已经审核的候选改进，先核对它与真实项目是否对应，再选择合并；不要覆盖更晚的修改或真实项目的全部文件。若没有该包，则按以下要求在原项目补齐等价功能。
+
+【已经从ZIP核实的信息，请重新核对而非盲信】
+1. 当前已不是只有三种表示：正式报告有 SMILES/SELFIES/Our Code/img/Graph2D/Graph3D/CML/MolJSON，五项任务Identity、官能团、C/N/O/S计数、QED、HBD。定位为参考MolRepBench的扩展benchmark，不是整篇论文复现。不要重新加入QM9、生成优化、docking或逆合成。
+2. 核心已经存在：research/01_implementation/molecule_core.py；Atom/Bond/Molecule与教授00_baseline原型相同，SHA-256为55d314aa312707b498536d339ff59dc89bbbe4956cab54a74a4746cd385af57b。保持教授基础类不变，注明来源；不要重新添加独立同分子算法或两个边界问题。
+3. benchmark核心在research/07_benchmark/bmb/：dataset.py筛选与划分；reps.py/reps_ext.py表示转换；tasks.py的system_message与任务messages组装真实模型prompt；labels.py使用RDKit产生独立参考答案；client.py构造实际请求；runner.py读取冻结清单、保存响应和恢复；scoring.py评分。CLI是run_benchmark.py。不要在找到这些之后仍宣称没有核心代码或没有prompt，也不要重写一套平行实现。
+4. 正式结果来自runs/main-02和runs/extension-01；共同题主表由research/08_deliverables/build_common_table.py从原始响应生成analysis_common_items.json。这个入口依赖build_analysis.py和build_extension_analysis.py，不要只提交一份脚本而遗漏依赖。
+5. main-02原始日志3000行，extension-01原始日志5038行（含38条pending占位及4条当前清单外的历史Identity记录），extension当前冻结清单4996项。共同表Identity200题对，其余每项199分子，共7968条回答。去重与当前冻结清单过滤必须分开做，不把5038等同最终有效题数。
+6. 模型实际被问13类官能团；主Macro-F1固定评分10类：alcohol、alkyl_halide、amide、aryl_halide、benzene_ring、carboxylic_acid、ester、ketone、phenol、primary_amine。aldehyde/nitrile/nitro被问到，但未进入固定主分数。不要把问的13类改说成只问10类。
+7. 原始Identity三表示正例view0/1、负例0/0；新增五表示两类均0/1。保留并披露历史排序差异、可能的标签线索与端点依赖；该列只作描述性比较。不要声称Our Code的1.000确认优于所有表示。
+8. T2/T3真实prompt里的示例含双大括号，例如{{"C":0}}。这是格式缺陷。历史prompt与响应必须保留原样；如修正新模板，另立版本、在dev检查、另用run ID，不让新builder破坏旧冻结prompt hash的校验。
+9. 历史run manifest记录provider=token_plan、Token Plan端点、deepseek-v4.1-flash；temperature=0、top_p=1、max_tokens=4096、zero-shot、extra_body.enable_thinking=false。不要根据早期笔记把旧运行改写成普通DashScope端点。缺失reasoning字段时思考状态仍未知；服务端权重版本没有固定证据。
+10. 原README停留在smoke/main未运行/三表示阶段，需更新。冻结图片JSON里路径含Windows反斜杠，原runner的pathlib直接拼接在Linux不兼容。候选包已只在runner新增pathlib导入并通过PureWindowsPath(...).parts读取图片，保持冻结JSON不变；核对并采用适当的跨平台解析修正。
+11. 候选包离线已通过：核心55/55、benchmark selftest99/99、offline-checks14/14、40个冻结题单内容hash、原加载器main3000与extension4996项prompt hash及图片一致；40格表重算一致。这不代表已经完成GitHub发布，也不代表新的付费模型运行会产生相同回答。
+
+【阶段一 真正读懂论文并做映射】
+阅读论文全文，重点核对正文第3–4节与Appendix C、D、E（PDF第15–17页），不要只读摘要。写docs/PAPER_TO_PROJECT.md，给出页码或章节、原论文方法、当前代码路径/函数、采用/修改/未实现、影响。
+- 原文9种文本表示、8项任务、16模型；本项目8种输入、5项任务、一个模型。
+- 原论文从ChEBI-20官方test取复杂度筛选后200理解样本；本项目原数据读取validation与test再发布文件，重划dev/test并隔离调试使用分子，复杂度池431。
+- MW≥300 Da且至少2环来源是Appendix C；具体MolWt/CalcNumRings口径是项目选择。
+- 原计数逐次问一个元素，原官能团逐次问5类中的一类，原prompt要求逐步推理并boxed答案；本项目一次问C/N/O/S或13类、compact JSON输出。QED新增。Identity不完全等同原Isomer任务。
+- 正文回归指标与Appendix D的一处表述若不一致，应明确引用对应位置，不能硬说全篇一致。
+- 原统计方法：对最佳表示进行逐实例配对bootstrap10000次。项目具体检验以真实评分和analysis版本为准，不能冒称完全照搬。
+如果论文给了作者代码链接，请读取并核对；如果没有找到链接，写“所读PDF未发现作者仓库链接”，不要凭空造仓库或宣称检查了原作者代码。
+
+【阶段二 项目审核与最小修补】
+先运行git status、查看AGENTS.md、分支和远端；读取现有未提交改动。采用独立分支/工作树或安全克隆，保留现有工作。不要reset --hard、force push或删除旧数据。
+建立docs/CORE_CODE_INDEX.md：列每个核心函数的真实路径与行号、输入/输出、在完整流程中的职责，以及能解释给我的中文说明。必须覆盖基础类、表示转换、模型prompt、oracle、client、runner、评分、共同题表。选择足够短的真实源码片段，不能用伪代码替代并称其为运行源码。
+已有环节优先复用；缺失的只是说明、依赖或入口就补这些。确实缺少实现时才补实现和合理验证。
+单独检查task.messages里没有夹带label、reference值、CID、分子名称或额外SMILES答案；img实际以image_url发送，Our Code由模型阅读而非工具执行。区分实验程序生成标签和被测模型调用工具。
+
+【阶段三 三种复现路径】
+A 历史结果复算（默认、不付费）
+- 从原始raw_response重解析答案，按当前冻结题单过滤、example_id取最终记录、跨表示按同题key配对。
+- 复算8×5全部40格：Identity200题，其余199分子；固定10标签评分。核对原Word和analysis_common_items.json，误差容差写清楚。
+- 记录完整计划分母、转换失败、pending、invalid、排除题以及原因；QED失败不能当0误差，不能悄悄替换题。
+- 提供根目录一条可执行命令（候选包为python scripts/replay_table.py），无API Key、不依赖模型。不把事先填写的结果常量当作复算。
+- 生成summary.csv、逐题证据及verification.json；每个源文件有checksum。应通过原scoring.py算实际主指标而不是另造不一致公式。
+B 输入与标签重建（不调用模型）
+- 写跨平台环境安装说明和版本依赖。历史版本来自原.venv metadata：Python3.13.5、RDKit2025.9.4、SELFIES2.2.0、NumPy2.5.3、Pillow12.3.0、python-docx1.2.0。
+- 运行核心测试、selftest、offline-checks、冻结题单与prompt/image hash校验。fresh环境实测，不写死“全部通过”。
+- 给出小型可解释演示：同一CCO生成Our Code、SMILES、SELFIES；独立RDKit参考C=2/N=0/O=1/S=0、HBD=1、QED实际计算值。标“教学例子，不满足正式复杂度门槛，不进入正式成绩”。禁止用fake模型答案混入历史成绩。
+- 不能对历史快照随手运行prepare/main-prep/extension-prep覆写文件。新生成数据放独立目录或分支，与冻结快照逐项比较。
+C 重新调用模型（说明可运行，但本任务默认不执行）
+- 自备适用key、端点、模型、预算；密钥只用环境变量或被忽略的local.env；API使用者的限制与费用由真实服务配置解释。
+- 给出真实CLI支持的命令与新run ID，不伪造参数；新模型/新通道/新prompt与历史成绩独立报告。
+- temperature0不保证服务端重新推理逐题一致；只有历史response replay可精确核对旧表。
+- 本任务没有授权新的大批量收费模型运行，先完成无需调用模型的所有工作。
+
+【阶段四 导出真实prompt和逐题证据】
+导出prompts/system.txt、benchmark_templates.json，以及每项至少一个真实历史例子（完整system/user messages、prompt hash、raw_response、另列label、评分）。模板直接从真实builder生成，不重新编造更漂亮的问法。
+报告中必须展示system prompt、Our Code表示说明和5项任务实际instruction；其余表示说明通过文件和链接完整可查。把模型prompt与本CodeBuddy开发指令区分开。
+保留T2/T3原双大括号缺陷作为历史证据；若改新版本，只在新版dev示例里展示更正，不声称历史实验用过新版。
+
+【阶段五 README和可发布文件】
+根README第一屏写清研究问题、扩展定位、当前8表示5任务、三条复现路径。包括：git clone、cd、安装、无key最短复算命令、输出目录、成功判定、完整环境检查、模型重跑说明、文件导航、已知限制、数据/基础类/第三方出处。
+清理发布目录而非毁掉原目录：不提交.venv、local.env、密钥、无关整份RDKit第三方仓库、旧工具缓存或大堆重复历史报告。保留MolJSON真正所需源码/schema及其原许可证；注明教授基础类来源。不擅自给全部第三方内容加自己的许可证。
+保存原始日志、冻结题单、图像、必要缓存和manifest，使历史复算及查看刺激可完成。文件超过GitHub普通git上限时用LFS或release归档，并写可自动/明确下载的步骤和checksum；不能只ignore数据后宣称“一clone就可复现”。检查.gitignore未意外排除必需文件、.gitattributes避免核心及原始日志换行改写导致hash失配。
+新目录必须脚本可移植，不依赖Asus绝对路径。加无secret CI，至少运行教授核心测试和历史复算。检查README示例可直接复制执行。
+
+【阶段六 GitHub实际发布和fresh clone验收】
+用户已明确要求把本项目代码推送到上述本人仓库。验证origin属于该仓库且使用本机已有认证；先检查远端是否有README、LICENSE或别人的提交，在独立分支安全合并，绝不force push或覆盖已有工作。
+在完成代码和验证后，提交并推送到该仓库可用分支；如果main可安全更新则更新main，否则推分支并创建明确的合并路径。不要拿“git commit成功”冒充“git push成功”。
+然后从一个全新目录clone远端实际commit，复算历史表；确认跟本地结果和报告一致。检查远端Actions是否真的通过；提供实测状态。
+如果认证、网络、用户git身份或远端权限阻塞：尽可能完成全部本地工程与报告，给出具体错误、尚未完成动作、用户执行的最短命令。不得索要明文token，不伪造push、commit或clone成功。报告写待发布或待验证；不要反复询问已经授权的普通操作。
+
+【阶段七 更新Word并让我能够解释】
+以分子表示比较研究简明汇报_最终版(6).docx为基础，保留核实一致的结果表和解释，补足过程证据；保存一个更新版本，并保留原始版本备份。若已有过程补充版，先审核后更新。
+Word至少应包含：
+1 论文原流程与本项目改动及页码；
+2 从数据到表示、prompt、模型、独立RDKit答案、评分的流程；
+3 真正运行的核心源码片段（附文件、函数、实际行号或commit固定链接）与中文逐行解释；
+4 实际system prompt、Our Code说明、五项task instruction，说明13问/10评及输出格式；
+5 一个真实历史错误例子。例如t3-our_code-71464601，模型{"C":22,"N":1,"O":4,"S":2}，参考{"C":21,"N":1,"O":4,"S":2}；四元素exact-match规则下该题得0，不是只扣一个元素。核对文件后再用。
+6 八表示结果、分母、转换失败、Identity与模型权重限制、Our Code+H尚无模型成绩；
+7 GitHub可点击仓库链接、README和核心代码/模板/数据文件的实际commit固定超链接；说明每个入口能看到什么；
+8 别人复现的最短命令、实际检查结果与GitHub发布状态。
+如尚未push，链接注明目标地址/待验证，不写虚构commit固定链接。推送成功后才填真实SHA并重新核对所有超链接。Word不要塞全部源码；核心片段在正文，完整内容通过仓库和附录获取。
+保持中文解释易懂，专业词第一次出现就解释。不要只是追加一堆函数名、截图或术语。准确率、Macro-F1、MAE分别解释，QED/HBD不等同药效安全性。
+导出PDF或逐页图像检查Word布局、中文字体、代码换行、分页、表格、链接；按实际渲染修复，不能只检查文本提取。生成docs/EXPLAIN_TO_PROF.md，给我一份短口头说明与教授可能追问的问题：谁算参考答案、模型收到什么、是否执行代码、一次请求怎么变成分数、三种复现的差异、我们的新增和限制。
+
+【验收与最终输出】
+给出已完成/未完成的真实清单，核心文件导航、论文映射、实际prompt入口、README命令、40格复算差异、自检结果、raw文件是否未改写、GitHub仓库与实际commit链接、fresh clone证据、Word路径。禁止“optimal”“完全符合所有要求”“无任何问题”这类无法证明的结论。
+先完成可独立执行的工作。只有确实缺失且阻塞的资料/权限才集中提出最少的问题，不停止在泛泛计划。

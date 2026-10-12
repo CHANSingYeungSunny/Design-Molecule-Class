@@ -1,0 +1,111 @@
+{
+  "_about": "Extension stage: the five added representations. Declared BEFORE any new request. This file is separate from run_config.json so the original cycle's ledger and limits are neither reset nor reused as this stage's bound.",
+
+  "stage": "extension",
+  "run_id": "extension-01",
+  "dataset_version_inherited": "chebi20-molt5-v1-q1",
+  "_inherits": "the frozen main-02 molecule list (431), the 15 frozen item lists and the five task definitions; no molecule is re-drawn from the 1,557 split",
+
+  "representations_added": ["img", "graph2d", "graph3d", "cml", "moljson"],
+  "representations_inherited": ["smiles", "selfies", "our_code"],
+
+  "model": {
+    "_rule": "inherited from main_manifest.json; the extension must not silently change model, provider, endpoint or generation settings",
+    "inherit_from": "08_deliverables/main_manifest.json",
+    "generation_inherited": {
+      "temperature": 0.0, "top_p": 1.0, "max_tokens": 4096,
+      "n_few_shot": 0, "extra_body": {"enable_thinking": false}
+    },
+    "_weight_caveat": "an identical model alias does not prove identical backend weights. The run records the model id actually returned by the service and the run time; if no version or fingerprint is returned, this project states that the backend revision cannot be confirmed and does NOT claim the weights are fixed."
+  },
+
+  "targets": {
+    "per_task": 200,
+    "identity_positives": 100,
+    "identity_negatives": 100,
+    "cells": 25,
+    "_comment": "5 added representations x 5 tasks x 200 items = 5,000 planned responses",
+    "_actual_frozen_items": 4984,
+    "_why_not_5000": "Graph3D cannot express 4 of the 200 drawn molecules per task, and the frozen rule is to record a conversion failure rather than swap in an easier molecule, so its four comprehension cells hold 196 items each. Identity stays 200 pairs for every representation."
+  },
+
+  "coverage_rule": {
+    "_declared_before_results": true,
+    "primary": "each added representation runs the FULL inherited 200 items where it converts them; coverage is reported per representation",
+    "strict_subset": "a cross-eight-representation comparison uses only items every format can express, recomputed per item; the 10-label macro-F1 set is unchanged",
+    "failure_handling": "a molecule that cannot be converted is recorded with its reason and is NOT replaced by an easier molecule. 'not converted' is never written as a score of 0.",
+    "_no_swap": "no molecule is swapped to reach 200"
+  },
+
+  "comparison_family": {
+    "_declared_before_results": true,
+    "_why": "adding representations multiplies the comparisons, so the family is fixed in advance and not narrowed after seeing results",
+    "within_each_task": [
+      ["our_code", "smiles"], ["our_code", "selfies"], ["our_code", "img"],
+      ["our_code", "graph2d"], ["our_code", "graph3d"], ["our_code", "cml"],
+      ["our_code", "moljson"]
+    ],
+    "extra_pairs": [
+      ["graph2d", "graph3d"],
+      ["smiles", "img"]
+    ],
+    "size_per_task": 9,
+    "correction": "Holm-Bonferroni within the task family",
+    "significance_level": 0.05,
+    "_rationale": {
+      "our_code_vs_all": "Our Code is the project's own representation, so it is compared with every other one",
+      "graph2d_vs_graph3d": "isolates the effect of adding 3D coordinates, since the two share format, atom order and chemistry",
+      "smiles_vs_img": "compares the two most widely used everyday encodings, text and picture"
+    },
+    "_if_a_representation_did_not_run": "the pre-declared rule is kept: unrun cells are reported as not run, and the family is NOT shrunk to the comparisons that happened to finish",
+    "_old_p_values": "the three-representation family from the previous stage used a different, smaller family. Those corrected p-values are NOT reused as extension results and are not presented as such."
+  },
+
+  "inference_rules": {
+    "identity": "descriptive only; the shared-endpoint dependence is not resolved by any method validated in this project, so no confirmatory claim is made for Identity",
+    "others": "paired on the same item, recomputing the MAIN-TABLE metric; macro-F1 is recomputed over the FIXED 10-label set after swapping whole-item prediction vectors",
+    "intervals": "95% bootstrap intervals are reported UNCORRECTED and labelled as such; corrected p-values are reported separately",
+    "floor": "a Monte-Carlo permutation cannot express a p below 1/(resamples+1); that floor is reported instead of printing p = 0",
+    "direction": {"t4_qed": "lower is better; a positive difference means the left arm is worse"}
+  },
+
+  "budget": {
+    "_separate_from_the_previous_cycle": true,
+    "max_basic_requests": 5250,
+    "max_transport_attempts": 5600,
+    "max_total_tokens": 11000000,
+    "max_completion_tokens": 400000,
+    "in_flight_reserve": 0,
+    "_comment": "4,984 frozen items + 5% transport-retry headroom. This is a NEW stage with its own bound; the earlier 3,258 figure belonged to the previous cycle and is not reused as this stage's ceiling.",
+    "_correction": "the first draft of this file said 2,500 cells and a 2,550 cap. 5 representations x 5 tasks x 200 items is 5,000, not 2,500, so that cap would have halted the run roughly halfway. Corrected BEFORE any request was sent; no request was ever made under the wrong figure.",
+    "_token_basis": "the previous stage used about 1.6M total tokens for 3,000 responses, so 5,000 responses need roughly 2.7M; the 6M ceiling leaves room without being the binding limit.",
+    "_token_cap_correction": {
+      "what_happened": "the 6,000,000 ceiling STOPPED the run at 3,546 of 4,984 responses.",
+      "why_the_estimate_was_wrong": "it was carried over from the previous stage's ~533 prompt tokens per request. Almost every payload here is a MOL connection table or a document, not a short SMILES line, so the real cost is 3-5x higher.",
+      "measured_prompt_tokens_per_request": {"img": 988, "moljson": 1321, "cml": 1425,
+                                             "graph3d": 2105, "graph2d": 2375},
+      "new_cap_basis": "5,934,017 tokens were used for 3,546 responses. The 1,400 remaining responses are budgeted at the measured worst case (2,375 per request) = ~3.3M, so the new ceiling is 11,000,000.",
+      "what_was_not_done": "no protection was removed to force the run through: the request cap, the transport-attempt cap, the completion-token cap and the retry policy are untouched. Only the token CEILING changed, and it changed from a measured basis, not from a wish to finish.",
+      "resumability": "responses are persisted per item, so the resumed run continues from item 3,547 and does not re-send anything already answered."
+    }
+  },
+
+  "dev_check": {
+    "per_representation_max_calls": 5,
+    "split": "dev",
+    "_img_rule": "HTTP 200 is not evidence that the image was read. The check must confirm the image content block is actually sent, and use two DIFFERENT images with the same question to see whether the answer follows the picture. Converting the image to text with OCR or another model first is not an image experiment.",
+    "result_use": "the dev responses are NOT part of the scored results"
+  },
+
+  "resume_and_cache": {
+    "cache_key_includes": ["model_id", "provider", "base_url", "generation", "dataset_version",
+                           "example_id", "representation", "task", "prompt_hash",
+                           "payload_sha256", "image_sha256_or_null", "coords_sha256_or_null"],
+    "_why": "an image or a conformer is not captured by the prompt text alone, so the payload and pixel/coordinate hashes are part of the key",
+    "retry": "transport failures only, bounded; a wrong answer or a bad format is never retried"
+  },
+
+  "inference_condition": {
+    "thinking_mode": "request sets enable_thinking=false; the service does NOT return reasoning_tokens on this channel, so the server-side thinking state is UNKNOWN and is not reported as confirmed off"
+  }
+}
