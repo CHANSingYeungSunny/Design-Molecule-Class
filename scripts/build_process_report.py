@@ -113,7 +113,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, default=ROOT / 'docs/source_report.docx')
     parser.add_argument('--out', type=Path, default=ROOT / 'docs/分子表示比较研究简明汇报_过程与复现版.docx')
+    parser.add_argument('--commit', default=None,
+                        help='Verified source commit SHA. Every file link is pinned to it.')
+    parser.add_argument('--docs-commit', default=None,
+                        help='Commit that carries this report and the write-up docs.')
     args = parser.parse_args()
+    # Pinned links must point at a commit that was actually cloned and replayed,
+    # never at a moving branch and never at a SHA invented for the report.
+    blob_base = REPO_URL + '/blob/' + (args.commit or 'main')
     doc = Document(args.source)
     # Keep the original result sections and all numerical cells intact.
     for p in doc.paragraphs:
@@ -136,7 +143,7 @@ def main():
         style = doc.styles[name];style.font.color.rgb = RGBColor(0, 0, 0)
         style.font.name = 'Calibri';style.element.get_or_add_rPr().rFonts.set(qn('w:eastAsia'), FONT)
     appendix_note = paragraph(doc,
-        '本次补充：后续各页展示原论文方法、实际运行的核心代码与五项模型prompt、逐题评分证据，以及不用API Key的复算命令。已完成本地复算；GitHub发布和从远端clone验收尚待本机执行。')
+        '本次补充：后续各页展示原论文方法、实际运行的核心代码与五项模型prompt、逐题评分证据、参考答案重建，以及不用API Key的复算命令；最后一节给出GitHub发布commit、从全新目录clone复算的结果与远端自动化检查的实际状态。')
     # The note remains at the end of the original report, ahead of the appendix.
     templates = json.loads((ROOT / 'prompts/benchmark_templates.json').read_text(encoding='utf-8'))
 
@@ -258,27 +265,49 @@ if task == 't5_hydrogen_bond_donors':
     paragraph(doc, '子结构分数不是逐题exact-match：程序分别累计每类的正确识别、误报和漏报，计算F1，再对固定类别等权平均。共同题表由build_common_table.py先按每项任务取八种表示的交集，再重算指标。')
 
     new_page(doc, '十二 怎样复算并从GitHub审查')
-    paragraph(doc, '最短复算路径只需要Python 3.10或更高版本。先解压本次发布包，进入包含README.md的目录，再执行：')
-    code(doc, '''python research/02_tests/test_baseline_core.py
+    paragraph(doc, '最短复算路径（路径A）只需要Python 3.10或更高版本，不需要任何第三方包，也不需要API Key。执行：')
+    code(doc, '''git clone https://github.com/CHANSingYeungSunny/Design-Molecule-Class.git
+cd Design-Molecule-Class
+python research/02_tests/test_baseline_core.py
 python scripts/replay_table.py''')
     paragraph(doc, '第一条验证原子、键和分子基础类；第二条重新解析保存的模型JSON，用原评分器重算主表。输出在reproduced/：summary.csv是表格，per_item.jsonl是逐题评分证据，verification.json是校验结果。参考标签采用当时保存的RDKit值；这一步不是重新调用模型。')
-    paragraph(doc, '本次已核验：核心55/55、benchmark自检99/99、客户端离线检查14/14；40份冻结题单、main的3000项及extension的4996项输入hash通过；八行40格共同题结果与原Word一致。共同题分母仍为200/199/199/199/199。')
-    paragraph(doc, '完整环境、标签与输入重建需要RDKit等依赖；历史环境版本和安装命令在README。新模型调用需自备服务、key和预算，并另用run ID。新调用可能得到不同回答，不能承诺重新推理逐题一致。')
-    heading(doc, 'GitHub目标仓库', 2)
+    paragraph(doc, '第二条路径（路径B）才检验“参考答案本身能不能被重算”：装上RDKit等依赖后运行 scripts/rebuild_labels.py，它会用RDKit对200个Identity题对和199×4条理解题重新计算官能团、C/N/O/S计数、QED与HBD，并与冻结值逐项比对。只跑路径A或只看教学例子，不能说标签重建已经通过。')
+    paragraph(doc, '本次在本机Windows环境（Python 3.13.5、RDKit 2025.09.4）实测：核心测试55/55；benchmark自检99项0失败；客户端离线检查14项0失败；核心代码索引53行全部命中真实源码；40份冻结题单、main的3000项与extension的4996项输入hash通过；1200张刺激图片字节校验通过；八行40格共同题结果与原Word一致，分母仍为200/199/199/199/199；参考答案重算996条、0条不一致。')
+    paragraph(doc, '原始行数与有效题数必须分开读：main-02原始日志3000行且全部为ok；extension-01原始日志5038行，其中38条是pending历史占位、4条属于已被当前冻结清单取代的历史题。复算按当前清单过滤并按题号取最后状态。')
+    paragraph(doc, '重新调用模型（路径C）需要自备服务、key和预算，并另用run ID。即使temperature=0，服务端权重版本或推理实现变化都可能让新回答不同，不能承诺重新推理逐题一致。')
+
+    new_page(doc, '十三 GitHub 发布、固定链接与验收')
+    heading(doc, '仓库与实际 commit', 2)
     hyperlink(doc, REPO_URL, REPO_URL)
-    paragraph(doc, '仓库地址由我提供。本次已整理本地发布包；当前环境不能读取或推送该远端，尚未确认线上包含这些文件、未取得发布commit或完成fresh clone验收。以下超链接是预定main路径，发布后应改为实际commit固定链接并核验。')
+    if args.commit:
+        paragraph(doc, '本报告所有代码、数据、模板的固定链接，都指向下面这个已经被 clone 并复算过的源码提交：%s 。它不包含本报告文件本身。' % args.commit)
+        hyperlink(doc, '已验证源码提交 ' + args.commit, REPO_URL + '/commit/' + args.commit)
+    if args.docs_commit:
+        paragraph(doc, '说明文档与本报告所在提交：%s 。该提交只改动文档、脚本与报告，不改动核心代码、冻结题单与原始响应。' % args.docs_commit)
+        hyperlink(doc, '说明与报告提交 ' + args.docs_commit, REPO_URL + '/commit/' + args.docs_commit)
+    paragraph(doc, '提交前已逐项检查：未提交 .venv、local.env、任何密钥、第三方RDKit整仓与临时文件；暂存文件1766个中扫描不到形如密钥的字符串；教授基础类三份副本SHA-256仍为55d314aa开头。')
+    heading(doc, '每个入口能看到什么', 2)
     for label, path in [
-        ('README 运行步骤与结果', 'README.md'),
-        ('基础类 Atom Bond Molecule', 'research/01_implementation/molecule_core.py'),
-        ('实际prompt builder', 'research/07_benchmark/bmb/tasks.py'),
-        ('导出的完整prompt模板', 'prompts/benchmark_templates.json'),
-        ('独立RDKit参考答案', 'research/07_benchmark/bmb/labels.py'),
+        ('README：三条复现路径、最短命令、已知限制', 'README.md'),
+        ('基础类 Atom / Bond / Molecule', 'research/01_implementation/molecule_core.py'),
+        ('实际模型 prompt 组装', 'research/07_benchmark/bmb/tasks.py'),
+        ('导出的完整 prompt 模板', 'prompts/benchmark_templates.json'),
+        ('五项任务的真实历史请求与回答', 'prompts/historical_our_code_examples.json'),
+        ('独立 RDKit 参考答案', 'research/07_benchmark/bmb/labels.py'),
         ('评分规则', 'research/07_benchmark/bmb/scoring.py'),
-        ('无API Key历史复算入口', 'scripts/replay_table.py'),
+        ('无 API Key 历史复算入口', 'scripts/replay_table.py'),
+        ('参考答案重建入口', 'scripts/rebuild_labels.py'),
+        ('main-02 原始模型回答', 'research/07_benchmark/runs/main-02/raw_responses.jsonl'),
+        ('论文与项目逐条对应', 'docs/PAPER_TO_PROJECT.md'),
+        ('核心代码索引与中文说明', 'docs/CORE_CODE_INDEX.md'),
+        ('审核结论与限制', 'docs/AUDIT.md'),
     ]:
-        hyperlink(doc, label, REPO_URL + '/blob/main/' + path)
-    paragraph(doc, 'CodeBuddy下一步应安全合并本地修改、推送这个仓库，从新目录clone实际commit并按README验收，然后把真实commit、固定链接和发布状态更新到报告。只有完成这些步骤，才能写成“其他人已可从GitHub复现”。')
-    paragraph(doc, '我向教授说明时应能解释：谁算标准答案、模型收到什么、是否执行代码、一个回答如何算分、哪些改动来自论文、哪些是项目选择，以及现有比较限制。提交代码有助于审核，但理解这些过程仍需要我自己完成。')
+        hyperlink(doc, label, blob_base + '/' + path)
+    heading(doc, '从全新目录 clone 的实测结果', 2)
+    paragraph(doc, '在与工作目录无关的新目录执行 git clone 后（远端实际commit）：核心测试 Ran 55 tests ... OK；核心代码索引53行OK；python scripts/replay_table.py 输出 Historical replay passed: 40 frozen lists, all 40 table values match.，八行数值与第一节表格完全一致；scripts/rebuild_labels.py 重算996条参考答案、0条不一致；reference/MolJSON 源码在clone后可正常导入并生成MolJSON文本。')
+    paragraph(doc, '远端自动化检查（GitHub Actions，工作流 Historical offline replay，ubuntu-24.04）在同一commit上为 completed / success：三个步骤分别输出 Ran 55 tests、core code index OK、Historical replay passed。该工作流不含任何密钥。')
+    paragraph(doc, '已完成与未完成的界线：已完成“从保存响应重算报告”“用RDKit重建参考答案并逐项比对”“发布到本人仓库并由他人clone复算”。未执行“重新付费调用模型”，因为它需要自备服务与预算，且新回答不保证与历史逐题一致。')
+    paragraph(doc, '我向教授说明时应能解释：谁算标准答案（RDKit，在实验程序一侧）、模型收到什么（只有表示和问题）、是否执行代码（不执行，也没有工具通道）、一个回答如何算分（逐题判定后按任务汇总）、哪些改动来自论文、哪些是本项目选择，以及现有比较限制（Identity描述性、13问10评、199分母的原因）。提交代码有助于审核，但理解这些过程仍需要我自己完成。')
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     # The supplied file used a CJK document grid. Snap-to-grid inflated the

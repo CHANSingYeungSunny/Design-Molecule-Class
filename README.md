@@ -173,3 +173,16 @@ RDKit 参考: C=2, N=0, O=1, S=0；HBD=1；QED=0.406808
 * RDKit（BSD-3-Clause）通过 pip 安装，不在本仓库内附带整份源码。
 * 分子数据来自 ChEBI-20 的 MolT5 再发布文件（`research/07_benchmark/data/raw/`），划分由本项目重做。
 * 本仓库没有为整体项目选定新的开源许可证；第三方内容各自保留原许可。
+
+---
+
+## 发布状态（实测）
+
+| 项目 | 实际值 |
+| --- | --- |
+| 仓库 | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class> |
+| **已验证源码提交** | `aac92e78a7d1b1f80653d59ec45252a3a612e45a` |
+| 验证方式 | 从全新目录 clone 该 commit：`test_baseline_core.py` → `Ran 55 tests ... OK`；`replay_table.py` → `Historical replay passed: 40 frozen lists, all 40 table values match.`；`rebuild_labels.py` → 996 条参考答案、0 条不一致；`reference/MolJSON` 源码在 clone 后可正常 import |
+| 远端自动化检查 | GitHub Actions 工作流 `Historical offline replay`（ubuntu-24.04，Python 3.13，无任何 secret）在同一 commit 上 `completed` / `success`，三个步骤输出 `Ran 55 tests`、`core code index OK`、`Historical replay passed` |
+| 文档与报告提交 | 见仓库 Commits 页面最新一条；只新增/更新文档、脚本与报告，不改动核心代码、冻结题单与原始响应 |
+| 未执行 | 重新付费调用模型（路径 C）；需要自备端点、key 与预算 |
