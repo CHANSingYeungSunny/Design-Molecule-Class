@@ -12,6 +12,19 @@
 | 远端初始状态 | 推送前用 `gh api` 确认为**空仓库**（`/commits` 409 "Git Repository is empty"），因此首次推送不会覆盖任何已有工作；未使用 force push |
 | 分支 | 只使用 `main`；没有 force push、没有 `reset --hard`、没有改写历史 |
 
+**已用 `gh api .../actions/runs/<id>` 核对 `head_sha` 的运行**（不靠"有两个成功 run"推断对应关系）
+
+| run ID | 对应 head_sha | status | conclusion | 链接 |
+| --- | --- | --- | --- | --- |
+| 38315294795 | `aac92e78a7d1b1f80653d59ec45252a3a612e45a` | completed | success | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class/actions/runs/38315294795> |
+| 38316032354 | `10ef071c6f46c57f1118fe085a72e7fc55c23687` | completed | success | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class/actions/runs/38316032354> |
+
+最终交付提交的运行会在推送后另行核对；不能用上表代替最终验收。
+
+**"谁做的验收"的界线**：下面的 clone 复算是在**与原工作目录分离的全新目录**完成的，
+执行者仍是本次工作，**没有另一位独立使用者的验收记录**。仓库提供 README 与命令可供其他人自行复算，
+但"可供他人复算"不等于"已经由其他人独立验证"。
+
 ## 2 本机实测（Windows，`\.venv\Scripts\python.exe`，CPython 3.13.5）
 
 | 检查 | 命令 | 实测结果 |
@@ -70,8 +83,19 @@
 
 ## 7 发布卫生
 
-* 未提交：`.venv/`、`research/07_benchmark/config/local.env`（真实密钥）、`reference/rdkit/`（107 MB 第三方整仓）、`extension_items_v1/`（67 MB 重复）、非发布 run 目录、`scored.jsonl`、`companion.csv`、`*.bak`、临时比对文件。
+* 未提交：`.venv/`、`research/07_benchmark/config/local.env`（真实密钥）、`reference/rdkit/`（约 102 MiB 第三方整仓）、`extension_items_v1/`（约 64 MiB 重复）、非发布 run 目录、`scored.jsonl`、`companion.csv`、`*.bak`、临时比对文件。
+* 最大单文件为 `runs/extension-01/raw_responses.jsonl` = 89.7 MiB（94,061,418 字节），低于 GitHub 单文件上限，因此**未使用 Git LFS**；本文件不写入任何未核实的 LFS 额度说明。
 * 已提交前扫描：暂存 1766 个文件中无任何形如密钥的字符串；`local.env.example` 只含变量名。
 * 换行策略：`.gitattributes` 对 `*.jsonl`、`*.png`、`*.docx`、核心 `.py` 与 `prompts/` 设 `-text`，防止换行改写导致字节哈希失配；其余文本统一 LF。
 * 第三方：`reference/MolJSON` 保留其 BSD-3-Clause LICENSE，上游为 oxpig/MolJSON，commit `047b135e628b091ec57a65d6da06989554f3a229`（读取其本地 `.git` 记录，未改动该目录）。`moljson` 包被 `bmb/reps_ext.py` 的 `moljson_text` 真实 import，因此源码必须随仓库分发。
 * 本仓库没有为整体项目选定新的开源许可证；第三方内容各自保留原许可。
+
+## 8 报告渲染与页数
+
+`分子表示比较研究简明汇报_过程与复现版_GitHub验证版.docx` 在**本机 Microsoft Word（Office 16）导出 PDF 时为 9 页**；
+同一份 DOCX 在另一个渲染环境下曾得到 10 页。DOCX 是流式排版格式，分页取决于渲染器的字体度量与页面设置，
+**页数不是验收标准**：验收看的是章节不重复、40 格成绩未改、分母 200/199 与 13 问 10 评未变、链接可查。
+仓库里同时提供 DOCX 与用本机 Word 导出的 PDF；PDF 只是为了固定分页便于阅读与打印。
+
+文中展示的源码片段为排版做了换行处理，**打印换行不等于可执行的完整源码**；完整源码以仓库中对应文件的
+固定链接为准。

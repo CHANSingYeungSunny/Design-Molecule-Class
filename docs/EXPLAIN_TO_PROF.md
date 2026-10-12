@@ -15,6 +15,7 @@
 如果教授问“为什么不是论文复现”：原文9文本表示/8任务/16模型，我们8输入/5任务/1模型；数据划分、一次问题数量、JSON输出、QED及Our Code都是变化。原论文没有本项目完整的图片/3D实验，也没有Our Code基础类。逐项对应见PAPER_TO_PROJECT.md。
 
 如果教授问“别人真的能复现吗”：仓库 https://github.com/CHANSingYeungSunny/Design-Molecule-Class 已发布。已验证源码提交是 `aac92e78a7d1b1f80653d59ec45252a3a612e45a`；我在与工作目录无关的新目录 clone 这个 commit，`test_baseline_core.py` 得 55 项 OK，`replay_table.py` 输出 "Historical replay passed: 40 frozen lists, all 40 table values match."，远端 Actions（ubuntu-24.04）同一 commit 为 completed/success。重新推理还需要服务和key，服务权重可能变，不能承诺新回答逐题一致。参考答案重建用 `scripts/rebuild_labels.py`，RDKit 重算 996 条、0 条不一致。
+要讲清楚一句话：这些 clone 复算是**我在与原工作目录分离的全新目录**里做的，**还没有另一位独立使用者做过验收**。仓库和命令已经公开，别人可以自己照 README 复算；但"别人可以复算"和"别人已经验证过"是两件事，不要混着说。
 
 如果教授问“三条复现有什么区别”：A 是从保存的回答重算表格（验证"表能从数据重建"）；B 是用 RDKit 重新计算参考答案并逐项比对（验证"标准答案可复现"）；C 是重新调用模型（未执行，需要自备服务与预算）。只有 A 或只看教学例子，不能说标签重建已经通过。
 

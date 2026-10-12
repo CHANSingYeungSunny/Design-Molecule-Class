@@ -270,8 +270,8 @@ if task == 't5_hydrogen_bond_donors':
 cd Design-Molecule-Class
 python research/02_tests/test_baseline_core.py
 python scripts/replay_table.py''')
-    paragraph(doc, '第一条验证原子、键和分子基础类；第二条重新解析保存的模型JSON，用原评分器重算主表。输出在reproduced/：summary.csv是表格，per_item.jsonl是逐题评分证据，verification.json是校验结果。参考标签采用当时保存的RDKit值；这一步不是重新调用模型。')
-    paragraph(doc, '第二条路径（路径B）才检验“参考答案本身能不能被重算”：装上RDKit等依赖后运行 scripts/rebuild_labels.py，它会用RDKit对200个Identity题对和199×4条理解题重新计算官能团、C/N/O/S计数、QED与HBD，并与冻结值逐项比对。只跑路径A或只看教学例子，不能说标签重建已经通过。')
+    paragraph(doc, '四条命令按名称分工：test_baseline_core.py 验证教授提供的原子、键和分子基础类（输出 Ran 55 tests ... OK）；replay_table.py 重新解析保存的模型JSON，用原评分器重算主表（输出 Historical replay passed）。输出在reproduced/：summary.csv是表格，per_item.jsonl是逐题评分证据，verification.json是校验结果。参考标签采用当时保存的RDKit值；这一步不是重新调用模型。')
+    paragraph(doc, '路径B才检验“参考答案本身能不能被重算”：装上RDKit等依赖后运行 scripts/rebuild_labels.py，它会用RDKit对200个Identity题对和199×4条理解题重新计算官能团、C/N/O/S计数、QED与HBD，并与冻结值逐项比对（实测996条、0条不一致）。只跑路径A或只看教学例子，不能说标签重建已经通过。')
     paragraph(doc, '本次在本机Windows环境（Python 3.13.5、RDKit 2025.09.4）实测：核心测试55/55；benchmark自检99项0失败；客户端离线检查14项0失败；核心代码索引53行全部命中真实源码；40份冻结题单、main的3000项与extension的4996项输入hash通过；1200张刺激图片字节校验通过；八行40格共同题结果与原Word一致，分母仍为200/199/199/199/199；参考答案重算996条、0条不一致。')
     paragraph(doc, '原始行数与有效题数必须分开读：main-02原始日志3000行且全部为ok；extension-01原始日志5038行，其中38条是pending历史占位、4条属于已被当前冻结清单取代的历史题。复算按当前清单过滤并按题号取最后状态。')
     paragraph(doc, '重新调用模型（路径C）需要自备服务、key和预算，并另用run ID。即使temperature=0，服务端权重版本或推理实现变化都可能让新回答不同，不能承诺重新推理逐题一致。')
@@ -279,12 +279,13 @@ python scripts/replay_table.py''')
     new_page(doc, '十三 GitHub 发布、固定链接与验收')
     heading(doc, '仓库与实际 commit', 2)
     hyperlink(doc, REPO_URL, REPO_URL)
+    paragraph(doc, '三个提交要分清：源码提交装的是代码、数据、冻结题单和原始响应，是复算与验收的对象；文档提交只改说明、脚本与报告；最终交付提交是推送后仓库的最新一条，它包含本文件。本文件不硬编码自己所在提交的SHA，最终交付SHA另在交付清单中给出。')
     if args.commit:
         paragraph(doc, '本报告所有代码、数据、模板的固定链接，都指向下面这个已经被 clone 并复算过的源码提交：%s 。它不包含本报告文件本身。' % args.commit)
         hyperlink(doc, '已验证源码提交 ' + args.commit, REPO_URL + '/commit/' + args.commit)
     if args.docs_commit:
-        paragraph(doc, '说明文档与本报告所在提交：%s 。该提交只改动文档、脚本与报告，不改动核心代码、冻结题单与原始响应。' % args.docs_commit)
-        hyperlink(doc, '说明与报告提交 ' + args.docs_commit, REPO_URL + '/commit/' + args.docs_commit)
+        paragraph(doc, '说明文档与脚本修正提交：%s 。该提交只改动文档与脚本，不改动核心代码、冻结题单与原始响应。' % args.docs_commit)
+        hyperlink(doc, '文档修正提交 ' + args.docs_commit, REPO_URL + '/commit/' + args.docs_commit)
     paragraph(doc, '提交前已逐项检查：未提交 .venv、local.env、任何密钥、第三方RDKit整仓与临时文件；暂存文件1766个中扫描不到形如密钥的字符串；教授基础类三份副本SHA-256仍为55d314aa开头。')
     heading(doc, '每个入口能看到什么', 2)
     for label, path in [
@@ -304,9 +305,22 @@ python scripts/replay_table.py''')
     ]:
         hyperlink(doc, label, blob_base + '/' + path)
     heading(doc, '从全新目录 clone 的实测结果', 2)
-    paragraph(doc, '在与工作目录无关的新目录执行 git clone 后（远端实际commit）：核心测试 Ran 55 tests ... OK；核心代码索引53行OK；python scripts/replay_table.py 输出 Historical replay passed: 40 frozen lists, all 40 table values match.，八行数值与第一节表格完全一致；scripts/rebuild_labels.py 重算996条参考答案、0条不一致；reference/MolJSON 源码在clone后可正常导入并生成MolJSON文本。')
-    paragraph(doc, '远端自动化检查（GitHub Actions，工作流 Historical offline replay，ubuntu-24.04）在同一commit上为 completed / success：三个步骤分别输出 Ran 55 tests、core code index OK、Historical replay passed。该工作流不含任何密钥。')
-    paragraph(doc, '已完成与未完成的界线：已完成“从保存响应重算报告”“用RDKit重建参考答案并逐项比对”“发布到本人仓库并由他人clone复算”。未执行“重新付费调用模型”，因为它需要自备服务与预算，且新回答不保证与历史逐题一致。')
+    paragraph(doc, '在与原工作目录分离的全新目录执行 git clone 后（远端实际commit）：test_baseline_core.py 输出 Ran 55 tests ... OK；核心代码索引53行OK；replay_table.py 输出 Historical replay passed: 40 frozen lists, all 40 table values match.，八行数值与第一节表格完全一致；rebuild_labels.py 重算996条参考答案、0条不一致；reference/MolJSON 源码在clone后可正常导入并生成MolJSON文本。')
+    paragraph(doc, '必须讲清楚的界线：上述clone复算是本次工作在另一个目录执行的，**没有另一位独立使用者的验收记录**。仓库与README可供其他人自行复算，但“可供他人复算”不等于“已经由其他人独立验证”。')
+    heading(doc, '远端自动化检查的实际运行', 2)
+    paragraph(doc, '工作流 Historical offline replay（GitHub Actions，ubuntu-24.04，Python 3.13，不含任何密钥）。以下run都用 gh api 读取过 head_sha、status与conclusion，不是凭“有成功run”推断：')
+    table(doc, ['run ID', '对应 head_sha', 'status / conclusion'], [
+        ['38315294795', 'aac92e78…2e45a', 'completed / success'],
+        ['38316032354', '10ef071c…23687', 'completed / success'],
+    ], [1.35, 2.60, 2.59])
+    hyperlink(doc, 'Actions 运行 38315294795（对应源码提交 aac92e78）',
+              REPO_URL + '/actions/runs/38315294795')
+    hyperlink(doc, 'Actions 运行 38316032354（对应文档提交 10ef071c）',
+              REPO_URL + '/actions/runs/38316032354')
+    paragraph(doc, '最终交付提交对应的运行会在推送后单独核对，不能用上面两条代替本次验收。')
+    heading(doc, '排版与页数的说明', 2)
+    paragraph(doc, '本报告由 python-docx 生成，DOCX 是流式格式。用本机 Microsoft Word 导出 PDF 时为9页；同一份文件在另一个渲染环境下曾得到10页。页数取决于渲染器的字体度量与页面设置，**页数不是验收标准**；验收看章节是否重复、40格成绩是否未改、分母200/199与13问10评是否未变、链接是否可查。文中源码片段为排版做了换行处理，打印换行不等于可执行的完整源码，完整源码以仓库固定链接为准。')
+    paragraph(doc, '已完成与未完成的界线：已完成“从保存响应重算报告”“用RDKit重建参考答案并逐项比对”“发布到本人仓库并在分离的全新目录clone复算”。未执行“重新付费调用模型”，因为它需要自备服务与预算，且新回答不保证与历史逐题一致。')
     paragraph(doc, '我向教授说明时应能解释：谁算标准答案（RDKit，在实验程序一侧）、模型收到什么（只有表示和问题）、是否执行代码（不执行，也没有工具通道）、一个回答如何算分（逐题判定后按任务汇总）、哪些改动来自论文、哪些是本项目选择，以及现有比较限制（Identity描述性、13问10评、199分母的原因）。提交代码有助于审核，但理解这些过程仍需要我自己完成。')
 
     args.out.parent.mkdir(parents=True, exist_ok=True)

@@ -45,10 +45,12 @@ python scripts/replay_table.py
 
 Windows 若没有 `python` 命令可用 `py -3`。
 
-**成功标志**
+**成功标志**（按命令名称区分，不是按输出行数）
 
-* 第一行输出 `Ran 55 tests ... OK`（验证教授提供的基础类）。
-* 第二行输出 `Historical replay passed: 40 frozen lists, all 40 table values match.`
+* `test_baseline_core.py`：验证教授提供的 `Atom` / `Bond` / `Molecule` 基础类，
+  输出 `Ran 55 tests ... OK`。
+* `replay_table.py`：路径 A 的历史复算，重新解析保存的模型原始回答并用原评分器重算 8×5 主表，
+  输出 `Historical replay passed: 40 frozen lists, all 40 table values match.`
   并打印 `Denominators: {'t1_identity': 200, 't2_functional_groups': 199, 't3_atom_counts': 199, 't4_qed': 199, 't5_hydrogen_bond_donors': 199}`。
 
 **输出目录 `reproduced/`**
@@ -183,6 +185,19 @@ RDKit 参考: C=2, N=0, O=1, S=0；HBD=1；QED=0.406808
 | 仓库 | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class> |
 | **已验证源码提交** | `aac92e78a7d1b1f80653d59ec45252a3a612e45a` |
 | 验证方式 | 从全新目录 clone 该 commit：`test_baseline_core.py` → `Ran 55 tests ... OK`；`replay_table.py` → `Historical replay passed: 40 frozen lists, all 40 table values match.`；`rebuild_labels.py` → 996 条参考答案、0 条不一致；`reference/MolJSON` 源码在 clone 后可正常 import |
-| 远端自动化检查 | GitHub Actions 工作流 `Historical offline replay`（ubuntu-24.04，Python 3.13，无任何 secret）在同一 commit 上 `completed` / `success`，三个步骤输出 `Ran 55 tests`、`core code index OK`、`Historical replay passed` |
+| 远端自动化检查 | GitHub Actions 工作流 `Historical offline replay`（ubuntu-24.04，Python 3.13，无任何 secret）。已核对 `head_sha` 的两条成功运行分别见下表 |
 | 文档与报告提交 | 见仓库 Commits 页面最新一条；只新增/更新文档、脚本与报告，不改动核心代码、冻结题单与原始响应 |
 | 未执行 | 重新付费调用模型（路径 C）；需要自备端点、key 与预算 |
+
+**已核对 `head_sha` 的 Actions 运行**（用 `gh api .../actions/runs/<id>` 读取，不是靠"有两个成功 run"推断）
+
+| run ID | 对应 head_sha | 状态 | 结论 | 链接 |
+| --- | --- | --- | --- | --- |
+| 38315294795 | `aac92e78a7d1b1f80653d59ec45252a3a612e45a` | completed | success | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class/actions/runs/38315294795> |
+| 38316032354 | `10ef071c6f46c57f1118fe085a72e7fc55c23687` | completed | success | <https://github.com/CHANSingYeungSunny/Design-Molecule-Class/actions/runs/38316032354> |
+
+最终交付提交的运行会在推送后另行核对，不能用上表代替本次验收。
+
+**关于"谁做的验收"**：上面的 clone 复算是在**与原工作目录分离的全新目录**由本次工作完成的，
+**没有另一位独立使用者的验收记录**。仓库提供了 README 与命令，可供其他人自行复算；
+但"可供他人复算"与"已经由其他人独立验证"是两件事，本文件与报告都按这个界线表述。

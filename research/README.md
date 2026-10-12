@@ -1,133 +1,56 @@
-# 分子表示 Benchmark — 运行说明
+# research/ 目录导航（当前状态）
 
-本目录是本轮研究的全部成果。研究问题是：**固定同一个 LLM、同一批分子、同一道题和
-同一套评分规则，只改变分子的输入表示，模型表现是否变化，Our Code 的优势和代价是什么？**
+> 本文件是**当前入口导航**。正式的运行步骤、结果表与限制写在根目录
+> [README.md](../README.md)；审核结论在 [docs/AUDIT.md](../docs/AUDIT.md)；
+> 论文对应在 [docs/PAPER_TO_PROJECT.md](../docs/PAPER_TO_PROJECT.md)；
+> 核心代码索引在 [docs/CORE_CODE_INDEX.md](../docs/CORE_CODE_INDEX.md)。
+>
+> 本文件在 2026-10-13 之前描述的是**第 1 轮**（三种表示、`smoke` 阶段、`main` 未运行、
+> 自检 17/17 与 9/9）。那份旧说明已原样归档到
+> [docs/history/research_README_round1_2026.md](../docs/history/research_README_round1_2026.md)，
+> 标注为历史阶段，**不代表当前状态**。
 
-参考论文：*Rethinking Molecular Text Representations for LLMs: An Empirical Study*,
-arXiv:2606.03057v1（2026-06-02）。本项目定位为
-**「参考 MolRepBench 设计的扩展 benchmark」，不是论文复现**。
+## 当前实验规模
 
-> **当前状态：框架已完成，smoke 规模真实调用已跑通（120/120 有效），main 规模尚未运行。**
-> 主表里的数字来自 smoke（每格仅 8 题），**只能说明管线通畅，不能用于排名**。
-> 正式比较需要先跑 main 规模，见 `07_benchmark/README.md`。
-
----
+| 项目 | 当前值 |
+| --- | --- |
+| 输入表示 | 8 种：SMILES、SELFIES、Our Code、img、Graph2D、Graph3D、CML、MolJSON |
+| 任务 | 5 项：Identity、官能团识别、C/N/O/S 计数、QED 估计、HBD 计数 |
+| 已完成运行 | `main-02`（原始日志 3000 行，全部 ok）、`extension-01`（原始日志 5038 行 = 5000 ok + 38 pending） |
+| 当前 extension 冻结清单 | 4996 项 |
+| 共同题分母 | Identity 200 题对，其余四项各 199 个分子；共同表逐题 7968 条 |
+| 官能团 | 模型被问 **13 类**；主 Macro-F1 固定评分 **10 类**（aldehyde / nitrile / nitro 不进主分） |
+| 模型 | 一个服务模型别名 `deepseek-v4.1-flash`；不训练模型、不调用工具 |
 
 ## 目录地图
 
-| 目录 | 内容 | 状态 |
+| 目录 | 内容 | 说明 |
 | --- | --- | --- |
-| `00_baseline/` | 教授原版 `molecule_standalone.py`（只读基准记录）＋ `BASELINE.md` | 未修改 |
-| `01_implementation/` | `molecule_core.py`：**交付核心，与基线逐字节相同** ＋ 撤销说明 | 本轮已还原 |
-| `02_tests/` | `test_baseline_core.py`(55) ＋ `experiment_boundary.py`（边界探测） | 已运行通过 |
-| `03_evidence/` | 源码证据摘录（E01–E23） | 历史材料 |
-| `04_reference_notes/` | 参考项目抽取文本 | 历史材料 |
-| `05_results/` | 边界探测输出、上一轮复现记录 | 历史材料 |
-| `06_report/` | 旧报告（上一轮）＋ **本轮新汇报** | 见下 |
-| `07_benchmark/` | **本轮新增：可运行的 benchmark 模块** | 已实现，待真实运行 |
-| `08_deliverables/` | 项目实况报告、协议、manifest、进度矩阵、转换自检 | 本轮产出 |
-| `99_archive_rollback_20261005/` | 核心撤销前的备份 | 备查 |
+| `00_baseline/` | 教授原版 `molecule_standalone.py` 与 `BASELINE.md` | 只读基准，字节未改（SHA-256 `55d314aa…`） |
+| `01_implementation/` | `molecule_core.py`，与教授基线逐字节相同 | 生成 Our Code 文本；不参与评分 |
+| `02_tests/` | `test_baseline_core.py`（55 项）、`experiment_boundary.py` | 核心测试，标准库即可运行 |
+| `07_benchmark/` | benchmark 主体：`bmb/`、`config/`、`data/`、`runs/` | 见下"三条命令" |
+| `08_deliverables/` | 共同题表生成器及其依赖、协议与 manifest | `build_common_table.py` 依赖 `build_analysis.py`、`build_extension_analysis.py` |
+| `03_evidence/` `04_reference_notes/` `05_results/` `06_report/` `99_archive_*` | 早期材料与归档 | 历史材料，不作当前证据 |
 
----
+## 三条命令各自验证什么
 
-## 两个解释器，不要混用
+根目录 README 里的路径 A 有四条命令（`git clone`、`cd`、两条 `python`）。它们的作用分别是：
 
-| 用途 | 解释器 | 依赖 |
+| 命令 | 作用 | 通过标志 |
 | --- | --- | --- |
-| 教授原型核心 + 核心测试 | 系统 `python`（3.9.0），加 `-S -B` | **仅标准库** |
-| benchmark 模块 + 报告 | `.venv/Scripts/python.exe`（3.13.5） | rdkit 2025.9.4、selfies、python-docx |
+| `python research/02_tests/test_baseline_core.py` | 验证教授提供的 `Atom` / `Bond` / `Molecule` 基础类 | `Ran 55 tests ... OK` |
+| `python scripts/replay_table.py` | **路径 A**：从保存的原始响应重解析答案，用原 `bmb/scoring.py` 重算 8×5 主表 | `Historical replay passed: 40 frozen lists, all 40 table values match.` |
 
-核心**只用标准库**是教授原型的硬约束，benchmark 侧用 RDKit 出参考标签是允许的
-（RDKit 不进入核心类）。
+**路径 B**（需要 RDKit）另有单独入口：
 
----
+| 命令 | 作用 | 通过标志 |
+| --- | --- | --- |
+| `python scripts/rebuild_labels.py` | 用 RDKit 重新计算冻结题的参考答案（官能团、C/N/O/S、QED、HBD）并逐项比对 | `total 996 mismatched 0` |
 
-## 一分钟版：不需要模型就能验证的完整流程
+只有路径 A 或只看教学例子 `scripts/demo_teaching.py`，**不能**说标签重建已通过。
 
-```powershell
-$PY = "c:/Users/Asus/Desktop/Design Molecule Class/.venv/Scripts/python.exe"
+## 历史内容在哪里
 
-# 1. 核心（教授原版）测试：55 项
-cd "c:/Users/Asus/Desktop/Design Molecule Class/research/02_tests"
-python -S -B -m unittest discover -s . -p "test_*.py"     # 预期 Ran 55 tests ... OK
-
-# 2. benchmark 自检（不联网、不花钱）
-cd ../07_benchmark
-& $PY run_benchmark.py verify          # 三种表示往返覆盖率
-& $PY run_benchmark.py selftest        # 评分器 17 项
-& $PY run_benchmark.py offline-checks  # 客户端与密钥脱敏 9 项
-& $PY run_benchmark.py dry-run         # 生成 120 题，不调用模型
-```
-
-本轮实测结果：55 项核心测试通过；三种表示往返覆盖率均 **1.000**；
-评分器 **17/17**；离线检查 **9/9**；dry-run 生成 **120** 题。
-
----
-
-## 需要模型才能跑的命令
-
-```powershell
-cd "c:/Users/Asus/Desktop/Design Molecule Class/research/07_benchmark"
-
-# 先用 Our Code × 单任务 × 8 题打通链路
-& $PY run_benchmark.py smoke --representations our_code --tasks t3_atom_counts --run-id probe-01
-
-# 再放开三种表示
-& $PY run_benchmark.py smoke --run-id smoke-01
-& $PY run_benchmark.py main  --run-id main-01
-
-# 从已保存响应重新评分 / 重新出表，不再花钱
-& $PY run_benchmark.py score  --run main-01
-& $PY run_benchmark.py tables --run main-01
-```
-
-现在直接跑会**拒绝启动**并列出缺少的配置项——这是设计行为。
-需要配置的四项、地域与 base_url 对照表、以及本地配置方法，
-见 `07_benchmark/README.md` 第 2 节。
-
----
-
-## 本轮范围
-
-**做**：Identity、官能团识别、重原子计数、**QED 估计（本项目新增任务）**、HBD 计数；
-表示只做 **Our Code / SMILES / SELFIES** 三种。
-
-**不做**（已登记但本轮不实现，注册表中标 `implemented: false`，不写空壳）：
-图像、Graph2D、Graph3D、正式 MolJSON 对照；生成优化、docking、逆合成、模型训练。
-
-**不使用 QM9**：不下载、不使用、不作为前置条件。数据用 **ChEBI-20**
-（MolT5 再发布版，BSD-3-Clause）。
-
----
-
-## 交付物
-
-| 文件 | 用途 |
-| --- | --- |
-| `06_report/分子表示比较研究简明汇报.docx` | **本轮中文汇报**（面向教授） |
-| `08_deliverables/build_report.py` | 汇报与 manifest 的生成入口 |
-| `08_deliverables/project_audit_zh.md` / `.json` | 项目实况报告 |
-| `08_deliverables/benchmark_protocol.md` | 数据、表示、任务、指标、公平性规则（动模型前冻结） |
-| `08_deliverables/conversion_check.json` | 三种表示的往返一致性自检 |
-| `08_deliverables/progress_matrix.csv` | 表示 × 任务的实现与运行状态 |
-| `08_deliverables/experiment_manifest.json` | 代码、依赖、数据、模型、prompt、预算、种子、实际运行记录 |
-| `07_benchmark/data/prepared/dataset_manifest.json` | 数据来源、校验值、筛选漏斗、标签支持度 |
-| `07_benchmark/README.md` | benchmark 模块运行说明 |
-
----
-
-## 已知边界（不要误读为支持）
-
-- 核心不支持立体化学、CXSMILES 层、反应、查询语法、分子名称 → `UnsupportedSmilesError`
-- 核心输出**确定性但非 canonical**
-- 核心不做化学 sanitization（价键数、Kekulé、自由基不检查）
-- 核心环闭合上限：同时打开的非树边 ≤ 99（原版行为，本轮未扩展）
-- 构造代码往返：> `MAX_TEXT`(100000) 字符的图**不能**往返
-- ChEBI-20 中 **68% 的分子带立体化学**，被排除而非剥掉，因此池只有 2,097 个分子；
-  结论的适用范围是**无立体化学的小分子**
-- 旧报告中的 16/16、4991 等数字**不是本轮结果**，对应材料不在工作区
-
-## 历史材料
-
-`03_evidence/`、`04_reference_notes/`、`05_results/`、`06_report/` 中上一轮的文档
-保留为历史依据，**未篡改**。其中的数字不作为本轮证据引用。
+* 第 1 轮（三表示 / `smoke` 阶段）的说明：[docs/history/research_README_round1_2026.md](../docs/history/research_README_round1_2026.md)
+* `07_benchmark/README.md` 正文同样以第 1 轮为主，文件开头已加当前状态提示，CLI 参数仍可参照。

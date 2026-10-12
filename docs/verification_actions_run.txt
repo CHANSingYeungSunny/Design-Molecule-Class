@@ -1,0 +1,247 @@
+﻿replay	Set up job	﻿2026-10-12T22:12:23.2556456Z Current runner version: '2.337.0'
+replay	Set up job	2026-10-12T22:12:23.2574240Z ##[group]Runner Image Provisioner
+replay	Set up job	2026-10-12T22:12:23.2574930Z Hosted Compute Agent
+replay	Set up job	2026-10-12T22:12:23.2575351Z Version: 20261002.596
+replay	Set up job	2026-10-12T22:12:23.2575711Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+replay	Set up job	2026-10-12T22:12:23.2576147Z Build Date: 2026-10-02T22:28:27Z
+replay	Set up job	2026-10-12T22:12:23.2576546Z Worker ID: {c23fd66e-e948-4d6b-8e41-86f772178adb}
+replay	Set up job	2026-10-12T22:12:23.2576976Z Region: centralus
+replay	Set up job	2026-10-12T22:12:23.2577325Z Cloud: Azure
+replay	Set up job	2026-10-12T22:12:23.2577636Z ##[endgroup]
+replay	Set up job	2026-10-12T22:12:23.2578397Z ##[group]Operating System
+replay	Set up job	2026-10-12T22:12:23.2578800Z Ubuntu
+replay	Set up job	2026-10-12T22:12:23.2579133Z 24.04.5
+replay	Set up job	2026-10-12T22:12:23.2579484Z LTS
+replay	Set up job	2026-10-12T22:12:23.2579783Z ##[endgroup]
+replay	Set up job	2026-10-12T22:12:23.2580089Z ##[group]Runner Image
+replay	Set up job	2026-10-12T22:12:23.2580482Z Image: ubuntu-24.04
+replay	Set up job	2026-10-12T22:12:23.2580836Z Version: 20261004.327.1
+replay	Set up job	2026-10-12T22:12:23.2581616Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+replay	Set up job	2026-10-12T22:12:23.2582587Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+replay	Set up job	2026-10-12T22:12:23.2583164Z ##[endgroup]
+replay	Set up job	2026-10-12T22:12:23.2583860Z ##[group]GITHUB_TOKEN Permissions
+replay	Set up job	2026-10-12T22:12:23.2585172Z Contents: read
+replay	Set up job	2026-10-12T22:12:23.2585505Z Metadata: read
+replay	Set up job	2026-10-12T22:12:23.2586086Z Packages: read
+replay	Set up job	2026-10-12T22:12:23.2586448Z ##[endgroup]
+replay	Set up job	2026-10-12T22:12:23.2587702Z Secret source: Actions
+replay	Set up job	2026-10-12T22:12:23.2588273Z Cache mode: write
+replay	Set up job	2026-10-12T22:12:23.2588788Z Prepare workflow directory
+replay	Set up job	2026-10-12T22:12:23.2782960Z Prepare all required actions
+replay	Set up job	2026-10-12T22:12:23.2812951Z Getting action download info
+replay	Set up job	2026-10-12T22:12:23.5504481Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+replay	Set up job	2026-10-12T22:12:23.6670436Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+replay	Set up job	2026-10-12T22:12:23.8762449Z Complete job name: replay
+replay	Run actions/checkout@v4	﻿2026-10-12T22:12:23.9201551Z ##[group]Run actions/checkout@v4
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9201997Z with:
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9202277Z   repository: CHANSingYeungSunny/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9204305Z   token: ***
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9204530Z   ssh-strict: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9204759Z   ssh-user: git
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9204996Z   persist-credentials: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9205249Z   clean: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9205484Z   sparse-checkout-cone-mode: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9205757Z   fetch-depth: 1
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9205982Z   fetch-tags: false
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9206219Z   show-progress: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9206453Z   lfs: false
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9206670Z   submodules: false
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9206907Z   set-safe-directory: true
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9207174Z   allow-unsafe-pr-checkout: false
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9207508Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9860443Z Syncing repository: CHANSingYeungSunny/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9862233Z ##[group]Getting Git version info
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9863046Z Working directory is '/home/runner/work/Design-Molecule-Class/Design-Molecule-Class'
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9864006Z [command]/usr/bin/git version
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9920766Z git version 2.55.0
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9934418Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9944839Z Temporarily overriding HOME='/home/runner/work/_temp/abe72b96-3627-4a69-a13e-9f5956eaf751' before making global git config changes
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9946111Z Adding repository directory to the temporary git global config as a safe directory
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9948703Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Design-Molecule-Class/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9992083Z Deleting the contents of '/home/runner/work/Design-Molecule-Class/Design-Molecule-Class'
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9997694Z ##[group]Initializing the repository
+replay	Run actions/checkout@v4	2026-10-12T22:12:23.9998511Z [command]/usr/bin/git init /home/runner/work/Design-Molecule-Class/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0099538Z hint: Using 'master' as the name for the initial branch. This default branch name
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0101330Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0102192Z hint: to use in all of your new repositories, which will suppress this warning,
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0103193Z hint: call:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0103690Z hint:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0104111Z hint: 	git config --global init.defaultBranch <name>
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0104602Z hint:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0105059Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0105820Z hint: 'development'. The just-created branch can be renamed via this command:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0106416Z hint:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0106744Z hint: 	git branch -m <name>
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0107118Z hint:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0107617Z hint: Disable this message with "git config set advice.defaultBranchName false"
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0108553Z Initialized empty Git repository in /home/runner/work/Design-Molecule-Class/Design-Molecule-Class/.git/
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0111880Z [command]/usr/bin/git remote add origin https://github.com/CHANSingYeungSunny/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0163708Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0164184Z ##[group]Disabling automatic garbage collection
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0168151Z [command]/usr/bin/git config --local gc.auto 0
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0201884Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0202552Z ##[group]Setting up auth
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0207267Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0236116Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0534170Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0564983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0745972Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0777065Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0955086Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0989026Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0989727Z ##[group]Fetching the repository
+replay	Run actions/checkout@v4	2026-10-12T22:12:24.0995558Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +aac92e78a7d1b1f80653d59ec45252a3a612e45a:refs/remotes/origin/main
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1038467Z From https://github.com/CHANSingYeungSunny/Design-Molecule-Class
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1040244Z  * [new ref]         aac92e78a7d1b1f80653d59ec45252a3a612e45a -> origin/main
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1044078Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1045408Z ##[group]Determining the checkout info
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1046750Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1047625Z [command]/usr/bin/git sparse-checkout disable
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1092725Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1119792Z ##[group]Checking out the ref
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.1124241Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.6544720Z Switched to a new branch 'main'
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.6548507Z branch 'main' set up to track 'origin/main'.
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.6566239Z ##[endgroup]
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.6605770Z [command]/usr/bin/git log -1 --format=%H
+replay	Run actions/checkout@v4	2026-10-12T22:12:26.6627266Z aac92e78a7d1b1f80653d59ec45252a3a612e45a
+replay	Run actions/setup-python@v5	﻿2026-10-12T22:12:26.6821515Z ##[group]Run actions/setup-python@v5
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6821780Z with:
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6821933Z   python-version: 3.13
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6822090Z   check-latest: false
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6823496Z   token: ***
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6823683Z   update-environment: true
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6823846Z   allow-prereleases: false
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6823998Z   freethreaded: false
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.6824147Z ##[endgroup]
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.7651401Z ##[group]Installed versions
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.9435670Z (node:2119) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.9436235Z (Use `node --trace-deprecation ...` to show where the warning was created)
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.9436613Z Successfully set up CPython (3.13.16)
+replay	Run actions/setup-python@v5	2026-10-12T22:12:26.9437018Z ##[endgroup]
+replay	Test the original molecular core	﻿2026-10-12T22:12:26.9578690Z ##[group]Run python research/02_tests/test_baseline_core.py
+replay	Test the original molecular core	2026-10-12T22:12:26.9579190Z ^[[36;1mpython research/02_tests/test_baseline_core.py^[[0m
+replay	Test the original molecular core	2026-10-12T22:12:27.0459950Z shell: /usr/bin/bash -e {0}
+replay	Test the original molecular core	2026-10-12T22:12:27.0460184Z env:
+replay	Test the original molecular core	2026-10-12T22:12:27.0460351Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Test the original molecular core	2026-10-12T22:12:27.0460604Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+replay	Test the original molecular core	2026-10-12T22:12:27.0460830Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Test the original molecular core	2026-10-12T22:12:27.0461033Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Test the original molecular core	2026-10-12T22:12:27.0514141Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Test the original molecular core	2026-10-12T22:12:27.0514505Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+replay	Test the original molecular core	2026-10-12T22:12:27.0514784Z ##[endgroup]
+replay	Test the original molecular core	2026-10-12T22:12:28.8876071Z test_baseline_copy_matches_project_root_original (__main__.BaselineIntegrityTests.test_baseline_copy_matches_project_root_original) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8877143Z test_baseline_file_hash_is_unchanged (__main__.BaselineIntegrityTests.test_baseline_file_hash_is_unchanged) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8878015Z test_baseline_source_mentions_no_chemistry_package (__main__.BaselineIntegrityTests.test_baseline_source_mentions_no_chemistry_package) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8878755Z test_no_chemistry_module_in_sys_modules (__main__.BaselineIntegrityTests.test_no_chemistry_module_in_sys_modules) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8879500Z test_rolled_back_extensions_are_absent_from_the_core (__main__.BaselineIntegrityTests.test_rolled_back_extensions_are_absent_from_the_core) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8880288Z test_working_core_matches_the_baseline_byte_for_byte (__main__.BaselineIntegrityTests.test_working_core_matches_the_baseline_byte_for_byte)
+replay	Test the original molecular core	2026-10-12T22:12:28.8880909Z The deliverable core must be the professor original, not a variant. ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8881616Z test_atom_map_round_trips (__main__.ChargeIsotopeMapTests.test_atom_map_round_trips) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8882136Z test_charge_round_trips (__main__.ChargeIsotopeMapTests.test_charge_round_trips) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8882664Z test_isotope_round_trips (__main__.ChargeIsotopeMapTests.test_isotope_round_trips) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8883175Z test_total_charge (__main__.ChargeIsotopeMapTests.test_total_charge) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8885376Z test_from_code_does_not_execute_arbitrary_python (__main__.ConstructorCodeTests.test_from_code_does_not_execute_arbitrary_python) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8888336Z test_from_code_enforces_ast_node_limit (__main__.ConstructorCodeTests.test_from_code_enforces_ast_node_limit) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8889155Z test_from_code_enforces_text_length_limit (__main__.ConstructorCodeTests.test_from_code_enforces_text_length_limit) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8889910Z test_from_code_rejects_duplicate_keywords (__main__.ConstructorCodeTests.test_from_code_rejects_duplicate_keywords) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8891639Z test_from_code_rejects_non_constructor_expressions (__main__.ConstructorCodeTests.test_from_code_rejects_non_constructor_expressions) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8893382Z test_round_trip (__main__.ConstructorCodeTests.test_round_trip) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8901459Z test_round_trip_for_annotated_atoms (__main__.ConstructorCodeTests.test_round_trip_for_annotated_atoms) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8902537Z test_to_code_shape (__main__.ConstructorCodeTests.test_to_code_shape) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8911866Z test_atom_id_cannot_be_changed (__main__.EditSemanticsTests.test_atom_id_cannot_be_changed) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8921742Z test_bond_edit (__main__.EditSemanticsTests.test_bond_edit) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8922082Z test_charge_edit (__main__.EditSemanticsTests.test_charge_edit) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8922489Z test_edit_can_produce_a_bracket_form_that_changes_hydrogen_semantics (__main__.EditSemanticsTests.test_edit_can_produce_a_bracket_form_that_changes_hydrogen_semantics) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8922993Z test_edit_can_produce_a_chemically_invalid_graph (__main__.EditSemanticsTests.test_edit_can_produce_a_chemically_invalid_graph) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8923697Z test_frozen_records_and_molecule_are_hashable_immutable_values (__main__.EditSemanticsTests.test_frozen_records_and_molecule_are_hashable_immutable_values) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8924154Z test_invalid_replacement_is_rejected (__main__.EditSemanticsTests.test_invalid_replacement_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8924569Z test_oxygen_to_sulfur_yields_ccs_and_leaves_original (__main__.EditSemanticsTests.test_oxygen_to_sulfur_yields_ccs_and_leaves_original) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8924941Z test_records_after_edit (__main__.EditSemanticsTests.test_records_after_edit) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8925291Z test_replace_bond_requires_an_existing_bond (__main__.EditSemanticsTests.test_replace_bond_requires_an_existing_bond) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8925707Z test_ammonium_from_markdown (__main__.HydrogenPolicyTests.test_ammonium_from_markdown) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8926066Z test_aromatic_nh_inside_a_ring (__main__.HydrogenPolicyTests.test_aromatic_nh_inside_a_ring) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8926467Z test_bracket_hydrogen_cannot_carry_its_own_h_token (__main__.HydrogenPolicyTests.test_bracket_hydrogen_cannot_carry_its_own_h_token) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8926939Z test_bracket_required_atom_must_declare_hydrogen_count (__main__.HydrogenPolicyTests.test_bracket_required_atom_must_declare_hydrogen_count) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8927349Z test_four_documented_policies (__main__.HydrogenPolicyTests.test_four_documented_policies) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8927683Z test_separate_hydrogen_vertex (__main__.HydrogenPolicyTests.test_separate_hydrogen_vertex) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8927968Z test_bond_types (__main__.ParseAndWriteTests.test_bond_types) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8928201Z test_branch (__main__.ParseAndWriteTests.test_branch) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8928428Z test_cc_o_records (__main__.ParseAndWriteTests.test_cc_o_records) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8928711Z test_cc_o_round_trips_exactly (__main__.ParseAndWriteTests.test_cc_o_round_trips_exactly) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.8929035Z test_disconnected_components (__main__.ParseAndWriteTests.test_disconnected_components) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9320006Z test_long_chain_without_recursion (__main__.ParseAndWriteTests.test_long_chain_without_recursion) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9325950Z test_output_reparses_with_same_records (__main__.ParseAndWriteTests.test_output_reparses_with_same_records) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9326787Z test_ring_closure (__main__.ParseAndWriteTests.test_ring_closure) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9327750Z test_two_digit_ring_label_is_accepted_then_renumbered_by_the_writer (__main__.ParseAndWriteTests.test_two_digit_ring_label_is_accepted_then_renumbered_by_the_writer) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9328853Z test_writer_is_deterministic_for_a_fixed_ordered_graph (__main__.ParseAndWriteTests.test_writer_is_deterministic_for_a_fixed_ordered_graph) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9329489Z test_bond_between (__main__.QueryTests.test_bond_between) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9329981Z test_neighbors (__main__.QueryTests.test_neighbors) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9331147Z test_shortest_path (__main__.QueryTests.test_shortest_path) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9331984Z test_aromatic_atom_of_unsupported_element_is_rejected (__main__.RejectionTests.test_aromatic_atom_of_unsupported_element_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9333383Z test_aromatic_bond_between_non_aromatic_atoms_is_rejected (__main__.RejectionTests.test_aromatic_bond_between_non_aromatic_atoms_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9334207Z test_bad_graph_records_are_rejected (__main__.RejectionTests.test_bad_graph_records_are_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9334932Z test_cxsmiles_reaction_and_query_syntax_is_rejected (__main__.RejectionTests.test_cxsmiles_reaction_and_query_syntax_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9335632Z test_malformed_smiles_is_rejected (__main__.RejectionTests.test_malformed_smiles_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9336418Z test_names_and_whitespace_are_rejected (__main__.RejectionTests.test_names_and_whitespace_are_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9337236Z test_non_iterable_bonds_argument_raises_type_error_not_molecule_error (__main__.RejectionTests.test_non_iterable_bonds_argument_raises_type_error_not_molecule_error) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9338062Z test_stereochemistry_is_rejected (__main__.RejectionTests.test_stereochemistry_is_rejected) ... ok
+replay	Test the original molecular core	2026-10-12T22:12:28.9338424Z 
+replay	Test the original molecular core	2026-10-12T22:12:28.9338621Z ----------------------------------------------------------------------
+replay	Test the original molecular core	2026-10-12T22:12:28.9338919Z Ran 55 tests in 0.046s
+replay	Test the original molecular core	2026-10-12T22:12:28.9339037Z 
+replay	Test the original molecular core	2026-10-12T22:12:28.9339165Z OK
+replay	Check the core code index still matches the source	﻿2026-10-12T22:12:28.9449946Z ##[group]Run python scripts/check_code_index.py
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9450176Z ^[[36;1mpython scripts/check_code_index.py^[[0m
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9502730Z shell: /usr/bin/bash -e {0}
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9502870Z env:
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9503013Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9503238Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9503480Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9503708Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9503906Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9504118Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9504288Z ##[endgroup]
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9731846Z index rows checked: 53
+replay	Check the core code index still matches the source	2026-10-12T22:12:28.9732068Z core code index OK
+replay	Recompute every table cell from raw responses	﻿2026-10-12T22:12:28.9779663Z ##[group]Run python scripts/replay_table.py
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9779887Z ^[[36;1mpython scripts/replay_table.py^[[0m
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9831097Z shell: /usr/bin/bash -e {0}
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9831365Z env:
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9831514Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9831744Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9831970Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9832174Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9832382Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9832585Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:28.9832770Z ##[endgroup]
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1824400Z Historical replay passed: 40 frozen lists, all 40 table values match.
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1825093Z Denominators: {'t1_identity': 200, 't2_functional_groups': 199, 't3_atom_counts': 199, 't4_qed': 199, 't5_hydrogen_bond_donors': 199}
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1825615Z smiles 0.985 0.839 0.231 0.111 0.814
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1825827Z selfies 0.540 0.546 0.015 0.180 0.432
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1826035Z our_code 1.000 0.515 0.191 0.139 0.427
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1826247Z img 0.990 0.868 0.342 0.119 0.975
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1826453Z graph2d 0.850 0.438 0.055 0.145 0.382
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1826656Z graph3d 0.980 0.571 0.070 0.170 0.387
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1826854Z cml 0.970 0.523 0.196 0.128 0.467
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1827046Z moljson 0.620 0.434 0.216 0.149 0.357
+replay	Recompute every table cell from raw responses	2026-10-12T22:12:30.1827367Z Outputs: /home/runner/work/Design-Molecule-Class/Design-Molecule-Class/reproduced
+replay	Post Run actions/setup-python@v5	﻿2026-10-12T22:12:30.2024470Z Post job cleanup.
+replay	Post Run actions/setup-python@v5	2026-10-12T22:12:30.2745899Z (node:2133) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+replay	Post Run actions/setup-python@v5	2026-10-12T22:12:30.2746337Z (Use `node --trace-deprecation ...` to show where the warning was created)
+replay	Post Run actions/checkout@v4	﻿2026-10-12T22:12:30.2878395Z Post job cleanup.
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3427311Z [command]/usr/bin/git version
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3457119Z git version 2.55.0
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3479530Z Temporarily overriding HOME='/home/runner/work/_temp/2225e2fc-dacb-486b-91c0-ba1a505d1d96' before making global git config changes
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3480212Z Adding repository directory to the temporary git global config as a safe directory
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3482679Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Design-Molecule-Class/Design-Molecule-Class
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3513694Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3544785Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3765278Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3790201Z http.https://github.com/.extraheader
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3800488Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.3831269Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.4025825Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+replay	Post Run actions/checkout@v4	2026-10-12T22:12:30.4055100Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+replay	Complete job	﻿2026-10-12T22:12:30.4340481Z Cleaning up orphan processes
+replay	Complete job	2026-10-12T22:12:30.4543041Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -4,6 +4,16 @@
 *Rethinking Molecular Text Representations for LLMs: An Empirical Study*,
 arXiv:2606.03057v1（2026-06-02），作者 Arun Raja, Garrett M. Morris, Kian Ming A. Chai。
 
+> **当前状态提示（2026-10-13 加）**：本文件正文记录的是**第 1 轮**（三种表示、
+> `smoke` 阶段、`main` 未运行、自检 17/17 与 9/9）。后续阶段已经把表示扩到
+> **八种**、任务扩到 **五项**，并且已经跑完 `main-02` 与 `extension-01`。
+> 下面的"第 1 轮"描述与 `smoke/probe` 相关状态**是历史记录，不是当前状态**；
+> 当前结果、复现命令与限制请看根目录 [README.md](../../README.md) 与
+> [docs/AUDIT.md](../../docs/AUDIT.md)。CLI 参数与模块结构仍以本文件为准。
+>
+> 第 1 轮的目录级说明已归档到
+> [docs/history/research_README_round1_2026.md](../../docs/history/research_README_round1_2026.md)。
+
 本轮（第 1 轮）实测三种表示：**Our Code、SMILES、SELFIES**。图像、Graph2D、
 Graph3D、MolJSON 已在注册表中登记但**本轮不实现**，注册表里标 `implemented: false`
 并写明原因，不写空壳函数。
